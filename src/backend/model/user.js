@@ -16,7 +16,12 @@ const userSchema = new Schema({
     type: String,
     unique: true
   },
-  image: {type: Buffer}
+  image: {type: Buffer},
+  jobs: [
+    {
+      type: mongoose.Schema.Types.ObjectId, ref:'Job'
+    }
+  ]
 });
 
-module.exports =  mongoose.model("User", userSchema);;
+module.exports =  mongoose.model("User", userSchema);

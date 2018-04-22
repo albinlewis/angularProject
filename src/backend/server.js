@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 /** Get configuration */
-process.env["NODE_CONFIG_DIR"] = __dirname + "/config/";
+process.env.NODE_CONFIG_DIR = __dirname + "/config/";
 const config = require('config');
 
 /** Express initialzer */
@@ -30,6 +30,8 @@ require('./model/disease');
 require('./model/job');
 require('./model/plant');
 require('./model/user');
+require('./lib/background');
+
 
 /** Initialize routes */
 app.use('/api', require('./controller/routes'));
