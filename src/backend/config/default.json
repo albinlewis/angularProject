@@ -1,4 +1,11 @@
 {
     "db": "mongodb://localhost:27017/pse",
-    "port": 3000
+    "port": 3000,
+    "api": {
+        "url": "https://spacenus-api.azurewebsites.net",
+        "api_key": "Tp5KoPMzRQcXsnx"
+    },
+    "timer": {
+        "plants": 86400000
+    }
 }

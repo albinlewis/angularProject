@@ -3,18 +3,18 @@ const Plant = require("../model/plant");
 const logger = require('winston');
 const config = require('config');
 
-//getPlants(savePlants);
+getPlants(updateDatabasePlants);
 
 setInterval(() => {
-    getPlants(savePlants, true);
+    getPlants(updateDatabasePlants, true);
 }, config.timer.plants);
 
-function savePlants(plants){
+/** Updates or Inserts all plants in the database */
+function updateDatabasePlants(plants){
     if(!(plants instanceof Array)){
         plants = [plants];
     }
     plants.forEach(plant => {
-        
         Plant.findByIdAndUpdate(plant.id, plant, {upsert:true, new: true})
             .then(p => {
                 logger.info("Upserted plant " + p.name + " with id " + p.id);
