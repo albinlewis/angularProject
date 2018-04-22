@@ -6,6 +6,7 @@
         "api_key": "Tp5KoPMzRQcXsnx"
     },
     "timer": {
-        "plants": 86400000
+        "plants": 86400000,
+        "diseases": 86400000
     }
 }
