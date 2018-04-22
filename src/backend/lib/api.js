@@ -1,0 +1,21 @@
+const config = require('config');
+const rp = require('request-promise');
+const logger = require('winston');
+
+module.exports.getPlantsFromApi = function(callback, modified=false){
+    const options = {
+        method: "GET",
+        uri: config.api.url + "/crops.json",
+        headers: {
+            apikey: config.api.api_key
+        },
+        json: true
+    };
+
+    rp(options)
+        .then(result => {
+            callback(result);
+        }).catch(err => {
+            logger.error(err);
+        });
+};
