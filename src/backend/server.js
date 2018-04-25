@@ -1,7 +1,9 @@
 /** Required packages  */
-const mongoose = require('mongoose');
-const express = require('express');
-const bodyParser = require('body-parser');
+const mongoose = require('mongoose'),
+  express = require('express'),
+  bodyParser = require('body-parser'),
+  fileUpload = require('express-fileupload'),
+  os = require('os');
 
 /** Get configuration */
 process.env.NODE_CONFIG_DIR = __dirname + "/config/";
@@ -21,6 +23,9 @@ winston.level = process.env.LOG_LEVEL || 'info';
 app.use(bodyParser.urlencoded( {extended: true }));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
+
+/** file-Upload */
+app.use(fileUpload());
 
 /** Connect to MongoDB */
 mongoose.connect(config.db);

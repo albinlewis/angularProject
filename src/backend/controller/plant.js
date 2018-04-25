@@ -24,10 +24,11 @@ function getPlant(req, res){
                 success: true,
                 data: plant
             });
-        }).catch(err => {
+        })
+      .catch(err => {
             res.status(400);
             res.send(err);
-            
+
             logger.error(err);
         });
 }
