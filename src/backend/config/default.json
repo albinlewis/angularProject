@@ -1,5 +1,5 @@
 {
-    "db": "mongodb://localhost:27017/pse",
+    "db": "mongodb://pseMember:hdaPseFbi@ds062807.mlab.com:62807/pse",
     "port": 3000,
     "api": {
         "url": "https://spacenus-api.azurewebsites.net",
@@ -7,6 +7,7 @@
     },
     "timer": {
         "plants": 86400000,
-        "diseases": 86400000
+        "diseases": 86400000,
+        "last_update": "25.04.2018"
     }
 }

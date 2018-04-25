@@ -1,14 +1,7 @@
-const router  = require('express').Router();
 const Disease = require('../model/disease');
 const logger = require('winston');
 
 /** Get all diseases with name and id */
-router.get('/', getDiseases);
-
-/** Get single disease y id */
-router.get('/:id', getDisease);
-
-
 function getDiseases(req, res){
     Disease.find({}, ["id", "name", "symptoms"])
         .then(diseases => {
@@ -18,10 +11,11 @@ function getDiseases(req, res){
                 data: diseases
             });
         }).catch(err => {
-
+            res.send(err);
         });
 }
 
+/** Get single disease by id */
 function getDisease(req, res){
     Disease.findById(req.params.id).select("-__v")
         .then(disease => {
@@ -38,4 +32,7 @@ function getDisease(req, res){
         });
 }
 
-module.exports = router;
+module.exports = {
+    getDisease: getDisease,
+    getDiseases: getDiseases
+};

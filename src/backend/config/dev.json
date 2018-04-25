@@ -1,5 +1,5 @@
 {
-    "db": "mongodb://localhost:27017/dev",
+    "db": "mongodb://pseMember:hdaPseFbi@ds062807.mlab.com:62807/pse",
     "port": 3000
 }
   

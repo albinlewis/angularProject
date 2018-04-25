@@ -1,14 +1,7 @@
-const router  = require('express').Router();
 const Plant = require('../model/plant');
 const logger = require('winston');
 
 /** Get all plants with name and id */
-router.get('/', getPlants);
-
-/** Get single plant y id */
-router.get('/:id', getPlant);
-
-
 function getPlants(req, res){
     Plant.find({}, ["id", "name"])
         .then(plants => {
@@ -22,6 +15,7 @@ function getPlants(req, res){
         });
 }
 
+/** Get single plant y id */
 function getPlant(req, res){
     Plant.findById(req.params.id).select("-__v")
         .then(plant => {
@@ -38,4 +32,7 @@ function getPlant(req, res){
         });
 }
 
-module.exports = router;
+module.exports = {
+    getPlant: getPlant,
+    getPlants: getPlants
+};
