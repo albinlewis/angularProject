@@ -16,7 +16,9 @@ const userSchema = new Schema({
     type: String,
     unique: true
   },
-  image: {type: Buffer},
+  image_url: {
+    type: String,
+  },
   jobs: [
     {
       type: mongoose.Schema.Types.ObjectId, ref:'Job'
