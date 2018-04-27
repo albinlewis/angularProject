@@ -10,12 +10,11 @@ router.get('/diseases/:id', require('./disease').getDisease);
 router.get('/diseases', require('./disease').getDiseases);
 
 router.get('/analysis', require('./analysis'));
-router.get('/history', middleware.verifyJWT_MW, require('./history').getHistory);
+//router.get('/history', middleware.verifyJWT_MW, require('./history').getHistory);
 
-router.post('/test',  middleware.checkBody(["x", "z"]), (req, res) => { res.send("Anzeige"); });
-
-router.post('/register', require('./user').register);
-router.post('/login', require('./user').login);
-router.delete('/user', middleware.verifyJWT_MW, require('./user').remove);
+// User function: registration, login, deleting and updating
+router.post('/register', middleware.checkBody(['name', 'email', 'password'], true), require('./auth').register);
+router.post('/login', middleware.verifyLoginData, require('./auth').login);
+router.delete('/user', middleware.verifyJWT_MW, middleware.verifyLoginData, require('./user').remove);
 
 module.exports = router;
