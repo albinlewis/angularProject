@@ -12,7 +12,7 @@ function history(req, res) {
           success: true,
           data: jobs,
         }
-      )
+      );
     })
     .catch(err => {
       res.status(400);

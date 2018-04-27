@@ -10,31 +10,25 @@ const plantSchema = new mongoose.Schema({
         required: true
     },
     eppo_code:{
-        type: String,
-        required: true
+        type: String
     },
     image_url: {
-        type: String,
-        required: true
+        type: String
     },
     modified_image: {
-        type: String,
-        required: true
+        type: String
     },
     has_nutrient:{
         type: Boolean
     },
     created: {
-        type: Date,
-        required: true
+        type: Date
     },
     modified:{
-        type: Date,
-        required: true
+        type: Date
     },
     detection_supported: {
-        type: Boolean,
-        required: true
+        type: Boolean
     }
 
 });

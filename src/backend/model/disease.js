@@ -13,15 +13,13 @@ const diseaseSchema = new mongoose.Schema({
         required: true
     },
     eppo_code:{
-        type: String,
-        required: true
+        type: String
     },
     symptoms: {
         type: String,
     },
     leaf_wetness: {
-        type: String,
-        required: true
+        type: String
     },
     bbch_from: Number,
     bbch_to: Number,
@@ -39,8 +37,7 @@ const diseaseSchema = new mongoose.Schema({
         required: true
     },
     detection_supported: {
-        type: Boolean,
-        required: true
+        type: Boolean
     }
 
 });
