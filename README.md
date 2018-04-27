@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Backend
+
+### Run Backend Production Server
+
+Run `npm run backend` to start the production server.
+
+### Run Backend Development Server
+
+Run `npm run backend_dev` for a dev server. Use the api on `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
+
+### Run Backend Mocha Tests
+
+Run `npm run backend_test` to the mocha tests for the backend.
