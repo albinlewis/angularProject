@@ -1,5 +1,8 @@
-const router  = require('express').Router();
 
-router.get('/', (req,res)=>{});
+function getHistory(req, res){
+    res.send({history: "Anzeigen"});
+}
 
-module.exports = router;
+module.exports = {
+    getHistory
+};

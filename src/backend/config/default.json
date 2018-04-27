@@ -9,5 +9,9 @@
         "plants": 86400000,
         "diseases": 86400000,
         "last_update": "25.04.2018"
+    },
+    "auth": {
+        "maxAge": 3600,
+        "secret": "4f9fd85e-489d-11e8-842f-0ed5f89f718b"
     }
-}
+} 

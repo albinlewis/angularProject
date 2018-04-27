@@ -1,14 +1,21 @@
 const router  = require('express').Router();
+const middleware = require('../lib/middleware');
 
 
-router.use('/plants/:id', require('./plant').getPlant);
-router.use('/plants', require('./plant').getPlants);
+router.get('/plants/:id', require('./plant').getPlant);
+router.get('/plants', require('./plant').getPlants);
 
 
-router.use('/diseases/:id', require('./disease').getDisease);
-router.use('/diseases', require('./disease').getDiseases);
+router.get('/diseases/:id', require('./disease').getDisease);
+router.get('/diseases', require('./disease').getDiseases);
 
-router.use('/analysis', require('./analysis'));
-router.use('/history', require('./history'));
+router.get('/analysis', require('./analysis'));
+router.get('/history', middleware.verifyJWT_MW, require('./history').getHistory);
+
+router.post('/test',  middleware.checkBody(["x", "z"]), (req, res) => { res.send("Anzeige"); });
+
+router.post('/register', require('./user').register);
+router.post('/login', require('./user').login);
+router.delete('/user', middleware.verifyJWT_MW, require('./user').remove);
 
 module.exports = router;
