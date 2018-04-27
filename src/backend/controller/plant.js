@@ -34,6 +34,6 @@ function getPlant(req, res){
 }
 
 module.exports = {
-    getPlant: getPlant,
-    getPlants: getPlants
+    getPlant,
+    getPlants
 };

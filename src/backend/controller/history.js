@@ -1,5 +1,6 @@
-const router  = require('express').Router(),
-  Job = require('../model/job');
+const Job = require('../model/job'),
+      errors = require('../lib/errors');
+
 
 // have to set a User_Id on Job
 function history(req, res) {
@@ -21,4 +22,4 @@ function history(req, res) {
 
 module.exports = {
   history : history,
-}
+};

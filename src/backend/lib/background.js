@@ -4,9 +4,8 @@ const Disease = require("../model/disease");
 const logger = require('winston');
 const config = require('config');
 
-
-    getData("/crops.json", updateDatabasePlants);
-    getData("/diseases.json", updateDatabaseDiseases);
+//getData("/crops.json", updateDatabasePlants);
+//getData("/diseases.json", updateDatabaseDiseases);
 
 setInterval(() => {
     getData("/crops.json", updateDatabasePlants, true);
