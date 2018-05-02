@@ -16,7 +16,7 @@ router.get('/diseases/:id', diseaseController.getDisease);
 router.get('/diseases', diseaseController.getDiseases);
 
 router.post('/analysis', analysisController.analysis);
-router.get('/history/:id', historyController.history);
+router.get('/history', middleware.verifyJWT_MW, historyController.history);
 
 // User function: registration, login, deleting and updating
 router.post('/register', middleware.checkBody(['name', 'email', 'password'], true), authController.register);

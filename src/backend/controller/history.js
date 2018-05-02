@@ -1,10 +1,11 @@
-const Job = require('../model/job'),
+const User = require('../model/user'),
       errors = require('../lib/errors');
 
 
 // have to set a User_Id on Job
 function history(req, res) {
-  Job.findById(req.params.id).select("-__V") // match with the useId
+  
+  User.findById(req.tokenData._id, ["jobs"]).populate({path: "jobs", select: "date"})
     .then(jobs => {
       res.status(200);
       res.send(
@@ -15,8 +16,7 @@ function history(req, res) {
       );
     })
     .catch(err => {
-      res.status(400);
-      res.send(err);
+      errors.sendError(res, err);
     });
 }
 
