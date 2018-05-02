@@ -11,12 +11,16 @@ const jobSchema = new mongoose.Schema({
         required: true
     },
     plant:{
-        type: mongoose.Schema.Types.ObjectId, ref:'Plant' ,
+        type: Number, ref:'Plant' ,
         required: true
     },
     resultId: {
         type: String,
         default: null
+    },
+    finish: {
+        type: Boolean,
+        default: false
     }
 });
 
