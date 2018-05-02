@@ -30,6 +30,20 @@ function checkBody(params, strictMode = false) {
     };
 }
 
+/** Checks Files fields for required fields 
+ * strictMode: only allow the given fields, no others
+*/
+function checkFiles(params, strictMode = false) {
+    return (req, res, next) => {
+        try {
+            checkRequiredKeys(req.files, params, strictMode);
+            next();
+        } catch (err) {
+            errors.sendError(res, err);
+        }
+    };
+}
+
 /** Checks Header fields for required fields 
  * strictMode: only allow the given fields, no others
 */
