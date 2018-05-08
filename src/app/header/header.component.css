@@ -1,0 +1,8 @@
+.row{
+  padding-left: 2%;
+
+  background-image: url("../../assets/img/sage_header.jpg");
+  background-size: cover;
+  height: 200px ;
+  color: white;
+}
