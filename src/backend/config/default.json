@@ -1,0 +1,18 @@
+{
+    "db": "mongodb://pseMember:hdaPseFbi@ds062807.mlab.com:62807/pse",
+    "port": 3000,
+    "api": {
+        "url": "https://spacenus-api.azurewebsites.net",
+        "api_key": "Tp5KoPMzRQcXsnx"
+    },
+    "timer": {
+        "plants": 86400000,
+        "diseases": 86400000,
+        "last_update": "25.04.2018"
+    },
+    "auth": {
+        "maxAge": 360000,
+        "stayLoggedIn": 3600000,
+        "secret": "4f9fd85e-489d-11e8-842f-0ed5f89f718b"
+    }
+} 
