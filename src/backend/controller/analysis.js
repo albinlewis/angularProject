@@ -127,5 +127,5 @@ function addJob(imageUrlJob, plantJob, resultIdJob) {
 }
 
 module.exports = {
-    analysis: analysis,
+    analysis
 }
