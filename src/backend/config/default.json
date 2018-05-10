@@ -1,9 +1,12 @@
 {
     "db": "mongodb://pseMember:hdaPseFbi@ds062807.mlab.com:62807/pse",
     "port": 3000,
+    "base_url": "localhost",
     "api": {
         "url": "https://spacenus-api.azurewebsites.net",
-        "api_key": "Tp5KoPMzRQcXsnx"
+        "api_key": "Tp5KoPMzRQcXsnx",
+        "reload_timer": 2000,
+        "reload_counter": 5
     },
     "timer": {
         "plants": 86400000,

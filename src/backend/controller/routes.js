@@ -15,7 +15,10 @@ router.get('/plants', plantController.getPlants);
 router.get('/diseases/:id', diseaseController.getDisease);
 router.get('/diseases', diseaseController.getDiseases);
 
-router.post('/analysis', analysisController.analysis);
+router.post('/analysis', 
+      middleware.checkBody(["crop_id"]),
+      middleware.checkFiles(["image_file"]),
+      analysisController.analysis);
 router.get('/history', middleware.verifyJWT_MW, historyController.history);
 
 // User function: registration, login, deleting and updating

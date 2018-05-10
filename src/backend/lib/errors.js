@@ -25,6 +25,21 @@ class InputError extends PseError{
         super(message, name, status, options);
     }
 }
+
+/** Error for timeouts */
+class TimeoutError extends PseError{
+    constructor(message, name="Timeout Error", status=400, options={}){
+        super(message, name, status, options);
+    }
+}
+
+/** Error for timeouts at getting results */
+class ResultTimeOutError extends TimeoutError{
+    constructor(message, name="Result Timeout Error", status=402, options={}){
+        super(message, name, status, options);
+    }
+}
+
 /** Sends errors to client */
 function sendError(res, err, status=400){
 
@@ -50,5 +65,7 @@ module.exports = {
     PseError,
     AuthError,
     InputError,
+    TimeoutError,
+    ResultTimeOutError,
     sendError
 };

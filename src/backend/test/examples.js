@@ -34,6 +34,13 @@ let disease = {
     crop_id: 12000
 };
 
+let job = {
+    image_url: "../pfad/zu/bild.jpg",
+    plant: 1002,
+    resultId: "kjfejnfnejknfekjnfjejfkf",
+    finish: true
+}
+
 module.exports = {
     user,
     disease,
