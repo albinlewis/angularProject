@@ -24,31 +24,44 @@ import {
     MatTableModule,
     MatTabsModule, MatToolbarModule, MatTooltipModule
 } from '@angular/material';
-import {TabnavComponent} from './tabnav/tabnav.component';
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-import {PlantComponent} from './tabnav/plant/plant.component';
-import {AnalysisComponent} from './tabnav/analysis/analysis.component';
-import {SaleComponent} from './tabnav/sale/sale.component';
-import {ProfileComponent} from './tabnav/profile/profile.component';
-import {CdkTableModule} from '@angular/cdk/table';
-import {PlantDetailsComponent} from './tabnav/plant/plant-details/plant-details.component';
-import {ReactiveFormsModule} from "@angular/forms";
 
+import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
+
+import {CdkTableModule} from '@angular/cdk/table';
+
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { AnalyseComponent } from './analyse/analyse.component';
+import {RouterModule, Routes} from '@angular/router';
+import {PlantsComponent} from './plants/plants.component';
+import { SalesComponent } from './sales/sales.component';
+import { ProfileComponent } from './profile/profile.component';
+import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
+
+const appRoutes: Routes = [
+    {path: '', component: PlantsComponent},
+    {path: 'analyse', component: AnalyseComponent},
+    {path: 'profile', component: ProfileComponent},
+    {path: 'sales', component: SalesComponent},
+    {path: 'details', component: PlantdetailsComponent},
+
+];
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
-        TabnavComponent,
-        PlantComponent,
-        AnalysisComponent,
-        SaleComponent,
+        AnalyseComponent,
+        PlantsComponent,
+        SalesComponent,
         ProfileComponent,
-        PlantDetailsComponent
+        PlantdetailsComponent,
+
     ],
     imports: [
 
         BrowserModule,
+        RouterModule.forRoot(appRoutes),
+        FormsModule,
         MatTabsModule,
         BrowserAnimationsModule,
         NoopAnimationsModule,
