@@ -142,6 +142,7 @@ function verifyLoginData(req, res, next) {
 module.exports = {
     checkBody,
     checkQuery,
+    checkFiles,
     verifyJWT_MW,
     verifyLoginData
 };
