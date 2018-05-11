@@ -36,6 +36,8 @@ import {PlantsComponent} from './plants/plants.component';
 import { SalesComponent } from './sales/sales.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
+import { ResultComponent } from './result/result.component';
+import { DiseaseComponent } from './disease/disease.component';
 
 const appRoutes: Routes = [
     {path: '', component: PlantsComponent},
@@ -43,6 +45,9 @@ const appRoutes: Routes = [
     {path: 'profile', component: ProfileComponent},
     {path: 'sales', component: SalesComponent},
     {path: 'details', component: PlantdetailsComponent},
+    {path: 'results', component: ResultComponent},
+    {path: 'disease', component: DiseaseComponent},
+
 
 ];
 
@@ -55,6 +60,8 @@ const appRoutes: Routes = [
         SalesComponent,
         ProfileComponent,
         PlantdetailsComponent,
+        ResultComponent,
+        DiseaseComponent,
 
     ],
     imports: [

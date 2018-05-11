@@ -16,6 +16,6 @@ export class PlantdetailsComponent implements OnInit {
 
 
     Onshowanalyse() {
-       this.route.navigate(['/analyse']);
+       this.route.navigate(['/results']);
     }
 }

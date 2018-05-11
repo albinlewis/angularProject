@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <h1>Ergebnis <small>Pflanze1</small></h1>
+
+    </div>
+    <div class="row two">
+        <img
+            src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+            class="img-responsive col-md-6"
+            alt="Responsive image">
+        <div class="col-md-6">
+
+            <h3>Krankheiten</h3>
+            <div class="list-group">
+                <button *ngFor="let disease of diseases" type="button" class="list-group-item" (click)="Onshowdisease()">{{disease.name}} <span class="badge">{{disease.percentage}}%</span> </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
