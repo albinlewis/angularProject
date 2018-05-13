@@ -1,5 +1,6 @@
 const router = require('express').Router(),
     Job = require('../model/job'),
+    User = require('../model/user'),
     rp = require('request-promise'),
     errors = require('../lib/errors'),
     config = require('config'),
@@ -15,7 +16,8 @@ function analysis(req, res) {
     let jobImage = req.files.image_file;
     let extension = req.files.image_file.name.split('.')[1];
     let filename = `${randomstring.generate()}.${extension}`;
-    let imagePath = path.resolve(__dirname, '../assets/analysis', filename);
+    let relImagePath = '../assets/analysis/' + filename;
+    let imagePath = path.resolve(__dirname, relImagePath);
 
     moveFile(jobImage, imagePath)
         .then(path => {
@@ -42,7 +44,7 @@ function analysis(req, res) {
                                         data: data.body
                                     });
                                     clearInterval(interval);
-                                    addJob(path, cropId, request_id);
+                                    addJob(relImagePath, cropId, request_id, req.tokenData);
                                 }
                             });
                     }, config.api.reload_timer);
@@ -105,11 +107,11 @@ function getResults(request_id) {
         },
         json: true,
         resolveWithFullResponse: true,
-    }
+    };
     return rp(options).then(res => res);
 }
 
-function addJob(imageUrlJob, plantJob, resultIdJob) {
+function addJob(imageUrlJob, plantJob, resultIdJob, user=null) {
     // new Job
     let job = new Job({
         image_url: imageUrlJob,
@@ -121,11 +123,25 @@ function addJob(imageUrlJob, plantJob, resultIdJob) {
     job.save()
         .then(job => {
             winston.info(`Saved new job ${job._id}`);
+
+            if(user) addToUser(user._id, job._id);
         }).catch(err => {
             winston.error('Could not save Job', err);
         });
 }
 
+function addToUser(userId, jobId){
+    User.findByIdAndUpdate(userId, 
+        {$push: {jobs: jobId}}, 
+        {safe: true, upsert: true})
+        .then(user => {
+            if(!user) throw new errors.DBError(`No user with id ${userId} found`);
+            else winston.info(`Added job to user ${userId}.`);
+        }).catch(err => {
+            winston.warning("addToUser: " + err);
+        });
+}
+
 module.exports = {
     analysis
-}
+};
