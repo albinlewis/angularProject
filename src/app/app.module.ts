@@ -38,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
 import { ResultComponent } from './result/result.component';
 import { DiseaseComponent } from './disease/disease.component';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 const appRoutes: Routes = [
     {path: '', component: PlantsComponent},
@@ -62,6 +63,7 @@ const appRoutes: Routes = [
         PlantdetailsComponent,
         ResultComponent,
         DiseaseComponent,
+        FilterPipe,
 
     ],
     imports: [
