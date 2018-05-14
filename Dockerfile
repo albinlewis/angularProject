@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node:8-alpine
 
 WORKDIR /usr/src/app
 
@@ -10,5 +10,6 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "run", "backend"]
+
+CMD ["npm", "run", "deploy"]
 

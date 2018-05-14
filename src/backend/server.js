@@ -15,6 +15,7 @@ const app = express();
 
 /** Provide static directory */
 app.use('/uploads', express.static(path.join(__dirname, './assets')));
+app.use('/', express.static('./dist'));
 
 /** Initizialize logger  */
 const winston = require('winston');
