@@ -39,6 +39,8 @@ import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
 import { ResultComponent } from './result/result.component';
 import { DiseaseComponent } from './disease/disease.component';
 import { FilterPipe } from './Pipes/filter.pipe';
+import { ShortenPipe } from './Pipes/shorten.pipe';
+import {BrowseService} from "./services/browse.service";
 
 const appRoutes: Routes = [
     {path: '', component: PlantsComponent},
@@ -64,6 +66,7 @@ const appRoutes: Routes = [
         ResultComponent,
         DiseaseComponent,
         FilterPipe,
+        ShortenPipe,
 
     ],
     imports: [
@@ -119,7 +122,7 @@ const appRoutes: Routes = [
 
 
     ],
-    providers: [],
+    providers: [BrowseService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

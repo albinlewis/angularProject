@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Route, Router} from '@angular/router';
+import {BrowseService} from '../services/browse.service';
 
 @Component({
     selector: 'app-plants',
@@ -8,7 +9,7 @@ import {Route, Router} from '@angular/router';
 })
 export class PlantsComponent implements OnInit {
 
-    searchedplant: string = '';
+    searchedplant = '';
     allplants = [{
         name: 'List1',
         description: 'taque verae amicitiae difficillime reperiuntur in iis qui in honoribus ' +
@@ -76,15 +77,17 @@ export class PlantsComponent implements OnInit {
     ];
 
 
-    constructor(private route: Router) {
-
+    constructor(private route: Router, private browservice: BrowseService) {
+         console.log('plants component created');
     }
 
     ngOnInit() {
     }
 
-    Onshowdetails() {
+    Onshowdetails(plants) {
         this.route.navigate(['/details']);
+        this.browservice.plantselect = plants;
+
 
     }
 
