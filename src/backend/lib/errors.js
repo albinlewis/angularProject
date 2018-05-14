@@ -40,6 +40,13 @@ class ResultTimeOutError extends TimeoutError{
     }
 }
 
+/** Error for timeouts at getting results */
+class DBError extends PseError{
+    constructor(message, name="DB error", status=500, options={}){
+        super(message, name, status, options);
+    }
+}
+
 /** Sends errors to client */
 function sendError(res, err, status=400){
 
@@ -67,5 +74,6 @@ module.exports = {
     InputError,
     TimeoutError,
     ResultTimeOutError,
+    DBError,
     sendError
 };

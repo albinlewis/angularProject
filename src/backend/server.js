@@ -3,7 +3,8 @@ const mongoose = require('mongoose'),
   express = require('express'),
   bodyParser = require('body-parser'),
   fileUpload = require('express-fileupload'),
-  os = require('os');
+  os = require('os'),
+  path = require('path');
 
 /** Get configuration */
 process.env.NODE_CONFIG_DIR = __dirname + "/config/";
@@ -13,7 +14,7 @@ const config = require('config');
 const app = express();
 
 /** Provide static directory */
-app.use(express.static('assets'));
+app.use('/uploads', express.static(path.join(__dirname, './assets')));
 
 /** Initizialize logger  */
 const winston = require('winston');
