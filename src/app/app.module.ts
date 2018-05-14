@@ -40,7 +40,9 @@ import { ResultComponent } from './result/result.component';
 import { DiseaseComponent } from './disease/disease.component';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { ShortenPipe } from './Pipes/shorten.pipe';
-import {BrowseService} from "./services/browse.service";
+import {BrowseService} from './services/browse.service';
+import {LoginComponent} from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
     {path: '', component: PlantsComponent},
@@ -50,6 +52,8 @@ const appRoutes: Routes = [
     {path: 'details', component: PlantdetailsComponent},
     {path: 'results', component: ResultComponent},
     {path: 'disease', component: DiseaseComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
 
 
 ];
@@ -67,6 +71,8 @@ const appRoutes: Routes = [
         DiseaseComponent,
         FilterPipe,
         ShortenPipe,
+        RegisterComponent,
+        LoginComponent,
 
     ],
     imports: [
