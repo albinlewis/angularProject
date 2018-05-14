@@ -43,8 +43,9 @@ require('./lib/background');
 app.use('/api', require('./controller/routes'));
 
 /** Start server */
-app.listen(config.port, () => {
-    console.log(`Listening on Port: ${config.port}`);
+let port = process.env.PORT || config.port;
+app.listen(port, () => {
+    console.log(`Listening on Port: ${port}`);
 });
 
 /** Exports */
