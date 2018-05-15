@@ -9,7 +9,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "deploy": "ng build --prod && node ./src/backend/server.js",
+    "deploy": "node ./src/backend/server.js && ng build --prod",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
