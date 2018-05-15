@@ -1,0 +1,29 @@
+{
+    "name": "Plant Analyser",
+    "short_name": "Plant Analyser",
+    "icons": [
+        {
+            "src": "/icons/cactus.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "density": 0.75
+        },
+        {
+            "src": "/icons/plant.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "density": 0.75
+        },
+        {
+            "src": "/icons/leaf.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "density": 0.75
+        }
+    ],
+    "theme_color": "#000000",
+    "background_color": "#7fd811",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "portrait"
+}
