@@ -13,10 +13,6 @@ const config = require('config');
 /** Express initialzer */
 const app = express();
 
-/** Provide static directory */
-app.use('/uploads', express.static(path.join(__dirname, './assets')));
-app.use('/', express.static('./dist'));
-
 /** Initizialize logger  */
 const winston = require('winston');
 winston.level = process.env.LOG_LEVEL || 'info';
@@ -39,9 +35,15 @@ require('./model/plant');
 require('./model/user');
 require('./lib/background');
 
+/** Provide static directory */
+app.use(express.static(path.join(__dirname, '../../dist')));
+app.use('/uploads', express.static(path.join(__dirname, './assets')));
 
 /** Initialize routes */
 app.use('/api', require('./controller/routes'));
+app.use('*', function(req, res){
+  res.sendFile(path.join(__dirname, "../../dist/index.html"));
+});
 
 /** Start server */
 let port = process.env.PORT || config.port;
