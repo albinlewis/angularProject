@@ -16,7 +16,7 @@ function verifyJWTToken(token) {
 /** Creates a JWT Token of details by signing it with secret from environment or config */
 function createJWTToken(details) {
     if (typeof details !== 'object') details = {};
-    if (!details.maxAge || typeof details !== 'number') details.maxAge = config.auth.maxAge;
+    if (!details.maxAge || typeof details !== 'number') details.maxAge = details.loggedIn ? config.auth.stayLoggedIn : config.auth.maxAge;
     if (!details.data || typeof details.data !== 'object') details.data = {};
 
 
