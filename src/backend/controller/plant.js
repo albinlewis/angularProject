@@ -1,9 +1,11 @@
 const Plant = require('../model/plant');
 const logger = require('winston');
+const errors = require('../lib/errors');
+const Disease = require('../model/disease');
 
 /** Get all plants with name and id */
 function getPlants(req, res){
-    Plant.find({}, ["id", "name"])
+    Plant.find({}).select("-__v")
         .then(plants => {
             res.status(200);
             res.send({
@@ -11,7 +13,8 @@ function getPlants(req, res){
                 data: plants
             });
         }).catch(err => {
-
+            errors.sendError(err);
+            logger.error(err);
         });
 }
 
@@ -19,16 +22,22 @@ function getPlants(req, res){
 function getPlant(req, res){
     Plant.findById(req.params.id).select("-__v")
         .then(plant => {
-            res.status(200);
-            res.send({
-                success: true,
-                data: plant
-            });
+            if(!plant) throw errors.DBError(`Plant with id ${req.params.id} does not exist.`);
+            else{
+                Disease.find({crop_id: plant._id}, ["name", "eppo_code"]).then(diseases => {
+                    
+                    plant = plant.toObject();
+                    plant.diseases = diseases;
+                    res.status(200);
+                    res.send({
+                        success: true,
+                        data: plant
+                    });
+                });
+            }
         })
       .catch(err => {
-            res.status(400);
-            res.send(err);
-
+            errors.sendError(err);
             logger.error(err);
         });
 }
