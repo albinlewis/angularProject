@@ -13,7 +13,8 @@ POST `/api/register`
 
 Key | Value | Description
 --- | --- | ---
-email | *string* | The email of the user, who tries to register
+name | *string* | The name of the user
+email | *string* | The email of the user, who tries to register (must be unique)
 password | *string* | The preferred password of the user (min. 8 characters)
 
 --> Success response:
