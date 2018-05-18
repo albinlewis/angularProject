@@ -50,6 +50,7 @@ To access the history view a user must be logged in. So you have to provide an t
 GET `/api/history`
 
 Header fields:
+
 Key | Value | Description
 --- | --- | ---
 Authorization | *string*| The bearer token of logged in user ("Bearer " + token)
