@@ -21,6 +21,10 @@ const plantSchema = new mongoose.Schema({
     has_nutrient:{
         type: Boolean
     },
+    has_disease:{
+        type: Boolean,
+        default: false
+    },
     created: {
         type: Date
     },

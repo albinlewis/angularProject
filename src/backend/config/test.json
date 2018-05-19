@@ -1,5 +1,6 @@
 {
     "db": "mongodb://localhost:27017/test",
+    "base_url": "localhost",
     "port": 3000
 }
   
