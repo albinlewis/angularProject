@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlantsComponent } from './plants/plants.component';
-import { SalesComponent } from './sales/sales.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
 import { LoginComponent } from './login/login.component';
@@ -16,7 +15,6 @@ const appRoutes: Routes = [
   {path: '', component: PlantsComponent},
   {path: 'analyse', component: AnalyseComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'sales', component: SalesComponent},
   {path: 'details/:id', component: PlantdetailsComponent},
   {path: 'results', component: ResultComponent},
   {path: 'disease/:id', component: DiseaseComponent},

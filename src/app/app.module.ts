@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 
@@ -33,7 +32,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AnalyseComponent } from './analyse/analyse.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PlantsComponent} from './plants/plants.component';
-import { SalesComponent } from './sales/sales.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
 import { ResultComponent } from './result/result.component';
@@ -43,20 +41,14 @@ import { ShortenPipe } from './Pipes/shorten.pipe';
 import {BrowseService} from './services/browse.service';
 import {LoginComponent} from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
-const appRoutes: Routes = [
-    {path: '', component: PlantsComponent},
-    {path: 'analyse', component: AnalyseComponent},
-    {path: 'profile', component: ProfileComponent},
-    {path: 'sales', component: SalesComponent},
-    {path: 'details', component: PlantdetailsComponent},
-    {path: 'results', component: ResultComponent},
-    {path: 'disease', component: DiseaseComponent},
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
+import { ApiService } from './services/api.service';
+import { DataService } from './services/data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
+import { SortPipe } from './Pipes/sort.pipe';
 
 
-];
 
 @NgModule({
     declarations: [
@@ -64,7 +56,6 @@ const appRoutes: Routes = [
         HeaderComponent,
         AnalyseComponent,
         PlantsComponent,
-        SalesComponent,
         ProfileComponent,
         PlantdetailsComponent,
         ResultComponent,
@@ -73,12 +64,16 @@ const appRoutes: Routes = [
         ShortenPipe,
         RegisterComponent,
         LoginComponent,
+        NotFoundComponent,
+        SortPipe,
 
     ],
     imports: [
 
         BrowserModule,
-        RouterModule.forRoot(appRoutes),
+        AppRoutingModule,
+        HttpClientModule,
+
         FormsModule,
         MatTabsModule,
         BrowserAnimationsModule,
@@ -128,7 +123,7 @@ const appRoutes: Routes = [
 
 
     ],
-    providers: [BrowseService],
+    providers: [BrowseService, ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
