@@ -1,14 +1,12 @@
 <div class="row">
-    <div class="col-xs-12 col-md-offset-7 col-sm-offset-7">
-        <form class="navbar-form navbar-left col-md-12">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for a plant" [(ngModel)]="filterValue"  [ngModelOptions]="{standalone: true}">
-                <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
-            </div>
-        </form>
-
+    <div class="navbar-form navbar-right col-md-12">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for a plant" [(ngModel)]="filterValue" [ngModelOptions]="{standalone: true}">
+            <span class="input-group-addon" id="basic-addon2">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </span>
+        </div>
     </div>
-
 </div>
 
 <div class="row">
