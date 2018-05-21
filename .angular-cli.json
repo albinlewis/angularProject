@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
-          "manifest.json"
+        "manifest.json"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -25,9 +25,7 @@
       ],
       "scripts": [
           "../node_modules/jquery/dist/jquery.min.js",
-          "../node_modules/bootstrap/dist/js/bootstrap.js",
-          "assets/overwrite.js"
-
+          "../node_modules/bootstrap/dist/js/bootstrap.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
