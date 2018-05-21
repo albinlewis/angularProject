@@ -4,8 +4,11 @@ const Disease = require("../model/disease");
 const logger = require('winston');
 const config = require('config');
 
-//getData("/crops.json", updateDatabasePlants);
-//getData("/diseases.json", updateDatabaseDiseases);
+if(process.env.NODE_ENV === 'prod'){
+    getData("/crops.json", updateDatabasePlants);
+    getData("/diseases.json", updateDatabaseDiseases);
+}
+
 
 setInterval(() => {
     getData("/crops.json", updateDatabasePlants, true);

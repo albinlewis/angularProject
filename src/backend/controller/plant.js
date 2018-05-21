@@ -13,7 +13,7 @@ function getPlants(req, res){
                 data: plants
             });
         }).catch(err => {
-            errors.sendError(err);
+            errors.sendError(res, err);
             logger.error(err);
         });
 }
@@ -22,7 +22,7 @@ function getPlants(req, res){
 function getPlant(req, res){
     Plant.findById(req.params.id).select("-__v")
         .then(plant => {
-            if(!plant) throw errors.DBError(`Plant with id ${req.params.id} does not exist.`);
+            if(!plant) throw new errors.DBError(`Plant with id ${req.params.id} does not exist.`, 'Not Found', 404);
             else{
                 Disease.find({crop_id: plant._id}, ["name", "eppo_code"]).then(diseases => {
                     
@@ -37,7 +37,7 @@ function getPlant(req, res){
             }
         })
       .catch(err => {
-            errors.sendError(err);
+            errors.sendError(res, err);
             logger.error(err);
         });
 }
