@@ -4,7 +4,8 @@ const mongoose = require('mongoose'),
   bodyParser = require('body-parser'),
   fileUpload = require('express-fileupload'),
   os = require('os'),
-  path = require('path');
+  path = require('path'),
+  compression = require('compression');
 
 /** Get configuration */
 process.env.NODE_CONFIG_DIR = __dirname + "/config/";
@@ -16,6 +17,9 @@ const app = express();
 /** Initizialize logger  */
 const winston = require('winston');
 winston.level = process.env.LOG_LEVEL || 'info';
+
+// Gzip compression
+app.use(compression());
 
 /** Bodyparser */
 app.use(bodyParser.urlencoded( {extended: true }));
