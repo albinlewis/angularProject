@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row ">
-        <h1>Details <small>Krankheit1</small></h1>
+        <h1>{{disease?.name}}</h1>
 
     </div>
     <div class="row two">
@@ -9,22 +9,47 @@
             class="img-responsive col-md-6"
             alt="Responsive image">
         <div class="col-md-6">
-            <h3>Merkmale</h3>
-            <p>orem ipsum dolor sit amet, partem pericula incorrupte pri no, ei usu erant tibique omnesque,
-                quo ea commune assentior
-                . Eum ex accusamus definitiones, quodsi timeam ullamcorper at vel. Vix graeco iisque
-                scriptorem cu. Pro ad justo possim, ex vix graeco vivendum detraxit, mel odio neglegentur et.orem ipsum
-                dolor sit amet, partem pericula incorrupte pri no, ei usu erant tibique omnesque, quo ea commune
-                assentior .
-            </p>
-            <h3>Behandlung</h3>
-            <p>orem ipsum dolor sit amet, partem pericula incorrupte pri no, ei usu erant tibique omnesque,
-                quo ea commune assentior.orem ipsum dolor sit amet, partem pericula incorrupte pri no, ei usu erant
-                tibique omnesque,
-                quo ea commune assentior.
-
-
-            </p>
+                <h3>Information</h3>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Name</th>
+                            <td>{{disease?.name}}</td>
+                        </tr>
+                        <tr *ngIf="disease?.eppo_code">
+                            <th scope="row">Eppo Code</th>
+                            <td>{{disease.eppo_code}}</td>
+                        </tr>
+                        <tr *ngIf="disease?.symptoms">
+                            <th scope="row">Symptome</th>
+                            <td>{{disease.symptoms}}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Crop</th>
+                            <td>{{disease?.crop_id}}</td>
+                        </tr>
+                        <tr *ngIf="disease?.leaf_wetness">
+                            <th scope="row">Leaf Wettness</th>
+                            <td>{{disease.leaf_wetness}}</td>
+                        </tr>
+                        <tr *ngIf="disease?.bbch_from">
+                            <th scope="row">BBCH</th>
+                            <td>{{disease.bbch_from}} - {{disease.bbch_to}}</td>
+                        </tr>
+                        <tr *ngIf="disease?.celsius_low">
+                            <th scope="row">Temperature</th>
+                            <td>{{disease.celsius_low}} - {{disease.celsius_high}}°C</td>
+                        </tr>
+                        <tr *ngIf="disease?.humidity_from">
+                            <th scope="row">Humidity</th>
+                            <td>{{disease.humidity_from}} - {{disease.humidity_to}}%</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Detection supported</th>
+                            <td>{{disease?.detection_supported ? "Yes": "No"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
 
         </div>
 
