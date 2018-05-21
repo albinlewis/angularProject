@@ -1,28 +1,44 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import {BrowseService} from '../services/browse.service';
+import { IPlant } from '../model/IPlant';
+import { PlantService } from '../services/plant.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-plantdetails',
     templateUrl: './plantdetails.component.html',
-    styleUrls: ['./plantdetails.component.css']
+    styleUrls: ['./plantdetails.component.css'],
+    providers: [PlantService]
 })
-export class PlantdetailsComponent implements OnInit {
-    currentplant: any;
-    test: string;
+export class PlantdetailsComponent implements OnInit, OnDestroy {
+    plant: IPlant;
+    sub: Subscription;
 
-    constructor(private route: Router, private  browservice: BrowseService) {
-     console.log('plantdetails created');
+    constructor(private router: Router, 
+        private route: ActivatedRoute, 
+        private plantService: PlantService) {
+        console.log('plantdetails created');
     }
 
     ngOnInit() {
-        this.currentplant = this.browservice.plantselect;
-
-
+        this.sub = this.route.params.subscribe((params: Params) => {
+            let id = params['id'];
+            this.getPlant(id);
+        });
     }
 
+    ngOnDestroy(){
+        this.sub.unsubscribe();
+    }
 
-    Onshowanalyse() {
-        this.route.navigate(['/results']);
+    getPlant(id){
+        this.plantService.getSinglePlant(id)
+            .then(plant => this.plant = plant)
+            .catch(err => console.log(err));
+    }
+
+    onShowAnalyse() {
+        this.router.navigate(['/results']);
     }
 }
