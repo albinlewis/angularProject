@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../services/auth.service';
+import {MatSnackBar} from '@angular/material';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-register',
@@ -8,21 +11,40 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
+    able = true;
 
-    constructor() {
+    constructor(private authservice: AuthService, public snackBar: MatSnackBar, private route: Router) {
     }
 
     ngOnInit() {
         this.registerForm = new FormGroup({
-            'username': new FormControl(null, Validators.required),
+            'name': new FormControl(null, [Validators.required, Validators.minLength(6)]),
             'email': new FormControl(null, [Validators.email, Validators.required]),
-            'password': new FormControl(null, Validators.required),
-            'confirmpass': new FormControl(null, Validators.required)
+            'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
+
         });
     }
 
     onSubmit() {
-      console.log(this.registerForm);
+        this.authservice.register(this.registerForm.value)
+            .subscribe((response) => {
+                    console.log('response');
+                    this.snackBar.open('Register', 'succeed', {
+                        duration: 2000,
+                    });
+                    this.route.navigate(['/login']);
+
+                },
+                (err) => {
+                    this.snackBar.open('Register', 'failed', {
+                        duration: 2000,
+                    });
+
+                    console.log(err);
+                }
+            );
+
+        console.log(this.registerForm.value);
     }
 
 }

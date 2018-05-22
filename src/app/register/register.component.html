@@ -6,9 +6,9 @@
     <div class="form-group">
         <label for="username" class="col-sm-2 control-label">Username:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="username"  formControlName="username"  placeholder="Choose an username">
+            <input type="text" class="form-control" id="username"  formControlName="name"  placeholder="Choose an username">
             <span
-                *ngIf="!registerForm.get('username').valid && registerForm.get('username').touched"
+                *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched"
                 class="help-block">
                 Please enter a valid username
             </span>
@@ -39,18 +39,19 @@
     <div class="form-group">
         <label for="inputPassword4" class="col-sm-2 control-label">Confirm Password:</label>
         <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword4" formControlName="confirmpass"  placeholder="Confirm Password">
-            <span
-                *ngIf="!registerForm.get('confirmpass').valid && registerForm.get('confirmpass').touched"
-                class="help-block">
-                Please enter a valid password
-            </span>
+            <input type="password" class="form-control" id="inputPassword4"  placeholder="Confirm Password">
+
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default">Register</button>
+            <span
+                *ngIf="!registerForm.valid && registerForm.touched"
+                class="help-block">
+                Form ist not valid
+            </span>
         </div>
     </div>
 </form>

@@ -50,6 +50,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SortPipe } from './Pipes/sort.pipe';
+import {AuthService} from "./services/auth.service";
 
 
 
@@ -126,7 +127,7 @@ import { SortPipe } from './Pipes/sort.pipe';
         ReactiveFormsModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
-    providers: [BrowseService, ApiService],
+    providers: [BrowseService, ApiService, AuthService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
