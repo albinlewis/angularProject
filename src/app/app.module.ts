@@ -73,6 +73,7 @@ import { SortPipe } from './Pipes/sort.pipe';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        ReactiveFormsModule,
 
         FormsModule,
         MatTabsModule,

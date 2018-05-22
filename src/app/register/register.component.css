@@ -2,3 +2,14 @@ form{
     margin-top: 70px;
 
 }
+input.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+input.ng-valid.ng-touched{
+    border: 1px solid green;
+}
+.help-block{
+    color: red;
+    font-size: 11px;
+}

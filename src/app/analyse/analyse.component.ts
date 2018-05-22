@@ -9,25 +9,25 @@ export class AnalyseComponent implements OnInit {
 
     name = 'Angular 4';
     url = '';
-    showImage: boolean = false;
+    showImage = false;
 
     constructor() {
 
     }
 
     ngOnInit() {
-
     }
 
     onSelectFile(event) {
+
         this.showImage = true;
         if (event.target.files && event.target.files[0]) {
-            let reader = new FileReader();
+            const reader = new FileReader();
 
             reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-            reader.onload = (event) => { // called once readAsDataURL is completed
-              //  this.url = event.target.result;
+            reader.onload = (filevent: any) => { // called once readAsDataURL is completed
+               this.url = filevent.target.result;
             };
         }
     }
