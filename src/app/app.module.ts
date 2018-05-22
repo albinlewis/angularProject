@@ -1,3 +1,6 @@
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -121,8 +124,7 @@ import { SortPipe } from './Pipes/sort.pipe';
 
         MatNativeDateModule,
         ReactiveFormsModule,
-
-
+        environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
     providers: [BrowseService, ApiService],
     bootstrap: [AppComponent]

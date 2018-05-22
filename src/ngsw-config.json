@@ -1,0 +1,40 @@
+{
+    "index": "/index.html",
+    "assetGroups": [{
+            "name": "app",
+            "installMode": "prefetch",
+            "resources": {
+                "files": [
+
+                    "/favicon.ico",
+                    "/manifest_app.json",
+                    "/index.html"
+                ],
+                "versionedFiles": [
+                    "/*.bundle.css",
+                    "/*.bundle.js",
+                    "/*.chunk.js"
+                ]
+            }
+        },
+        {
+            "name": "assets",
+            "installMode": "lazy",
+            "updateMode": "prefetch",
+            "resources": {
+                "files": [
+                    "/assets/**"
+                ]
+            }
+        }
+    ],
+    "dataGroups": [{
+        "name": "plants-diseases-api",
+        "urls": ["/plants/*", "/diseases/*"],
+        "cacheConfig": {
+            "strategy": "freshness",
+            "maxAge": "3d",
+            "timeout": "3s"
+        }
+    }]
+}

@@ -4,12 +4,13 @@ import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/observable/empty';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
 export class ApiService {
 
-  public static API_URL: string = "http://localhost:3000/api/";
+  public static API_URL: string = environment.API_HOST + "/api/";
 
   constructor(private httpClient: HttpClient) { }
 
