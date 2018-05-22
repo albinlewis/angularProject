@@ -1,3 +1,6 @@
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -125,8 +128,7 @@ const appRoutes: Routes = [
 
         MatNativeDateModule,
         ReactiveFormsModule,
-
-
+        environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
     providers: [BrowseService],
     bootstrap: [AppComponent]
