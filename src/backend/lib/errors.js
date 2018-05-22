@@ -9,7 +9,7 @@ class PseError {
 }
 /** Error for Authentication */
 class AuthError extends PseError{
-    constructor(message, name="Authentication Error", status=400, options={}){
+    constructor(message, name="Authentication Error", status=401, options={}){
         super(message, name, status, options);
     }
 }

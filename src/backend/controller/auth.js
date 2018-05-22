@@ -25,7 +25,7 @@ function register(req, res) {
             res.send({
                 success: true,
                 message: `User ${user.email} successfully created`,
-                token: setToken(user)
+                token: setToken(user, req.body.loggedIn)
             });
         }).catch(err => {
             errors.sendError(res, err);
@@ -44,13 +44,14 @@ function login(req, res) {
 }
 
 /** Creates a token with user as hashed data */
-function setToken(user) {
+function setToken(user, loggedIn=false) {
 
     let token = auth.createJWTToken({
         data: {
             _id: user.id,
             email: user.email
-        }
+        },
+        loggedIn: loggedIn
     });
     return token;
 }

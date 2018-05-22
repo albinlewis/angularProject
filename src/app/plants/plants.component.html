@@ -1,28 +1,25 @@
 <div class="row">
-    <div class="col-xs-12 col-md-offset-7 col-sm-offset-7">
-        <form class="navbar-form navbar-left col-md-12">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for a plant" [(ngModel)]="searchedplant"  [ngModelOptions]="{standalone: true}">
-                <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
-            </div>
-        </form>
-
+    <div class="navbar-form navbar-right col-md-12">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search for a plant" [(ngModel)]="filterValue" [ngModelOptions]="{standalone: true}">
+            <span class="input-group-addon" id="basic-addon2">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </span>
+        </div>
     </div>
-
 </div>
 
 <div class="row">
-    <h3 class="col-md-12" *ngIf="searchedplant === ''">All Plants:</h3>
-    <h3 class="col-md-12" *ngIf="searchedplant !== ''">Your search: {{searchedplant}}</h3>
+    <h3 class="col-md-12" *ngIf="filterValue === ''">All Plants:</h3>
+    <h3 class="col-md-12" *ngIf="filterValue !== ''">Your search: {{filterValue}}</h3>
 
 </div>
 
 <div class="row">
     <div class="col-md-12">
         <div class="list-group">
-            <a style="cursor:pointer;" class="list-group-item" *ngFor="let plant of allplants | filter: searchedplant" (click)="Onshowdetails(plant)">
+            <a style="cursor:pointer;" class="list-group-item" *ngFor="let plant of plants | filter: filterValue" [routerLink]="['/details', plant._id]">
                 <h4 class="list-group-item-heading">{{plant.name}}</h4>
-                <p class="list-group-item-text" >{{plant.description | shorten}}</p>
             </a>
         </div>
     </div>

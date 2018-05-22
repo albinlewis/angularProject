@@ -25,7 +25,7 @@ const diseaseSchema = new mongoose.Schema({
     bbch_to: Number,
     example_url: String,
     celsius_low: Number,
-    celsius_hight: Number,
+    celsius_high: Number,
     humidity_from: Number,
     humidity_to: Number,
     created: {

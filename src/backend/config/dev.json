@@ -1,5 +1,6 @@
 {
     "db": "mongodb://pseMember:hdaPseFbi@ds062807.mlab.com:62807/pse",
+    "base_url": "localhost",
     "port": 3000
 }
   

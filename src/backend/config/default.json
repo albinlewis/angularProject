@@ -1,7 +1,7 @@
 {
     "db": "mongodb://pseMember:hdaPseFbi@ds062807.mlab.com:62807/pse",
-    "port": 3000,
-    "base_url": "localhost",
+    "port": 8080,
+    "base_url": "https://psehda.herokuapp.com",
     "api": {
         "url": "https://spacenus-api.azurewebsites.net",
         "api_key": "Tp5KoPMzRQcXsnx",
