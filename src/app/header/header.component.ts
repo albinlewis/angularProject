@@ -11,7 +11,7 @@ import {MatSnackBar} from '@angular/material';
 })
 export class HeaderComponent implements OnInit {
 
-    constructor(private authservice: AuthService, private route: Router, public snackBar: MatSnackBar) {
+    constructor(public authservice: AuthService, private route: Router, public snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
