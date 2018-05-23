@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const crypt = require('password-hash');
+const uniqueValidator = require('mongoose-unique-validator');
 
 const Schema = mongoose.Schema;
 
@@ -21,6 +22,7 @@ const userSchema = new Schema({
     },
     image_url: {
         type: String,
+        default: "default-profile.png"
     },
     jobs: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -32,6 +34,8 @@ const userSchema = new Schema({
         updatedAt: 'updated_at'
     }
 });
+
+userSchema.plugin(uniqueValidator);
 
 /** Verifies raw password with db hash */
 userSchema.methods.verifyPassword = function (password, next) {
