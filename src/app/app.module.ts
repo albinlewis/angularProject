@@ -52,6 +52,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SortPipe } from './Pipes/sort.pipe';
 import {AuthService} from "./services/auth.service";
 import {AuthguardService} from "./services/authguard.service";
+import { UserService } from './services/user.service';
 
 
 
@@ -128,7 +129,7 @@ import {AuthguardService} from "./services/authguard.service";
         ReactiveFormsModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
-    providers: [BrowseService, ApiService, AuthService, AuthguardService],
+    providers: [BrowseService, ApiService, AuthService, AuthguardService, UserService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
