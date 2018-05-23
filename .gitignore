@@ -5,6 +5,7 @@
 /dist-server
 /tmp
 /out-tsc
+/src/backend/assets/analysis/*.jpg
 
 # dependencies
 /node_modules
