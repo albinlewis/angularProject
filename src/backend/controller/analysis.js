@@ -28,6 +28,7 @@ function analysis(req, res) {
 
                     winston.info(`result request_id ${request_id}`);
                     let counter = config.api.reload_counter;
+                    let sent = false;
                     let interval = setInterval(() => {
                         getResults(request_id)
                             .then(data => {
@@ -38,6 +39,8 @@ function analysis(req, res) {
                                     winston.info(`Wait for result ${request_id}`);
                                     counter--;
                                 } else {
+                                    console.log("hier");
+                                    sent = true;
                                     res.status(200);
                                     res.send({
                                         success: true,
@@ -50,7 +53,8 @@ function analysis(req, res) {
                     }, config.api.reload_timer);
                 });
         }).catch(err => {
-            errors.sendError(res, err, 500);
+            winston.error(err);
+            //errors.sendError(res, err, 500);
         });
 }
 
@@ -123,7 +127,7 @@ function addJob(imageUrlJob, plantJob, resultIdJob, user=null) {
     job.save()
         .then(job => {
             winston.info(`Saved new job ${job._id}`);
-
+            console.log(user);
             if(user) addToUser(user._id, job._id);
         }).catch(err => {
             winston.error('Could not save Job', err);
@@ -138,7 +142,7 @@ function addToUser(userId, jobId){
             if(!user) throw new errors.DBError(`No user with id ${userId} found`);
             else winston.info(`Added job to user ${userId}.`);
         }).catch(err => {
-            winston.warning("addToUser: " + err);
+            winston.warn("addToUser: " + err);
         });
 }
 

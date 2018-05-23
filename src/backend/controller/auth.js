@@ -24,8 +24,7 @@ function register(req, res) {
             res.status(201);
             res.send({
                 success: true,
-                message: `User ${user.email} successfully created`,
-                token: setToken(user, req.body.loggedIn)
+                message: `User ${user.email} successfully created`
             });
         }).catch(err => {
             errors.sendError(res, err);
@@ -36,10 +35,14 @@ function register(req, res) {
  * Returns a JWT Token
  * --> Validation in middleware */
 function login(req, res) {
+    let user = req.user.toObject();
+    delete user.password;
+
     res.send({
         success: true,
         message: "You successfully logged in!",
-        token: setToken(req.user)
+        token: setToken(user, req.body.loggedIn),
+        data: user
     });
 }
 
@@ -48,7 +51,7 @@ function setToken(user, loggedIn=false) {
 
     let token = auth.createJWTToken({
         data: {
-            _id: user.id,
+            _id: user._id,
             email: user.email
         },
         loggedIn: loggedIn

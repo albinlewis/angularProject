@@ -127,7 +127,7 @@ function verifyLoginData(req, res, next) {
             search = req.tokenData;
         }
 
-        User.findOne(search)
+        User.findOne(search).select('-__v')
             .then(user => {
                 if (!user) {
                     throw new errors.AuthError('No user with this credentials');
