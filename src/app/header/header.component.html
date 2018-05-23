@@ -16,13 +16,16 @@
             <ul class="nav navbar-nav">
                 <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Pflanzen<span class="sr-only">(current)</span></a></li>
                 <li routerLinkActive="active"><a routerLink = "/analyse">Analyse</a></li>
-                <li routerLinkActive="active"><a routerLink = "/profile">Profil</a></li>
+                <li routerLinkActive="active" *ngIf="authservice.isAuthentificated()"><a routerLink = "/profile">Profil</a></li>
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+                <ng-template [ngIf]="!authservice.isAuthentificated()">
                 <li routerLinkActive="active" ><a routerLink="/register">Register</a></li>
                 <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+                </ng-template>
+                <li *ngIf="authservice.isAuthentificated()" (click)="logout()"><a style="cursor: pointer">Logout</a></li>
 
             </ul>
         </div><!-- /.navbar-collapse -->

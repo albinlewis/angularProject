@@ -1,15 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {MatSnackBar} from '@angular/material';
+import {AuthService} from '../services/auth.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    loginForm: FormGroup;
 
-  constructor() { }
+    constructor(private authservice: AuthService, public snackBar: MatSnackBar, private route: Router) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        this.loginForm = new FormGroup(
+            {
+                'email': new FormControl(null, [Validators.email, Validators.required]),
+                'password': new FormControl(null, [Validators.required, Validators.minLength(8)]),
+                'loggedIn': new FormControl(null)
+            }
+        );
+    }
+
+    onSubmit() {
+        this.authservice.login(this.loginForm.value)
+            .subscribe((response) => {
+                    console.log(response);
+                    this.authservice.token = response.token;
+                    this.snackBar.open('Login', 'succeed', {
+                        duration: 2000,
+                    });
+                    this.route.navigate(['/']);
+
+                },
+                (err) => {
+                    this.snackBar.open('Login', 'failed', {
+                        duration: 2000,
+                    });
+
+                    console.log(err);
+                }
+            );
+
+        console.log(this.loginForm.value);
+    }
 
 }

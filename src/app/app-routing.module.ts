@@ -10,11 +10,12 @@ import { RegisterComponent } from './register/register.component';
 import { ResultComponent } from './result/result.component';
 import { DiseaseComponent } from './disease/disease.component';
 import { AnalyseComponent } from './analyse/analyse.component';
+import {AuthguardService} from "./services/authguard.service";
 
 const appRoutes: Routes = [
   {path: '', component: PlantsComponent},
   {path: 'analyse', component: AnalyseComponent},
-  {path: 'profile', component: ProfileComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthguardService]},
   {path: 'details/:id', component: PlantdetailsComponent},
   {path: 'results', component: ResultComponent},
   {path: 'disease/:id', component: DiseaseComponent},
