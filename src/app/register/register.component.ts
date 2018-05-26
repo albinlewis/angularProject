@@ -28,9 +28,8 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.authservice.register(this.registerForm.value)
             .then(message => {
-                console.log(message);
                 this.registerForm.reset();
-                this.route.navigate(['register']);
+                this.route.navigate(['/login']);
             }).catch(err => {
                 this.snackBar.open('Registration', 'failed', {
                     duration: 2000,
