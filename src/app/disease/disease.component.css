@@ -1,13 +1,3 @@
-.row h1{
-    padding-left: 15px;
-}
-img{
-    margin-top: 24px;
-}
-
-.two{
-    margin-top: 20px;
-}
-.well{
-    border: none;
+th {
+    width: 1%;
 }
