@@ -13,7 +13,7 @@ export class UserService {
 
   setUser(user: IUser){
     this.user = user;
-    localStorage.setItem('user', JSON.stringify('user'));
+    localStorage.setItem('user', JSON.stringify(user));
   }
   
   getUser(): IUser{
