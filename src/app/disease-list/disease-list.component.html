@@ -18,11 +18,11 @@
 
 <div>
     <div class="col-md-12">
-        <div class="list-group">
+        <ul class="list-group">
             <li style="cursor:pointer;" class="list-group-item list-group-item-action" *ngFor="let disease of diseases | sort | filter: filterValue"
                 [routerLink]="['/disease', disease._id]">
                 {{disease.name}}
             </li>
-        </div>
+        </ul>
     </div>
 </div>
