@@ -21,40 +21,45 @@ function analysis(req, res) {
 
     moveFile(jobImage, imagePath)
         .then(path => {
-
             const options = getOptionsFromRequest(req, path, filename);
             getRequestId(options)
                 .then(request_id => {
-
                     winston.info(`result request_id ${request_id}`);
-                    let counter = config.api.reload_counter;
-                    let sent = false;
-                    let interval = setInterval(() => {
-                        getResults(request_id)
-                            .then(data => {
-                                if (counter < 0) {
-                                    winston.error(`Could not get result ${request_id} in time.`);
-                                    throw new errors.ResultTimeOutError('Result could not be fetched in time!');
-                                }else if(data.statusCode === 204) {
-                                    winston.info(`Wait for result ${request_id}`);
-                                    counter--;
-                                } else {
-                                    console.log("hier");
-                                    sent = true;
-                                    res.status(200);
-                                    res.send({
-                                        success: true,
-                                        data: data.body
+                    addJob(relImagePath, cropId, request_id, req.tokenData)
+                        .then(jobId => {
+                            let counter = config.api.reload_counter;
+                            let sent = false;
+                            let interval = setInterval(() => {
+                                getResults(request_id)
+                                    .then(data => {
+                                        if (counter < 0) {
+                                            winston.error(`Could not get result ${request_id} in time.`);
+                                            clearInterval(interval);
+                                            throw new errors.ResultTimeOutError('Result could not be fetched in time!');
+                                        } else if (data.statusCode === 204) {
+                                            winston.info(`Wait for result ${request_id}`);
+                                            counter--;
+                                        } else {
+                                            sent = true;
+                                            res.status(200);
+                                            res.send({
+                                                success: true,
+                                                data: jobId
+                                            });
+                                            clearInterval(interval);
+                                            completeJob(jobId, data.body);
+                                        }
+                                    }).catch(err => {
+                                        winston.error(err);
+                                        errors.sendError(res, err, 500);
                                     });
-                                    clearInterval(interval);
-                                    addJob(relImagePath, cropId, request_id, req.tokenData);
-                                }
-                            });
-                    }, config.api.reload_timer);
+                            }, config.api.reload_timer);
+                        });
+
                 });
         }).catch(err => {
             winston.error(err);
-            //errors.sendError(res, err, 500);
+            errors.sendError(res, err, 500);
         });
 }
 
@@ -115,7 +120,7 @@ function getResults(request_id) {
     return rp(options).then(res => res);
 }
 
-function addJob(imageUrlJob, plantJob, resultIdJob, user=null) {
+function addJob(imageUrlJob, plantJob, resultIdJob, user = null) {
     // new Job
     let job = new Job({
         image_url: imageUrlJob,
@@ -124,28 +129,64 @@ function addJob(imageUrlJob, plantJob, resultIdJob, user=null) {
     });
 
     // new job in the DB
-    job.save()
+    return job.save()
         .then(job => {
             winston.info(`Saved new job ${job._id}`);
-            console.log(user);
-            if(user) addToUser(user._id, job._id);
+            if (user) addToUser(user._id, job._id);
+            return job._id;
         }).catch(err => {
             winston.error('Could not save Job', err);
         });
 }
 
-function addToUser(userId, jobId){
-    User.findByIdAndUpdate(userId, 
-        {$push: {jobs: jobId}}, 
-        {safe: true, upsert: true})
+function completeJob(id, result) {
+    Job.findByIdAndUpdate(id, {
+            $set: {
+                result: result,
+                finish: true
+            }
+        }, {
+            safe: true,
+            upsert: true
+        }).catch(err => {
+            winston.error('Could not complete Job', err);
+        });
+}
+
+function addToUser(userId, jobId) {
+    User.findByIdAndUpdate(userId, {
+            $push: {
+                jobs: jobId
+            }
+        }, {
+            safe: true,
+            upsert: true
+        })
         .then(user => {
-            if(!user) throw new errors.DBError(`No user with id ${userId} found`);
+            if (!user) throw new errors.DBError(`No user with id ${userId} found`);
             else winston.info(`Added job to user ${userId}.`);
         }).catch(err => {
             winston.warn("addToUser: " + err);
         });
 }
 
+function getJob(req, res) {
+    let id = req.params.id;
+
+    Job.findById(id).populate('result.disease_id', ['name', 'symptoms']).populate('plant',['name', 'image_url'])
+        .then(job => {
+            res.status(200);
+            res.send({
+                success: true,
+                data: job
+            });
+        }).catch(err => {
+            errors.sendError(res, err);
+        });
+
+}
+
 module.exports = {
-    analysis
+    analysis,
+    getJob
 };

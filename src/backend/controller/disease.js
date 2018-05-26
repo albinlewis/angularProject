@@ -17,7 +17,7 @@ function getDiseases(req, res){
 
 /** Get single disease by id */
 function getDisease(req, res){
-    Disease.findById(req.params.id).select("-__v")
+    Disease.findById(req.params.id).select("-__v").populate('crop_id', ['name'])
         .then(disease => {
             res.status(200);
             res.send({
