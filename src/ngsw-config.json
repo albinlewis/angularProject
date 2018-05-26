@@ -8,12 +8,13 @@
 
                     "/favicon.ico",
                     "/manifest_app.json",
-                    "/index.html"
-                ],
-                "versionedFiles": [
+                    "/index.html",
                     "/*.bundle.css",
                     "/*.bundle.js",
                     "/*.chunk.js"
+                ],
+                "urls":[
+                    "https://use.fontawesome.com/releases/v5.0.13/css/*"
                 ]
             }
         },
@@ -23,7 +24,7 @@
             "updateMode": "prefetch",
             "resources": {
                 "files": [
-                    "/assets/**"
+                    "assets/**"
                 ]
             }
         }
@@ -35,6 +36,14 @@
             "strategy": "freshness",
             "maxAge": "3d",
             "timeout": "3s"
+        }
+    },{
+        "name": "history-api",
+        "urls": ["/history"],
+        "cacheConfig": {
+            "strategy": "freshness",
+            "maxAge": "3d",
+            "timeout": "2s"
         }
     }]
 }
