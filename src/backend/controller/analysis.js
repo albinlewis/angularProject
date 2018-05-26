@@ -25,7 +25,7 @@ function analysis(req, res) {
             getRequestId(options)
                 .then(request_id => {
                     winston.info(`result request_id ${request_id}`);
-                    addJob(relImagePath, cropId, request_id, req.tokenData)
+                    addJob(filename, cropId, request_id, req.tokenData)
                         .then(jobId => {
                             let counter = config.api.reload_counter;
                             let sent = false;
@@ -120,10 +120,10 @@ function getResults(request_id) {
     return rp(options).then(res => res);
 }
 
-function addJob(imageUrlJob, plantJob, resultIdJob, user = null) {
+function addJob(imageName, plantJob, resultIdJob, user = null) {
     // new Job
     let job = new Job({
-        image_url: imageUrlJob,
+        image_url: '/uploads/analysis/' + imageName,
         plant: plantJob,
         resultId: resultIdJob
     });
