@@ -1,29 +1,36 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import {BrowseService} from "../services/browse.service";
+import { AnalysisService } from '../services/analysis.service';
+import { IJob } from '../model/IJob';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-result',
     templateUrl: './result.component.html',
-    styleUrls: ['./result.component.css']
+    styleUrls: ['./result.component.css'],
+    providers: [AnalysisService]
 })
 export class ResultComponent implements OnInit {
-    currentplant: any;
-    diseases = [{name: 'asuaidf', percentage: 15}
-        , {name: 'msamsam', percentage: 56}
-        , {name: 'qpqpq', percentage: 70}
-        , {name: 'laksal', percentage: 60}
-    ];
+    job: IJob;
+    sub: Subscription;
 
-    constructor(private route: Router, private browservice: BrowseService) {
+    constructor(private router: Router, private route: ActivatedRoute, private aService: AnalysisService) {
     }
 
     ngOnInit() {
-        this.currentplant = this.browservice.plantselect;
+        this.sub = this.route.params.subscribe((params: Params) => {
+            let id = params['id'];
+            this.getResult(id);
+        });
     }
 
-    Onshowdisease() {
-           this.route.navigate(['/disease']);
+    getResult(id:string){
+        this.aService.getResult(id)
+            .then(job => {
+                this.job = job;
+                console.log(this.job);
+            })
+            .catch(err => console.error(err));
     }
-
 }

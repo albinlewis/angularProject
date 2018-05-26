@@ -1,18 +1,15 @@
 <div class="container">
-    <div class="row">
-        <h1>Ergebnis <small>{{currentplant.name}}</small></h1>
-
-    </div>
-    <div class="row two">
-        <img
-            src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            class="img-responsive col-md-6"
-            alt="Responsive image">
+    <h2>Result for {{job?.plant.name}}</h2>
+    <div class="row align-items-start mt-4">
+        <img [src]="job?.image_url || './assets/img/' + job?.plant.name +'.jpg'"
+            class="img-fluid col-md-6" [alt]="'Job-' + job?._id">
         <div class="col-md-6">
-
+            <small>Job Id: {{job?._id}}</small>
             <h3>Krankheiten</h3>
             <div class="list-group">
-                <button *ngFor="let disease of diseases" type="button" class="list-group-item" (click)="Onshowdisease()">{{disease.name}} <span class="badge">{{disease.percentage}}%</span> </button>
+                <li *ngFor="let result of job?.result" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" [routerLink]="['/disease', result?.disease_id?._id]">{{result?.disease_id?.name || 'Unknown'}}
+                    <span class="badge badge-primary badge-pill">{{result?.confidence * 100 | number: '1.2'}}%</span>
+                </li>
 
             </div>
 
@@ -21,4 +18,3 @@
     </div>
 
 </div>
-
