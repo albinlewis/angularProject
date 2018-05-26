@@ -53,6 +53,9 @@ import { SortPipe } from './Pipes/sort.pipe';
 import {AuthService} from "./services/auth.service";
 import {AuthguardService} from "./services/authguard.service";
 import { UserService } from './services/user.service';
+import { FooterComponent } from './footer/footer.component';
+import { DiseaseListComponent } from './disease-list/disease-list.component';
+import { AnalysisService } from './services/analysis.service';
 
 
 
@@ -72,6 +75,8 @@ import { UserService } from './services/user.service';
         LoginComponent,
         NotFoundComponent,
         SortPipe,
+        FooterComponent,
+        DiseaseListComponent,
 
     ],
     imports: [
@@ -129,7 +134,7 @@ import { UserService } from './services/user.service';
         ReactiveFormsModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
-    providers: [BrowseService, ApiService, AuthService, AuthguardService, UserService],
+    providers: [AnalysisService, ApiService, AuthService, AuthguardService, UserService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
