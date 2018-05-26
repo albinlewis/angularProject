@@ -1,6 +1,6 @@
 export interface IDisease {
     _id: number,
-    crop_id: number,
+    crop_id: number|any,
     name: string,
     eppo_code: string,
     symptoms: string,
