@@ -1,4 +1,7 @@
-.navbar-right{
-    margin-right: 0;
-    margin-left: 0;
+.profile-img{
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 5rem;
+    height: 5rem;
 }

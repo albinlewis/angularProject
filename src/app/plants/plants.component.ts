@@ -27,9 +27,4 @@ export class PlantsComponent implements OnInit {
         this.plantService.getAllPlants()
             .then(plants => this.plants = plants);
     }
-
-    onShowDetails(plant: IPlant) {
-        this.route.navigate(['/details', plant._id]);
-    }
-
 }

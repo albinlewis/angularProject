@@ -1,26 +1,30 @@
-<div class="row">
-    <div class="navbar-form navbar-right col-md-12">
+<div class="col-md-12 d-flex mb-4 mt-4">
+    <div class="ml-auto col-sm-3 p-0">
         <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
             <input type="text" class="form-control" placeholder="Search for a plant" [(ngModel)]="filterValue" [ngModelOptions]="{standalone: true}">
-            <span class="input-group-addon" id="basic-addon2">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            </span>
         </div>
     </div>
 </div>
 
-<div class="row">
+<div>
     <h3 class="col-md-12" *ngIf="filterValue === ''">All Plants:</h3>
     <h3 class="col-md-12" *ngIf="filterValue !== ''">Your search: {{filterValue}}</h3>
-
 </div>
 
-<div class="row">
+<div>
     <div class="col-md-12">
         <div class="list-group">
-            <a style="cursor:pointer;" class="list-group-item" *ngFor="let plant of plants | filter: filterValue" [routerLink]="['/details', plant._id]">
-                <h4 class="list-group-item-heading">{{plant.name}}</h4>
-            </a>
+            <li style="cursor:pointer;" class="list-group-item list-group-item-action d-flex flex-row align-items-center" *ngFor="let plant of plants | sort | filter: filterValue"
+                [routerLink]="['/details', plant?._id]">
+                <img [src]="plant.image_url || './assets/img/' + plant.name +'-icon.jpg'"
+            class="img-fluid mr-5 profile-img" [alt]="plant.name">
+                <h4>{{plant.name}}</h4>
+            </li>
         </div>
     </div>
 </div>
