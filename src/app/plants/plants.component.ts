@@ -15,7 +15,7 @@ export class PlantsComponent implements OnInit {
     filterValue = '';
     plants: IPlant[] = [];
 
-    constructor(private route: Router, private plantService: PlantService) {
+    constructor(private plantService: PlantService) {
         console.log('plants component created');
     }
 
