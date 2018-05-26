@@ -46,8 +46,9 @@ function analysis(req, res) {
                                                 success: true,
                                                 data: jobId
                                             });
-                                            clearInterval(interval);
+                                            
                                             completeJob(jobId, data.body);
+                                            clearInterval(interval);
                                         }
                                     }).catch(err => {
                                         winston.error(err);
