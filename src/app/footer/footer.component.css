@@ -1,0 +1,9 @@
+footer{
+    color: rgb(204, 204, 204);
+    background-color: rgb(66, 180, 38);
+}
+
+a, a:link, a:visited, a:active{
+    color: #fff;
+    text-decoration: none;
+}
