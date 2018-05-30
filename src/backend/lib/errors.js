@@ -1,3 +1,5 @@
+const winston = require('winston');
+
 /** Base Error Class */
 class PseError {
     constructor(message, name="PseError", status=400, options={}){
@@ -63,8 +65,13 @@ function sendError(res, err, status=400){
     }else{
         body.error = err;
     }
-    res.status(status);
-    res.send(body);
+
+    try{
+        res.status(status);
+        res.send(body);
+    }catch(e){
+        winston.error(e);
+    }
 }
 
 module.exports = {

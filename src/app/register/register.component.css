@@ -1,6 +1,5 @@
 form{
-    margin-top: 70px;
-
+    margin-top: 4rem;
 }
 input.ng-invalid.ng-touched{
     border: 1px solid red;

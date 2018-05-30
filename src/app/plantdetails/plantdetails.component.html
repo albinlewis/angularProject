@@ -1,14 +1,14 @@
 <div class="container">
-    <div class="row well well-lg">
-        <h1 class="col-md-3 col-xs-6">{{plant?.name}}</h1>
-        <button type="button" class="btn btn-primary btn-lg col-md-offset-7 col-md-2 col-xs-6 btn-success" (click)="onShowAnalyse()">Analyse</button>
-
-    </div>
-    <div class="row two">
-        <img src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            class="img-responsive col-md-6" alt="Responsive image">
+    <!-- As a heading -->
+    <nav class="navbar navbar-light bg-light mt-2">
+        <h2 class="mb-0 h1">{{plant?.name}}</h2>
+        <button type="button" class="btn btn-success ml-auto" (click)="onShowAnalyse()">Analyse</button>
+    </nav>
+    <div class="row two mt-md-2">
+        <img [src]="plant?.image_url || './assets/img/' + plant?.name +'.jpg'"
+            class="img-fluid col-md-6" alt="Responsive image">
         <div class="col-md-6">
-            <h3>Information</h3>
+            <h3 class="mt-5 mt-md-0">Information</h3>
             <table class="table">
                 <tbody>
                     <tr>
@@ -29,12 +29,14 @@
                     </tr>
                 </tbody>
             </table>
-            <h3>Krankheiten</h3>
-            <div class="list-group">
-                <a style="cursor:pointer;" class="list-group-item" *ngFor="let d of plant?.diseases | sort" [routerLink]="['/disease', d._id]">
-                    {{d.name}}
-                </a>
-            </div>
+            <section class="my-5 mt-my-0">
+                <h3>Krankheiten</h3>
+                <div class="list-group">
+                    <li style="cursor:pointer;" class="list-group-item list-group-item-action" *ngFor="let d of plant?.diseases | sort" [routerLink]="['/disease', d._id]">
+                        {{d.name}}
+                    </li>
+                </div>
+            </section>
         </div>
 
     </div>

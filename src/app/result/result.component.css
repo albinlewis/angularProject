@@ -1,15 +1,3 @@
-.row h1{
-    padding-left: 15px;
-}
-img{
-    margin-top: 24px;
-}
-button{
-    margin-top: 10px;
-}
-.two{
-    margin-top: 20px;
-}
-.well{
-    border: none;
+.list-group-item-action{
+    cursor: pointer;
 }

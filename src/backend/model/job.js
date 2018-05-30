@@ -18,6 +18,14 @@ const jobSchema = new mongoose.Schema({
         type: String,
         default: null
     },
+    result: {
+        type: [
+            {
+                confidence: Number,
+                disease_id: {type: Number, ref: 'Disease'}
+            }
+        ]
+    },
     finish: {
         type: Boolean,
         default: false

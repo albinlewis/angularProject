@@ -1,10 +1,3 @@
-.row{
-
-}
-img{
-margin-top: 12px;
-}
-
 .inputfile {
     width: 0.1px;
     height: 0.1px;
@@ -13,11 +6,28 @@ margin-top: 12px;
     position: absolute;
     z-index: -1;
 }
-label {
 
+img {
+    max-width: 100%;
+    margin: 0 1rem;
+}
+
+label {
     display: inline-block;
     cursor: pointer;
 }
 
-
-
+.cover {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}

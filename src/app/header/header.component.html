@@ -1,35 +1,29 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Plant Analyser</a>
-        </div>
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
+    <a class="navbar-brand" routerLink="/">Plant Analyser</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a routerLink="/">Plants<span class="sr-only">(current)</span></a></li>
-                <li routerLinkActive="active"><a routerLink = "/analyse">Analysis</a></li>
-                <li routerLinkActive="active" *ngIf="authservice.isAuthentificated()"><a routerLink = "/profile">Profile</a></li>
-
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}"><a class="nav-link" routerLink="/">Plants<span class="sr-only">(current)</span></a></li>
+                <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/diseases">Diseases</a></li>
+                <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/analyse">Analysis</a></li>
+                <li routerLinkActive="active" *ngIf="authservice.isAuthentificated()" class="nav-item"><a class="nav-link" routerLink="/profile">Profile</a></li>
+                
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="navbar-nav ml-auto">
                 <ng-template [ngIf]="!authservice.isAuthentificated()">
-                <li routerLinkActive="active" ><a routerLink="/register">Register</a></li>
-                <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/register">Register</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/login">Login</a></li>
                 </ng-template>
-                <li *ngIf="authservice.isAuthentificated()" (click)="logout()"><a style="cursor: pointer">Logout</a></li>
+                <li *ngIf="authservice.isAuthentificated()" style="cursor: pointer;" class="nav-item" (click)="logout()"><a class="nav-link">Logout</a></li>
 
             </ul>
         </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
 </nav>
 
 <script>

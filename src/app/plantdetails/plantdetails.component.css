@@ -1,19 +1,10 @@
-.row h1{
-    padding-left: 1rem;
-    margin-top: 1rem;
-}
 img{
     margin-top: 2rem;
 }
 .two{
-    margin-top: 1.8rem;
     align-items: flex-start;
-}
-.well{
-    border: none;
 }
 
 .table tbody th{
-    white-space: nowrap;
     width: 1%;
 }

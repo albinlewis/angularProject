@@ -20,6 +20,8 @@ router.post('/analysis',
       middleware.checkFiles(["image_file"]),
       middleware.verifyJWT_MW(false),
       analysisController.analysis);
+router.get('/result/:id', 
+      analysisController.getJob);
 router.get('/history', middleware.verifyJWT_MW(), historyController.history);
 
 // User function: registration, login, deleting and updating

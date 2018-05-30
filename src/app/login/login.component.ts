@@ -27,25 +27,18 @@ export class LoginComponent implements OnInit {
 
     onSubmit() {
         this.authservice.login(this.loginForm.value)
-            .subscribe((response) => {
-                    console.log(response);
-                    this.authservice.token = response.token;
-                    this.snackBar.open('Login', 'succeed', {
-                        duration: 2000,
-                    });
-                    this.route.navigate(['/']);
+            .then(r => {
+                this.snackBar.open('Login', 'succeed', {
+                    duration: 2000,
+                });
+                this.route.navigate(['/profile']);
+            }).catch(err => {
+                this.snackBar.open('Login', 'failed', {
+                    duration: 2000,
+                });
 
-                },
-                (err) => {
-                    this.snackBar.open('Login', 'failed', {
-                        duration: 2000,
-                    });
-
-                    console.log(err);
-                }
-            );
-
-        console.log(this.loginForm.value);
+                console.log(err);
+            });
     }
 
 }
