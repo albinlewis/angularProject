@@ -1,5 +1,5 @@
 const Plant = require('../model/plant');
-const logger = require('winston');
+
 const errors = require('../lib/errors');
 const Disease = require('../model/disease');
 
@@ -25,7 +25,7 @@ function getPlant(req, res){
             if(!plant) throw new errors.DBError(`Plant with id ${req.params.id} does not exist.`, 'Not Found', 404);
             else{
                 Disease.find({crop_id: plant._id}, ["name", "eppo_code"]).then(diseases => {
-                    
+
                     plant = plant.toObject();
                     plant.diseases = diseases;
                     res.status(200);
