@@ -12,6 +12,7 @@ import { DiseaseComponent } from './disease/disease.component';
 import { AnalyseComponent } from './analyse/analyse.component';
 import {AuthguardService} from "./services/authguard.service";
 import { DiseaseListComponent } from './disease-list/disease-list.component';
+import {GardernerComponent} from "./garderner/garderner.component";
 
 const appRoutes: Routes = [
   {path: '', component: PlantsComponent},
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
   {path: 'disease/:id', component: DiseaseComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: '**', component: NotFoundComponent}
+    {path: 'gardener', component: GardernerComponent},
+    {path: '**', component: NotFoundComponent}
 
 ];
 

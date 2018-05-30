@@ -4,6 +4,8 @@ import { IPlant } from '../model/IPlant';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { AnalysisService } from '../services/analysis.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
     selector: 'app-analyse',
@@ -12,10 +14,9 @@ import { Router } from '@angular/router';
     providers: [PlantService]
 })
 export class AnalyseComponent implements OnInit {
-
-    name = 'Angular 4';
     url = '';
     showImage = false;
+    notification_email: string = "";
     plants: IPlant[] = [];
 
     @ViewChild(NgForm) analysisForm:NgForm;
@@ -24,11 +25,13 @@ export class AnalyseComponent implements OnInit {
 
     constructor(private pService: PlantService, 
         private aService: AnalysisService,
+        public userService: UserService,
         private router: Router) {
 
     }
 
     ngOnInit() {
+        if(this.userService.getUser()) this.notification_email = this.userService.getUser().email;
         this.stopAnalysis();
         this.getPlants();
     }
@@ -48,7 +51,7 @@ export class AnalyseComponent implements OnInit {
             const formData = new FormData();
             formData.append('image_file', element.files[0]);
             formData.append('crop_id', this.analysisForm.value.crop_id);
-            formData.append('notification_email', 'janik.muenzenberger@web.de');
+            formData.append('notification_email', this.notification_email);
             this.aService.startAnalysis(formData)
                 .then(res => {
                     this.stopAnalysis();
@@ -56,7 +59,7 @@ export class AnalyseComponent implements OnInit {
                 })
                 .catch(err => {
                     this.stopAnalysis();
-                    console.log(err);
+                    console.error(err);
                 });
         }
     }

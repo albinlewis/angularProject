@@ -56,6 +56,7 @@ import { UserService } from './services/user.service';
 import { FooterComponent } from './footer/footer.component';
 import { DiseaseListComponent } from './disease-list/disease-list.component';
 import { AnalysisService } from './services/analysis.service';
+import { GardernerComponent } from './garderner/garderner.component';
 
 
 
@@ -77,6 +78,7 @@ import { AnalysisService } from './services/analysis.service';
         SortPipe,
         FooterComponent,
         DiseaseListComponent,
+        GardernerComponent,
 
     ],
     imports: [
