@@ -10,11 +10,19 @@ const gardenerSchema = new Schema({
   },
   adress : {
     type: String,
-    unique: true
   },
   email: {
     type: String,
     unique: true
+  },
+  phone : String,
+  latitude: {
+      type : Number,
+      require: true
+  } ,
+  longitude: {
+      type: Number,
+      require: true
   }
 });
 
