@@ -57,6 +57,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DiseaseListComponent } from './disease-list/disease-list.component';
 import { AnalysisService } from './services/analysis.service';
 import { GardernerComponent } from './garderner/garderner.component';
+import {AgmCoreModule} from "@agm/core";
 
 
 
@@ -87,6 +88,9 @@ import { GardernerComponent } from './garderner/garderner.component';
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
+        AgmCoreModule.forRoot({
+         apiKey: 'AIzaSyDz276iYbdh-7iQuF7PFUadZa56J0--IYg'
+        }),
 
         FormsModule,
         MatTabsModule,

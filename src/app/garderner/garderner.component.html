@@ -1,1 +1,16 @@
 <h2 class="col-md-12"> Gardener nearby : </h2>
+<hr>
+    <agm-map [latitude]="lat"
+             [longitude]="lng"
+             [zoom]="zoom"
+    >
+        <agm-marker [latitude]="lat" [longitude]="lng">
+
+            <agm-info-window>
+                <h3><strong> Howdy!</strong></h3>
+
+                <p>You are here!</p>
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+

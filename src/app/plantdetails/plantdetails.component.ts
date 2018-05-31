@@ -15,8 +15,8 @@ export class PlantdetailsComponent implements OnInit, OnDestroy {
     plant: IPlant;
     sub: Subscription;
 
-    constructor(private router: Router, 
-        private route: ActivatedRoute, 
+    constructor(private router: Router,
+        private route: ActivatedRoute,
         private plantService: PlantService) {
         console.log('plantdetails created');
     }
@@ -39,6 +39,6 @@ export class PlantdetailsComponent implements OnInit, OnDestroy {
     }
 
     onShowAnalyse() {
-        this.router.navigate(['/results']);
+        this.router.navigate(['/result']);
     }
 }
