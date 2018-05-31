@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {BrowseService} from "../services/browse.service";
 import { AnalysisService } from '../services/analysis.service';
 import { IJob } from '../model/IJob';
 import { Subscription } from 'rxjs';
@@ -15,8 +14,9 @@ export class ResultComponent implements OnInit {
     job: IJob;
     sub: Subscription;
 
-    constructor(private router: Router, private route: ActivatedRoute, private aService: AnalysisService) {
-    }
+    constructor(private router: Router, 
+        private route: ActivatedRoute, 
+        private aService: AnalysisService) { }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe((params: Params) => {
