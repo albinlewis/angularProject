@@ -5,6 +5,7 @@ const router = require('express').Router({mergeParams: true}),
       historyController = require('./history'),
 	userController = require('./user'),
 	authController = require('./auth'),
+    gardenerController = require('./gardener'),
 	middleware = require('../lib/middleware');
 
 module.exports = router;
@@ -15,12 +16,16 @@ router.get('/plants', plantController.getPlants);
 router.get('/diseases/:id', diseaseController.getDisease);
 router.get('/diseases', diseaseController.getDiseases);
 
-router.post('/analysis', 
+router.get('/gardener', gardenerController.getGardeners);
+router.get('/gardener/:id', gardenerController.getGardener);
+router.post('/gardener', gardenerController.postGardener);
+
+router.post('/analysis',
       middleware.checkBody(["crop_id"]),
       middleware.checkFiles(["image_file"]),
       middleware.verifyJWT_MW(false),
       analysisController.analysis);
-router.get('/result/:id', 
+router.get('/result/:id',
       analysisController.getJob);
 router.get('/history', middleware.verifyJWT_MW(), historyController.history);
 
