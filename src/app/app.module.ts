@@ -58,6 +58,7 @@ import { DiseaseListComponent } from './disease-list/disease-list.component';
 import { AnalysisService } from './services/analysis.service';
 import { GardernerComponent } from './garderner/garderner.component';
 import {AgmCoreModule} from "@agm/core";
+import {LocationService} from "./services/location.service";
 
 
 
@@ -140,7 +141,7 @@ import {AgmCoreModule} from "@agm/core";
         ReactiveFormsModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
-    providers: [AnalysisService, ApiService, AuthService, AuthguardService, UserService],
+    providers: [AnalysisService, ApiService, AuthService, AuthguardService, UserService, LocationService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
