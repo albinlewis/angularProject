@@ -1,16 +1,30 @@
-<h2 class="col-md-12"> Gardener nearby : </h2>
+<h3 class="col-md-12">Nearby Gardener</h3>
 <hr>
-    <agm-map [latitude]="lat"
-             [longitude]="lng"
-             [zoom]="zoom"
-    >
-        <agm-marker [latitude]="lat" [longitude]="lng">
+<nav class="col-md-12">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Map</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">List</a>
+    </div>
+</nav>
+<div class="tab-content col-md-12" id="nav-tabContent" >
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+     <app-map></app-map>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <app-listmap></app-listmap>
+    </div>
 
-            <agm-info-window>
-                <h3><strong> Howdy!</strong></h3>
+</div>
 
-                <p>You are here!</p>
-            </agm-info-window>
-        </agm-marker>
-    </agm-map>
+
+
+
+
+
+
+
+
+
+
+
 

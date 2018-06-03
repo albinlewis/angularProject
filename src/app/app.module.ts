@@ -8,7 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AgmCoreModule } from "@agm/core";
+import { AgmCoreModule } from '@agm/core';
 
 import { environment } from '../environments/environment';
 
@@ -30,19 +30,19 @@ import { DataService } from './services/data.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SortPipe } from './Pipes/sort.pipe';
-import { AuthService } from "./services/auth.service";
-import { AuthguardService} from "./services/authguard.service";
+import { AuthService } from './services/auth.service';
+import { AuthguardService} from './services/authguard.service';
 import { UserService } from './services/user.service';
 import { FooterComponent } from './footer/footer.component';
 import { DiseaseListComponent } from './disease-list/disease-list.component';
 import { AnalysisService } from './services/analysis.service';
 import { GardernerComponent } from './garderner/garderner.component';
-<<<<<<< HEAD
-import {AgmCoreModule} from "@agm/core";
-import {LocationService} from "./services/location.service";
-=======
+import {LocationService} from './services/location.service';
+import { MapComponent } from './garderner/map/map.component';
+import { ListmapComponent } from './garderner/listmap/listmap.component';
 
->>>>>>> 2c68b9eef7bf3ee843e311da4fe5cc63e181fda1
+
+
 
 
 
@@ -64,6 +64,8 @@ import {LocationService} from "./services/location.service";
         FooterComponent,
         DiseaseListComponent,
         GardernerComponent,
+        MapComponent,
+        ListmapComponent,
 
     ],
     imports: [

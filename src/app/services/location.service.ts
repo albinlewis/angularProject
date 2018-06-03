@@ -25,7 +25,7 @@ export class LocationService {
             km: 6371
         };
 
-        const R = earthRadius['kilometer'];
+        const R = earthRadius['miles'];
         const lat1 = currentlocation.lat;
         const lon1 = currentlocation.lng;
         const lat2 = end.lat;
@@ -38,7 +38,10 @@ export class LocationService {
             Math.sin(dLon / 2) *
             Math.sin(dLon / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        const d = R * c;
+        let d = R * c;
+        d = d * (1.60934);
+        d = Math.round(d * 10) / 10;
+
 
         return d;
 

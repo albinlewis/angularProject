@@ -1,0 +1,31 @@
+<agm-map [latitude]="lat"
+         [longitude]="lng"
+         [zoom]="zoom"
+>
+
+    <agm-marker
+                [latitude]="lat"
+                [longitude]="lng"
+                [iconUrl]= "'../../assets/icons/icons8-map-pin-50.png'"
+                (markerClick)="test()" >
+
+        <agm-info-window>
+            <h3><strong> Howdy!</strong></h3>
+
+            <p>You are here!</p>
+        </agm-info-window>
+    </agm-marker>
+
+
+    <agm-marker *ngFor="let m of data"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                (markerClick)="test()" >
+
+        <agm-info-window>
+            <h3><strong> Howdy!</strong></h3>
+
+            <p>You are here!</p>
+        </agm-info-window>
+    </agm-marker>
+</agm-map>
