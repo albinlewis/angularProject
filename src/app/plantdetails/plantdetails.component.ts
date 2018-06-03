@@ -1,6 +1,5 @@
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {BrowseService} from '../services/browse.service';
 import { IPlant } from '../model/IPlant';
 import { PlantService } from '../services/plant.service';
 import { Subscription } from 'rxjs/Subscription';

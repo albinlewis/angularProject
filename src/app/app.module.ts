@@ -1,64 +1,48 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MatSnackBarModule } from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AgmCoreModule } from "@agm/core";
+
 import { environment } from '../environments/environment';
 
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
 
-import {AppComponent} from './app.component';
-import {HeaderComponent} from './header/header.component';
-
-import {
-    MatAutocompleteModule, MatButtonModule, MatButtonToggleModule,
-    MatCardModule, MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule,
-    MatExpansionModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule, MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule, MatStepperModule,
-    MatTableModule,
-    MatTabsModule, MatToolbarModule, MatTooltipModule
-} from '@angular/material';
-
-import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-browser/animations';
-
-import {CdkTableModule} from '@angular/cdk/table';
-
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AnalyseComponent } from './analyse/analyse.component';
-import {RouterModule, Routes} from '@angular/router';
-import {PlantsComponent} from './plants/plants.component';
+import { PlantsComponent } from './plants/plants.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
 import { ResultComponent } from './result/result.component';
 import { DiseaseComponent } from './disease/disease.component';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { ShortenPipe } from './Pipes/shorten.pipe';
-import {BrowseService} from './services/browse.service';
-import {LoginComponent} from './login/login.component';
+import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ApiService } from './services/api.service';
 import { DataService } from './services/data.service';
-import { HttpClientModule } from '@angular/common/http';
-import { NotFoundComponent } from './not-found/not-found.component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { SortPipe } from './Pipes/sort.pipe';
-import {AuthService} from "./services/auth.service";
-import {AuthguardService} from "./services/authguard.service";
+import { AuthService } from "./services/auth.service";
+import { AuthguardService} from "./services/authguard.service";
 import { UserService } from './services/user.service';
 import { FooterComponent } from './footer/footer.component';
 import { DiseaseListComponent } from './disease-list/disease-list.component';
 import { AnalysisService } from './services/analysis.service';
 import { GardernerComponent } from './garderner/garderner.component';
+<<<<<<< HEAD
 import {AgmCoreModule} from "@agm/core";
 import {LocationService} from "./services/location.service";
+=======
+
+>>>>>>> 2c68b9eef7bf3ee843e311da4fe5cc63e181fda1
 
 
 
@@ -76,7 +60,6 @@ import {LocationService} from "./services/location.service";
         ShortenPipe,
         RegisterComponent,
         LoginComponent,
-        NotFoundComponent,
         SortPipe,
         FooterComponent,
         DiseaseListComponent,
@@ -94,50 +77,10 @@ import {LocationService} from "./services/location.service";
         }),
 
         FormsModule,
-        MatTabsModule,
         BrowserAnimationsModule,
         NoopAnimationsModule,
-        MatExpansionModule,
-        MatCardModule,
-        MatAutocompleteModule,
-        MatFormFieldModule,
         CdkTableModule,
-        MatAutocompleteModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatCardModule,
-        MatCheckboxModule,
-        MatChipsModule,
-        MatStepperModule,
-        MatDatepickerModule,
-        MatDialogModule,
-        MatDividerModule,
-        MatExpansionModule,
-        MatIconModule,
-        MatInputModule,
-        MatListModule,
-        MatMenuModule,
-        MatNativeDateModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatProgressSpinnerModule,
-        MatRadioModule,
-        MatRippleModule,
-        MatSelectModule,
-        MatSidenavModule,
-        MatSliderModule,
-        MatSlideToggleModule,
         MatSnackBarModule,
-        MatSortModule,
-        MatTableModule,
-        MatTabsModule,
-        MatToolbarModule,
-        MatTooltipModule,
-
-        MatIconModule,
-        MatGridListModule,
-
-        MatNativeDateModule,
         ReactiveFormsModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],

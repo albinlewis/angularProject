@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Route, Router} from '@angular/router';
-import {BrowseService} from '../services/browse.service';
 import { IPlant } from '../model/IPlant';
 import { PlantService } from '../services/plant.service';
 
@@ -15,9 +14,7 @@ export class PlantsComponent implements OnInit {
     filterValue = '';
     plants: IPlant[] = [];
 
-    constructor(private plantService: PlantService) {
-        console.log('plants component created');
-    }
+    constructor(private plantService: PlantService) {}
 
     ngOnInit() {
         this.getPlants();
