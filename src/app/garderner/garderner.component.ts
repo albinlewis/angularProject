@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LocationService} from '../services/location.service';
+import {MapService} from '../services/map.service';
 
 @Component({
     selector: 'app-garderner',
@@ -9,10 +10,10 @@ import {LocationService} from '../services/location.service';
 export class GardernerComponent implements OnInit {
 
 
-    constructor(private locationservice: LocationService) {
+    constructor(private locationservice: LocationService, private mapservice: MapService) {
     }
 
     ngOnInit() {
-
+        this.mapservice.getUserLocation();
     }
 }

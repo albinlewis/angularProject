@@ -1,11 +1,11 @@
-<agm-map [latitude]="lat"
-         [longitude]="lng"
+<agm-map [latitude]="mapservice.lat"
+         [longitude]="mapservice.lng"
          [zoom]="zoom"
 >
 
     <agm-marker
-                [latitude]="lat"
-                [longitude]="lng"
+                [latitude]="mapservice.lat"
+                [longitude]="mapservice.lng"
                 [iconUrl]= "'../../assets/icons/icons8-map-pin-50.png'"
                 (markerClick)="test()" >
 
@@ -17,15 +17,15 @@
     </agm-marker>
 
 
-    <agm-marker *ngFor="let m of data"
+    <agm-marker *ngFor="let m of mapservice.data"
                 [latitude]="m.lat"
                 [longitude]="m.lng"
                 (markerClick)="test()" >
 
         <agm-info-window>
-            <h3><strong> Howdy!</strong></h3>
+            <h3><strong> {{m.name}}!</strong></h3>
 
-            <p>You are here!</p>
+            <p>{{m.mapsdata.distance.text}} far!</p>
         </agm-info-window>
     </agm-marker>
 </agm-map>

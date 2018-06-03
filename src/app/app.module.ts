@@ -40,6 +40,7 @@ import { GardernerComponent } from './garderner/garderner.component';
 import {LocationService} from './services/location.service';
 import { MapComponent } from './garderner/map/map.component';
 import { ListmapComponent } from './garderner/listmap/listmap.component';
+import {MapService} from "./services/map.service";
 
 
 
@@ -86,7 +87,7 @@ import { ListmapComponent } from './garderner/listmap/listmap.component';
         ReactiveFormsModule,
         environment.production ? ServiceWorkerModule.register('ngsw-worker.js') : [],
     ],
-    providers: [AnalysisService, ApiService, AuthService, AuthguardService, UserService, LocationService],
+    providers: [AnalysisService, ApiService, AuthService, AuthguardService, UserService, LocationService, MapService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

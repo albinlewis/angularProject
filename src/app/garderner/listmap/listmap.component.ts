@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MapService} from '../../services/map.service';
 
 @Component({
   selector: 'app-listmap',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListmapComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mapservice: MapService) { }
 
   ngOnInit() {
+      console.log(this.mapservice.data);
   }
 
 }
