@@ -1,6 +1,5 @@
 <agm-map [latitude]="mapservice.lat"
          [longitude]="mapservice.lng"
-         [zoom]="zoom"
 >
 
     <agm-marker
@@ -18,8 +17,8 @@
 
 
     <agm-marker *ngFor="let m of mapservice.data"
-                [latitude]="m.lat"
-                [longitude]="m.lng"
+                [latitude]="m.latitude"
+                [longitude]="m.longitude"
                 (markerClick)="test()" >
 
         <agm-info-window>

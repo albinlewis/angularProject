@@ -13,7 +13,7 @@ export class MapComponent implements OnInit {
     title = 'My first AGM project';
     lat: number;
     lng: number;
-    zoom = 10;
+    zoom = 11;
 
     constructor( private mapservice: MapService) {
     }
