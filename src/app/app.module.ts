@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { MatSnackBarModule } from '@angular/material';
+import {MatSnackBarModule, MatTabsModule} from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
@@ -40,7 +40,7 @@ import { GardernerComponent } from './garderner/garderner.component';
 import {LocationService} from './services/location.service';
 import { MapComponent } from './garderner/map/map.component';
 import { ListmapComponent } from './garderner/listmap/listmap.component';
-import {MapService} from "./services/map.service";
+import {MapService} from './services/map.service';
 
 
 
@@ -75,6 +75,7 @@ import {MapService} from "./services/map.service";
         AppRoutingModule,
         HttpClientModule,
         ReactiveFormsModule,
+        MatTabsModule,
         AgmCoreModule.forRoot({
          apiKey: 'AIzaSyDz276iYbdh-7iQuF7PFUadZa56J0--IYg'
         }),

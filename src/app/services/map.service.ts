@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
 
@@ -9,22 +9,26 @@ export class MapService {
     lat: number;
     lng: number;
 
-    data: any = [{name: 'L-One', lat: 49.818612, lng: 8.623809}, {
+    data: any = [{name: 'L-One', lat: 49.818612, lng: 8.623809, mapsdata: {distance: {}, duration: {}}
+    }, {
         name: 'Incloud',
         lat: 49.877670,
-        lng: 8.639382
+        lng: 8.639382,
+        mapsdata: {distance: {}, duration: {}}
     },
         {
             name: 'Post',
             lat: 49.869175,
-            lng: 8.668810
+            lng: 8.668810,
+            mapsdata: {distance: {}, duration: {}}
+
         }
 
     ];
     destinat: any[] = [];
 
-  constructor(private locationservice: LocationService, private  mapsapi: MapsAPILoader) { }
-
+    constructor(private locationservice: LocationService, private  mapsapi: MapsAPILoader) {
+    }
 
 
     calculateDistance() {
@@ -62,6 +66,7 @@ export class MapService {
         });
         console.log(this.data);
     }
+
     getUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {

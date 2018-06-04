@@ -13,12 +13,14 @@ export class MapComponent implements OnInit {
     title = 'My first AGM project';
     lat: number;
     lng: number;
-    zoom = 12;
+    zoom = 10;
 
     constructor( private mapservice: MapService) {
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+
+    }
 
     test() {
         console.log(this.lat);

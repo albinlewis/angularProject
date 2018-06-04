@@ -11,6 +11,7 @@ export class ListmapComponent implements OnInit {
   constructor(private mapservice: MapService) { }
 
   ngOnInit() {
+
       console.log(this.mapservice.data);
   }
 
