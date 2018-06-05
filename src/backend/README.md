@@ -21,8 +21,7 @@ password | *string* | The preferred password of the user (min. 8 characters)
 ```json
 {
     "success": true,
-    "message": "User {email} successfully created",
-    "token": "generatedToken..."
+    "message": "User {email} successfully created"
 }
 ```
 
@@ -39,7 +38,10 @@ loggedIn | *boolean* | State of checkbox if user want to stay logged in for a lo
 {
     "success": true,
     "message": "You successfully logged in!",
-    "token": "generatedToken..."
+    "token": "generatedToken...",
+    "data": {
+        logged in user
+    }
 }
 ```
 
