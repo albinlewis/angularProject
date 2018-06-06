@@ -7,7 +7,7 @@ import { environment } from './environments/environment';
 if (environment.production) {
   enableProdMode();
 }
-
+// register service worker
 platformBrowserDynamic().bootstrapModule(AppModule)
     .then (() => {
         if ('serviceWorker' in navigator) {

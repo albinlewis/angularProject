@@ -17,5 +17,7 @@
         "maxAge": 360000,
         "stayLoggedIn": 3600000,
         "secret": "4f9fd85e-489d-11e8-842f-0ed5f89f718b"
-    }
-} 
+    },
+    "publicVapidKey": "BNaGf2POUom9qpnI45OSE8gmzjeqdvk-4HoV7Is-3RjPeCWMtgcukwEVPp0K2xMdfmSrGCS2be5rFIYX2qRwoEc",
+    "privateVapidKey": "X_n9QwtF8HHcoFpeL8ZYw3WD0FOErvowKUFKb8q1dGw"
+}

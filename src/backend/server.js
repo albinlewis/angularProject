@@ -5,6 +5,7 @@ const mongoose = require('mongoose'),
   fileUpload = require('express-fileupload'),
   os = require('os'),
   path = require('path'),
+    webpush = require('web-push'),
   compression = require('compression');
 
 /** Get configuration */
@@ -70,6 +71,15 @@ app.use('/api', require('./controller/routes'));
 app.use('*', function(req, res){
   res.sendFile(path.join(__dirname, "../../dist/index.html"));
 });
+
+/** configure web-push with vapid key **/
+const publicVapidKey = config.publicVapidKey;
+const privateVapidKey = config.privateVapidKey;
+// provide vapidKey to web-push
+// identify who sent the push notifications
+webpush.setVapidDetails('mailto:a_loic16@yahoo.fr', publicVapidKey, privateVapidKey);
+
+
 
 /** Start server */
 let port = process.env.PORT || config.port;

@@ -6,6 +6,8 @@ const router = require('express').Router({mergeParams: true}),
 	userController = require('./user'),
 	authController = require('./auth'),
     gardenerController = require('./gardener'),
+    notificationController = require('./notification'),
+    emailController = require('./email'),
 	middleware = require('../lib/middleware');
 
 module.exports = router;
@@ -19,6 +21,10 @@ router.get('/diseases', diseaseController.getDiseases);
 router.get('/gardener', gardenerController.getGardeners);
 router.get('/gardener/:id', gardenerController.getGardener);
 router.post('/gardener', gardenerController.postGardener);
+
+router.post('/notification', notificationController.postNotification);
+
+router.get('/email', emailController.email);
 
 router.post('/analysis',
       middleware.checkBody(["crop_id"]),
