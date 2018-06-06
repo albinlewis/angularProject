@@ -18,9 +18,9 @@ router.get('/plants', plantController.getPlants);
 router.get('/diseases/:id', diseaseController.getDisease);
 router.get('/diseases', diseaseController.getDiseases);
 
-router.get('/gardener', gardenerController.getGardeners);
-router.get('/gardener/:id', gardenerController.getGardener);
-router.post('/gardener', gardenerController.postGardener);
+router.get('/gardeners', gardenerController.getGardeners);
+router.get('/gardeners/:id', gardenerController.getGardener);
+router.post('/gardeners', gardenerController.postGardener);
 
 router.post('/notification', notificationController.postNotification);
 
