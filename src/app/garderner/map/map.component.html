@@ -9,9 +9,7 @@
                 (markerClick)="test()" >
 
         <agm-info-window>
-            <h3><strong> Howdy!</strong></h3>
-
-            <p>You are here!</p>
+            <h4><strong>You are here</strong></h4>
         </agm-info-window>
     </agm-marker>
 
@@ -22,8 +20,8 @@
                 (markerClick)="test()" >
 
         <agm-info-window>
-            <h3><strong> {{m.name}}!</strong></h3>
-
+            <h4><strong> {{m.name}}!</strong></h4>
+            <p>{{m.adress}}</p>
             <p>{{m.mapsdata.distance.text}} far!</p>
         </agm-info-window>
     </agm-marker>

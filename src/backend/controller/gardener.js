@@ -6,7 +6,7 @@ const logger = require('winston');
 /** get all Gardener from the db */
 
 function getGardeners(req, res) {
-    Gardener.find({}, ["name", "adresse", "email", "phone", "latitude", "longitude"])
+    Gardener.find({}, ["name", "adress", "email", "phone", "latitude", "longitude"])
         .then(gardeners => {
             res.status(200);
             res.send({
@@ -14,7 +14,7 @@ function getGardeners(req, res) {
                 data: gardeners
             });
         })
-        .catch( err => {
+        .catch(err => {
             errors.sendError(res, err);
             logger.error(err);
         })
@@ -24,14 +24,14 @@ function getGardeners(req, res) {
 
 function getGardener(req, res) {
     Gardener.findById(req.params.id).select("-__v")
-        .then( gardener => {
+        .then(gardener => {
             res.status(200);
             res.send({
                 success: true,
                 data: gardener
             })
         })
-        .catch( err => {
+        .catch(err => {
             res.status(400);
             res.send(err);
             logger.error(err)
@@ -48,29 +48,34 @@ function postGardener(req, res) {
     let gLongitude = req.body.longitude;
 
     // new Gardener
-    let newGardener = new Gardener({
+    let newGardener = {
         name: gName,
         adress: gAdresse,
         email: gEmail,
         phone: gPhone,
         latitude: gLatitude,
         longitude: gLongitude
-    });
+    };
 
-    newGardener.save()
+    Gardener.findOneAndUpdate({
+            name: gName
+        }, newGardener, {
+            upsert: true,
+            new: true
+        })
         .then(gardener => {
             logger.info("Saved a new gardener");
             res.status(200);
             res.send(gardener);
         })
-        .catch( err => {
+        .catch(err => {
             res.status(400);
             logger.error("could'n saved new Gardener ", err);
-        })
+        });
 }
 
 module.exports = {
-    getGardeners ,
-    getGardener ,
+    getGardeners,
+    getGardener,
     postGardener
 };

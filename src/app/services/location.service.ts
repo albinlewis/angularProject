@@ -4,30 +4,17 @@ import {Injectable} from '@angular/core';
 export class LocationService {
 
 
-    constructor() {
+    constructor() { }
 
-    }
-
-    getData() {
-
-    }
-
-
-    getDistanceBetweenPoints(end) {
-        const currentlocation = {
-            lat: 49.870221,
-            lng: 8.664873
-        };
-
-
+    getDistanceBetweenPoints(current:any, end:any) {
         const earthRadius = {
             miles: 3958.8,
             km: 6371
         };
 
         const R = earthRadius['miles'];
-        const lat1 = currentlocation.lat;
-        const lon1 = currentlocation.lng;
+        const lat1 = current.lat;
+        const lon1 = current.lng;
         const lat2 = end.lat;
         const lon2 = end.lng;
 
@@ -44,7 +31,6 @@ export class LocationService {
 
 
         return d;
-
     }
 
     toRad(x) {
