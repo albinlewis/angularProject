@@ -12,6 +12,8 @@ import {Router} from '@angular/router';
 export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     able = true;
+    errorResponse: string;
+    error: boolean = false;
 
     constructor(private authservice: AuthService, public snackBar: MatSnackBar, private route: Router) {
     }
@@ -34,6 +36,8 @@ export class RegisterComponent implements OnInit {
                 this.snackBar.open('Registration', 'failed', {
                     duration: 3000,
                 });
+            this.error = true;
+            this.errorResponse  = err.error.error.message;
                 console.log(err);
             });
     }
