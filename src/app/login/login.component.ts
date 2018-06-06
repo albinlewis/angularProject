@@ -11,6 +11,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
+    errorResponse: string;
+    error: boolean = false;
 
     constructor(private authservice: AuthService, public snackBar: MatSnackBar, private route: Router) {
     }
@@ -36,6 +38,8 @@ export class LoginComponent implements OnInit {
                 this.snackBar.open('Login', 'failed', {
                     duration: 3000,
                 });
+                this.error = true;
+                this.errorResponse  = err.error.error.message;
 
                 console.log(err);
             });

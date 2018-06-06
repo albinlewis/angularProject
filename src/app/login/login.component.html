@@ -30,5 +30,8 @@
                 <button type="submit" class="btn btn-success">Sign in</button>
             </div>
         </div>
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+            <strong>Oh snap!</strong> {{errorResponse}}
+        </div>
     </form>
 </div>
