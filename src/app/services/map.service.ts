@@ -6,40 +6,16 @@ import {LocationService} from './location.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import { ApiService } from './api.service';
+import { IGardener } from '../model/IGardener';
 
 @Injectable()
 export class MapService {
     public static API_URL: string = environment.API_HOST + '/api/';
 
-    lat: number;
-    lng: number;
-    data: any = [{
-        email: '',
-        latitude: 0,
-        longitude: 0,
-        name: '',
-        phone: '',
-        id: '',
-        mapsdata: {distance: {}, duration: {}}
-    }];
+    lat: number = 49.870221;
+    lng: number =  8.664873;
+    data: IGardener[] = [];
 
-    /*data: any = [{
-        name: 'L-One', lat: 49.818612, lng: 8.623809, mapsdata: {distance: {}, duration: {}}
-    }, {
-        name: 'Incloud',
-        lat: 49.877670,
-        lng: 8.639382,
-        mapsdata: {distance: {}, duration: {}}
-    },
-        {
-            name: 'Post',
-            lat: 49.869175,
-            lng: 8.668810,
-            mapsdata: {distance: {}, duration: {}}
-
-        }
-
-    ];*/
     destinat: any[] = [];
 
     constructor(private locationservice: LocationService, 
@@ -47,6 +23,9 @@ export class MapService {
             private apiService: ApiService) {
     }
 
+    setCurrentLocation(){
+
+    }
 
     calculateDistance() {
 
@@ -86,9 +65,8 @@ export class MapService {
 
     getUserLocation() {
 
-        return this.apiService.get('/gardener').toPromise()
+        return this.apiService.get('/gardeners').toPromise()
             .then((response: any) => {
-                console.log(response);
                 for (const r of response.data) {
                     r.mapsdata = { distance: {}, duration: {} };
                 }
@@ -98,8 +76,10 @@ export class MapService {
                     navigator.geolocation.getCurrentPosition(position => {
                         this.lat = position.coords.latitude;
                         this.lng = position.coords.longitude;
-                        this.calculateDistance();
+                    }, error => {
+                        console.error(error);
                     });
+                    this.calculateDistance();
                 }
 
             }).catch(err => console.log(err));
