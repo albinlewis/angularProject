@@ -1,7 +1,7 @@
 <div class="container">
     <h2>Result for {{job?.plant.name}}</h2>
     <div class="row align-items-start mt-4">
-        <img [src]="job?.image_url || './assets/img/' + job?.plant.name +'.jpg'"
+        <img [src]="apiHost + job?.image_url || './assets/img/' + job?.plant.name +'.jpg'"
             class="img-fluid col-md-6" [alt]="'Job-' + job?._id">
         <div class="col-md-6">
             <small>Job Id: {{job?._id}}</small>

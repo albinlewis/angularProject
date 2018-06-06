@@ -1,14 +1,19 @@
 <div class="list-group">
-    <a  class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let g of mapservice.data">
+    <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let g of mapservice.data">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{g.name}}</h5>
             <small>{{g.mapsdata.duration.text}}</small>
         </div>
-        <p class="mb-1"> <mat-icon>email</mat-icon> <span>{{g.email}}</span></p>
+        <p class="mb-1 d-flex align-items-center">
+            <i class="fas fa-envelope mr-2"></i>
+            <span>{{g.email}}</span>
+        </p>
 
-        <p class="mb-1">
-            <mat-icon>call</mat-icon><span> {{g.phone}}</span> </p>
+        <p class="mb-1 d-flex align-items-center">
+            <i class="fas fa-phone mr-2"></i>
+            <span> {{g.phone}}</span>
+        </p>
 
-        <small> <mat-icon>directions_car</mat-icon> {{g.mapsdata.distance.text}}</small>
+        <small class="d-flex align-items-center"><i class="fas fa-car mr-2"></i> {{g.mapsdata.distance.text}}</small>
     </a>
 </div>
