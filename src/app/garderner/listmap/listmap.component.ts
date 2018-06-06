@@ -8,7 +8,7 @@ import {MapService} from '../../services/map.service';
 })
 export class ListmapComponent implements OnInit {
 
-  constructor(private mapservice: MapService) { }
+  constructor(public mapservice: MapService) { }
 
   ngOnInit() {
 
