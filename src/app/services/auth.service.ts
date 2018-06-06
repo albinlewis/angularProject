@@ -3,28 +3,27 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {catchError} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
-import { UserService } from './user.service';
+import {UserService} from './user.service';
 
 
 @Injectable()
 export class AuthService {
     public static API_URL: string = environment.API_HOST + '/api/';
 
-    token:string = null;
+    token: string = null;
     isLoggedIn: boolean = false;
 
-    constructor(
-        private httpClient: HttpClient, 
-        private userService: UserService) {
-            this.token = localStorage.getItem('token');
-            if(this.token) {
-                this.isLoggedIn = true;
-            }
+    constructor(private httpClient: HttpClient,
+                private userService: UserService) {
+        this.token = localStorage.getItem('token');
+        if (this.token) {
+            this.isLoggedIn = true;
+        }
     }
 
-    authHeader(){
+    authHeader() {
         let headers = new HttpHeaders();
-        if(this.token) headers = headers.append('Authorization', 'Bearer ' + this.token);
+        if (this.token) headers = headers.append('Authorization', 'Bearer ' + this.token);
         return headers;
     }
 
@@ -33,7 +32,7 @@ export class AuthService {
             this.httpClient.post(AuthService.API_URL + 'register', data)
                 .subscribe(
                     (response: any) => {
-                        if(!response.success) reject(response.error);
+                        if (!response.success) reject(response.error);
                         else resolve(response.message);
                     },
                     (err: any) => reject(err)
@@ -46,7 +45,7 @@ export class AuthService {
             this.httpClient.post(AuthService.API_URL + 'login', data)
                 .subscribe(
                     (response: any) => {
-                        if(!response.success || !response.token) reject(response.error);
+                        if (!response.success || !response.token) reject(response.error);
                         else {
                             this.userService.setUser(response.data);
                             this.isLoggedIn = true;
@@ -64,15 +63,16 @@ export class AuthService {
         localStorage.setItem('token', token);
     }
 
-    getToken():string {
+    getToken(): string {
         return this.token;
     }
+
     isAuthentificated() {
-      if(this.getToken()) return true;
-      return false;
+        if (this.getToken()) return true;
+        return false;
     }
 
-    logout(){
+    logout() {
         this.userService.unsetUser();
         this.token = null;
         localStorage.removeItem('token');

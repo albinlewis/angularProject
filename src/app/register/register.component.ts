@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
                 this.route.navigate(['/login']);
             }).catch(err => {
                 this.snackBar.open('Registration', 'failed', {
-                    duration: 2000,
+                    duration: 3000,
                 });
                 console.log(err);
             });

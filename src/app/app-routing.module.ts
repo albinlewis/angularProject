@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { NotFoundComponent } from './not-found/not-found.component';
 import { PlantsComponent } from './plants/plants.component';
 import { ProfileComponent } from './profile/profile.component';
 import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
@@ -16,6 +15,7 @@ import {GardernerComponent} from "./garderner/garderner.component";
 
 const appRoutes: Routes = [
   {path: '', component: PlantsComponent},
+  {path: 'plants', component: PlantsComponent},
   {path: 'analyse', component: AnalyseComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthguardService]},
   {path: 'details/:id', component: PlantdetailsComponent},
@@ -24,8 +24,8 @@ const appRoutes: Routes = [
   {path: 'disease/:id', component: DiseaseComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-    {path: 'gardener', component: GardernerComponent},
-    {path: '**', component: NotFoundComponent}
+  {path: 'gardener', component: GardernerComponent},
+  {path: '**', redirectTo: '/plants', pathMatch: 'full'}
 
 ];
 

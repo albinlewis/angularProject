@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
         this.authservice.login(this.loginForm.value)
             .then(r => {
                 this.snackBar.open('Login', 'succeed', {
-                    duration: 2000,
+                    duration: 3000,
                 });
                 this.route.navigate(['/profile']);
             }).catch(err => {
                 this.snackBar.open('Login', 'failed', {
-                    duration: 2000,
+                    duration: 3000,
                 });
 
                 console.log(err);

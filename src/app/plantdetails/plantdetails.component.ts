@@ -1,6 +1,5 @@
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {BrowseService} from '../services/browse.service';
 import { IPlant } from '../model/IPlant';
 import { PlantService } from '../services/plant.service';
 import { Subscription } from 'rxjs/Subscription';
@@ -15,8 +14,8 @@ export class PlantdetailsComponent implements OnInit, OnDestroy {
     plant: IPlant;
     sub: Subscription;
 
-    constructor(private router: Router, 
-        private route: ActivatedRoute, 
+    constructor(private router: Router,
+        private route: ActivatedRoute,
         private plantService: PlantService) {
         console.log('plantdetails created');
     }
@@ -39,6 +38,6 @@ export class PlantdetailsComponent implements OnInit, OnDestroy {
     }
 
     onShowAnalyse() {
-        this.router.navigate(['/results']);
+        this.router.navigate(['/result']);
     }
 }
