@@ -24,7 +24,7 @@ router.post('/gardener', gardenerController.postGardener);
 
 router.post('/notification', notificationController.postNotification);
 
-router.get('/email', emailController.email);
+router.post('/email', emailController.email);
 
 router.post('/analysis',
       middleware.checkBody(["crop_id"]),
