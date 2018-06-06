@@ -41,13 +41,9 @@ userSchema.plugin(uniqueValidator);
 userSchema.methods.verifyPassword = function (password, next) {
     return crypt.verify(password, this.password);
 };
+
 /** Encrypts the password before saving */
 userSchema.pre('save', function (next) {
-    this.password = crypt.generate(this.password);
-    next();
-});
-/** If not already encrypted: Encrypt the password before updating */
-userSchema.pre('update', function (next) {
     if (!crypt.isHashed(this.password)) {
         this.password = crypt.generate(this.password);
     }

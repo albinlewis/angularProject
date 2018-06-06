@@ -5,6 +5,7 @@ import {} from '@types/googlemaps';
 import {LocationService} from './location.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import { ApiService } from './api.service';
 
 @Injectable()
 export class MapService {
@@ -41,8 +42,9 @@ export class MapService {
     ];*/
     destinat: any[] = [];
 
-    constructor(private locationservice: LocationService, private  mapsapi: MapsAPILoader, private httpClient: HttpClient) {
-
+    constructor(private locationservice: LocationService, 
+            private  mapsapi: MapsAPILoader, 
+            private apiService: ApiService) {
     }
 
 
@@ -83,11 +85,12 @@ export class MapService {
     }
 
     getUserLocation() {
-        this.httpClient.get(MapService.API_URL + '/gardener')
-            .subscribe((response: any) => {
+
+        return this.apiService.get('/gardener').toPromise()
+            .then((response: any) => {
                 console.log(response);
                 for (const r of response.data) {
-                    r.mapsdata = {distance: {}, duration: {}};
+                    r.mapsdata = { distance: {}, duration: {} };
                 }
                 this.data = response.data;
 
@@ -96,14 +99,10 @@ export class MapService {
                         this.lat = position.coords.latitude;
                         this.lng = position.coords.longitude;
                         this.calculateDistance();
-                        console.log(this.lat);
-
                     });
                 }
 
-            });
-
-
+            }).catch(err => console.log(err));
     }
 
 }

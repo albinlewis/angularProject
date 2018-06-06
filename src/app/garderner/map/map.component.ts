@@ -15,7 +15,7 @@ export class MapComponent implements OnInit {
     lng: number;
     zoom = 11;
 
-    constructor( private mapservice: MapService) {
+    constructor( public mapservice: MapService) {
     }
 
     ngOnInit() {
