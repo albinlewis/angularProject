@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Route, Router} from '@angular/router';
-import { IPlant } from '../model/IPlant';
-import { PlantService } from '../services/plant.service';
+import { IPlant } from '../../model/IPlant';
+import { PlantService } from '../../services/plant.service';
 
 @Component({
     selector: 'app-plants',

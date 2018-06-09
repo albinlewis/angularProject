@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {} from '@types/googlemaps';
-import {MapService} from '../../services/map.service';
+import {MapService} from '../../../services/map.service';
 
 
 @Component({

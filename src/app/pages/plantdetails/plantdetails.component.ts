@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import { IPlant } from '../model/IPlant';
-import { PlantService } from '../services/plant.service';
+import { IPlant } from '../../model/IPlant';
+import { PlantService } from '../../services/plant.service';
 import { Subscription } from 'rxjs';
 
 @Component({

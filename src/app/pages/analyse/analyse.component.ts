@@ -1,11 +1,11 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { PlantService } from '../services/plant.service';
-import { IPlant } from '../model/IPlant';
+import { PlantService } from '../../services/plant.service';
+import { IPlant } from '../../model/IPlant';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
-import { AnalysisService } from '../services/analysis.service';
+import { AnalysisService } from '../../services/analysis.service';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { UserService } from '../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'app-analyse',

@@ -11,6 +11,23 @@
         "GARDENERS": "Gardeners",
         "LOGOUT": "Logout"
     },
+    "AUTH":{
+        "NAME":"Name",
+        "EMAIL":"Email",
+        "PASSWORD": "Password",
+        "REPEAT": "Repeat Password",
+        "ENTER_NAME": "Enter your name",
+        "NO_VALID_NAME": "Please enter a valid name",
+        "ENTER_EMAIL": "Enter your email",
+        "NO_VALID_EMAIL": "Please enter a valid email",
+        "ENTER_PASSWORD": "Choose a password",
+        "NO_VALID_PASSWORD": "Please enter a valid password",
+        "INVALID_FORM": "Invalid Form",
+        "REGISTER": "Sign Up",
+        "LOGIN": "Sign In",
+        "OH_SNAP": "Oh Snap!",
+        "REMEMBER_ME": "Remember Me"
+    },
     "DISEASE": {
         "ALL_DISEASES": "All diseases",
         "SEARCH": "Search for a disease",
@@ -45,8 +62,32 @@
     },
     "RESULT": {
         "FOR": "Result for",
-        "EMAIL": "Send an email with the result to a gardener"
+        "EMAIL": "Send an email with the result to a gardener",
+        "DISEASES": "Diseases"
     },
+    "ANALYSIS": {
+        "SELECT_A_CROP": "Please select a plant you want to analyse.",
+        "SELECT_IMAGE": "Choose / Make a photo",
+        "TO_EMAIL": "Send the result to my email",
+        "ANALYSE": "Analyse",
+        "PROGRESS": "Your Analysis is progressing. Please wait."
+    },
+    "PROFILE": {
+        "INFORMATION": "Information",
+        "HISTORY": "History",
+        "OLD_PASSWORD": "Old Password",
+        "NEW_PASSWORD": "New Password",
+        "UPDATE_PROFILE": "Update Profile",
+        "NAME": "Name",
+        "EMAIL": "Email",
+        "DATE": "Date",
+        "PLANT_ID": "Plant Id",
+        "FINISHED": "Finished",
+        "NOT_FINISHED": "Not finished"
+    },
+    "GARDENERS": {
+        "NEARBY": "Nearby gardeners"
+    }, 
     "YES": "Yes",
     "NO": "No",
     "CONTROLS": {

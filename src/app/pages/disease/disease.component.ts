@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IDisease } from '../model/IDisease';
-import { DiseaseService } from '../services/disease.service';
+import { IDisease } from '../../model/IDisease';
+import { DiseaseService } from '../../services/disease.service';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({

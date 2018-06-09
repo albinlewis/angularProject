@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PlantsComponent } from './plants/plants.component';
-import { ProfileComponent } from './profile/profile.component';
-import { PlantdetailsComponent } from './plantdetails/plantdetails.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ResultComponent } from './result/result.component';
-import { DiseaseComponent } from './disease/disease.component';
-import { AnalyseComponent } from './analyse/analyse.component';
+import { PlantsComponent } from './pages/plants/plants.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { PlantdetailsComponent } from './pages/plantdetails/plantdetails.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ResultComponent } from './pages/result/result.component';
+import { DiseaseComponent } from './pages/disease/disease.component';
+import { AnalyseComponent } from './pages/analyse/analyse.component';
 import {AuthguardService} from "./services/authguard.service";
-import { DiseaseListComponent } from './disease-list/disease-list.component';
-import {GardernerComponent} from "./garderner/garderner.component";
+import { DiseaseListComponent } from './pages/disease-list/disease-list.component';
+import {GardernerComponent} from "./pages/garderner/garderner.component";
 
 const appRoutes: Routes = [
   {path: '', component: PlantsComponent},

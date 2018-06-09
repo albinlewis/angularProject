@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IDisease } from '../model/IDisease';
+import { IDisease } from '../../model/IDisease';
 import { Router } from '@angular/router';
-import { DiseaseService } from '../services/disease.service';
+import { DiseaseService } from '../../services/disease.service';
 
 @Component({
   selector: 'app-disease-list',

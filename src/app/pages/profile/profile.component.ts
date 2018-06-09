@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
-import { IUser } from '../model/IUser';
-import { AnalysisService } from '../services/analysis.service';
-import { IJob } from '../model/IJob';
+import { UserService } from '../../services/user.service';
+import { IUser } from '../../model/IUser';
+import { AnalysisService } from '../../services/analysis.service';
+import { IJob } from '../../model/IJob';
 
 @Component({
   selector: 'app-profile',

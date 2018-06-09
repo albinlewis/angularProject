@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import { AnalysisService } from '../services/analysis.service';
-import { IJob } from '../model/IJob';
+import { AnalysisService } from '../../services/analysis.service';
+import { IJob } from '../../model/IJob';
 import { Subscription } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { GardenerService } from '../services/gardener.service';
-import { IGardener } from '../model/IGardener';
-import { EmailComponent } from '../components/email/email.component';
+import { environment } from '../../../environments/environment';
+import { GardenerService } from '../../services/gardener.service';
+import { IGardener } from '../../model/IGardener';
+import { EmailComponent } from '../../components/email/email.component';
 
 @Component({
     selector: 'app-result',
