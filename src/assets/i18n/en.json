@@ -43,6 +43,10 @@
         "MESSAGE": "Message",
         "ATTACHMENT": "Attachment"
     },
+    "RESULT": {
+        "FOR": "Result for",
+        "EMAIL": "Send an email with the result to a gardener"
+    },
     "YES": "Yes",
     "NO": "No",
     "CONTROLS": {
