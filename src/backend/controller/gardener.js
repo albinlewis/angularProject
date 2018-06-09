@@ -10,7 +10,7 @@ function getGardeners(req, res) {
         .then(gardeners => {
             res.status(200);
             res.send({
-                succes: true,
+                success: true,
                 data: gardeners
             });
         })
@@ -66,7 +66,7 @@ function postGardener(req, res) {
         .then(gardener => {
             logger.info("Saved a new gardener");
             res.status(200);
-            res.send(gardener);
+            res.send({success: true, data: gardener});
         })
         .catch(err => {
             res.status(400);
