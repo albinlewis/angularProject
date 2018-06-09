@@ -8,29 +8,29 @@
         <img [src]="plant?.image_url || './assets/img/' + plant?.name +'.jpg'"
             class="img-fluid col-md-6" alt="Responsive image">
         <div class="col-md-6">
-            <h3 class="mt-5 mt-md-0">Information</h3>
+            <h3 class="mt-5 mt-md-0">{{"PLANT.INFORMATION" | translate}}</h3>
             <table class="table">
                 <tbody>
                     <tr>
-                        <th scope="row">Name</th>
+                        <th scope="row">{{"PLANT.NAME" | translate}}</th>
                         <td>{{plant?.name}}</td>
                     </tr>
                     <tr *ngIf="plant?.eppo_code">
-                        <th scope="row">Eppo Code</th>
+                        <th scope="row">{{"PLANT.EPPO_CODE" | translate}}</th>
                         <td>{{plant.eppo_code}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Has nutrient</th>
-                        <td>{{plant?.has_nutrient ? "Yes": "No"}}</td>
+                        <th scope="row">{{"PLANT.HAS_NUTRIENT" | translate}}</th>
+                        <td>{{(plant?.has_nutrient ? "YES": "NO") | translate}}</td>
                     </tr>
                     <tr>
-                        <th scope="row">Detection supported</th>
-                        <td>{{plant?.detection_supported ? "Yes": "No"}}</td>
+                        <th scope="row">{{"PLANT.DETECTION_SUPPORTED" | translate}}</th>
+                        <td>{{(plant?.detection_supported ? "YES" : "NO") | translate}}</td>
                     </tr>
                 </tbody>
             </table>
             <section class="my-5 mt-my-0">
-                <h3>Krankheiten</h3>
+                <h3>{{"PLANT.DISEASES" | translate}}</h3>
                 <div class="list-group">
                     <li style="cursor:pointer;" class="list-group-item list-group-item-action" *ngFor="let d of plant?.diseases | sort" [routerLink]="['/disease', d._id]">
                         {{d.name}}

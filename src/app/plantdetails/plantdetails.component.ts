@@ -2,7 +2,7 @@ import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { IPlant } from '../model/IPlant';
 import { PlantService } from '../services/plant.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-plantdetails',
@@ -17,7 +17,6 @@ export class PlantdetailsComponent implements OnInit, OnDestroy {
     constructor(private router: Router,
         private route: ActivatedRoute,
         private plantService: PlantService) {
-        console.log('plantdetails created');
     }
 
     ngOnInit() {
