@@ -1,0 +1,54 @@
+{
+    "TITLE": "Plant Analyzer",
+    "TITLES": {
+        "REGISTER": "Register",
+        "LOGIN": "Login",
+        "PLANTS": "Plants",
+        "DISEASES": "Diseases",
+        "DISEASE": "Disease",
+        "ANALYSIS": "Analysis",
+        "PROFILE": "Profile",
+        "GARDENERS": "Gardeners",
+        "LOGOUT": "Logout"
+    },
+    "DISEASE": {
+        "ALL_DISEASES": "All diseases",
+        "SEARCH": "Search for a disease",
+        "SEARCH_RESULT": "Your search",
+        "NAME": "Name",
+        "CROP": "Crop",
+        "DETECTION_SUPPORTED": "Detection supported", 
+        "EPPO_CODE": "Eppo Code",
+        "SYMPTOMS": "Symptoms",
+        "LEAF_WETNESS": "Leaf Wettness",
+        "BBCH": "BBCH",
+        "TEMPERATURE": "Temperature",
+        "HUMIDITY": "Humidity",
+        "INFORMATION": "Information"
+    },
+    "PLANT": {
+        "ALL_PLANTS": "All plants",
+        "SEARCH": "Search for a plant",
+        "SEARCH_RESULT": "Your search",
+        "NAME": "Name",
+        "DISEASES": "Diseases",
+        "DETECTION_SUPPORTED": "Detection supported",
+        "EPPO_CODE": "Eppo Code",
+        "HAS_NUTRIENT": "Has nutrient",
+        "INFORMATION": "Information"
+    },
+    "EMAIL": {
+        "SENDER": "Sender",
+        "RECEIVER": "Receiver",
+        "MESSAGE": "Message",
+        "ATTACHMENT": "Attachment"
+    },
+    "YES": "Yes",
+    "NO": "No",
+    "CONTROLS": {
+        "ADD": "Add",
+        "EDIT": "Edit",
+        "SAVE": "Save",
+        "CANCEL": "Cancel"
+    }
+}
