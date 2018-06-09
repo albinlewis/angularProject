@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {LocationService} from '../services/location.service';
 import {MapService} from '../services/map.service';
 
 @Component({
@@ -10,7 +9,7 @@ import {MapService} from '../services/map.service';
 export class GardernerComponent implements OnInit {
 
 
-    constructor(private locationservice: LocationService, private mapservice: MapService) {
+    constructor(private mapservice: MapService) {
     }
 
     ngOnInit() {
