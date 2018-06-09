@@ -1,0 +1,20 @@
+{
+    "TITLE": "Planzen Analysator",
+    "TITLES": {
+        "REGISTER": "Registrieren",
+        "LOGIN": "Anmelden",
+        "PLANTS": "Pflanzen",
+        "DISEASES": "Krankheiten",
+        "DISEASE": "Krankheit",
+        "ANALYSIS": "Analyse",
+        "PROFILE": "Profil",
+        "GARDENERS": "Gärtnereien",
+        "LOGOUT": "Ausloggen"
+    },
+    "CONTROLS": {
+        "ADD": "Hinzufügen",
+        "EDIT": "Bearbeiten",
+        "SAVE": "Speichern",
+        "CANCEL": "Abbrechen"
+    }
+}

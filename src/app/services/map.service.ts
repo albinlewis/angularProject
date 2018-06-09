@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
 
-import {LocationService} from './location.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import { ApiService } from './api.service';
@@ -18,7 +17,7 @@ export class MapService {
 
     destinat: any[] = [];
 
-    constructor(private locationservice: LocationService, 
+    constructor(
             private  mapsapi: MapsAPILoader, 
             private apiService: ApiService) {
     }
