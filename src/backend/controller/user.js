@@ -4,26 +4,23 @@ const User = require('../model/user');
 const errors = require('../lib/errors');
 
 // ToDo: Implement profile update
-async function update(req, res) {
-    try {
-        let newPassword = req.body.new_password;
-        delete req.body.email;
-        let updatedUser = Object.assign(req.user, req.body);
+function update(req, res) {
+    let update = req.body;
+    delete update.email;
+    if (update.new_password) update.password = update.new_password;
+    else delete update.password;
+    let updatedUser = Object.assign(req.user, update);
 
-        updatedUser.save().then(user => {
-            user = user.toObject();
-            delete user.password;
-            res.send({
-                data: user
-            });
-        }).catch(err => {
-            winston.error(err);
-            errors.sendError(res, err);
+    updatedUser.save().then(user => {
+        user = user.toObject();
+        delete user.password;
+        res.send({
+            data: user
         });
-    } catch (err) {
+    }).catch(err => {
         winston.error(err);
         errors.sendError(res, err);
-    }
+    });
 }
 
 /** Remove a user */

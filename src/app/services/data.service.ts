@@ -55,4 +55,37 @@ export abstract class DataService {
       });
     }
 
+
+    updateItem<T>(id:number|string, update: any): Promise<T> {
+        return new Promise((resolve, reject) => {
+            this.apiService.patch(this.serviceUrl + id, update)
+            .subscribe(
+              (response: any) => {
+                if (!response.success) reject(response.error);
+                else {
+                    if (this.dateProps) {
+                        this.dateProps.forEach(prop => {
+                            DataService.changeStringToDate(response.data, prop);
+                        });
+                    }
+                    resolve(response.data);
+                }
+            },
+            (err: any) => reject(err)
+            )
+          });
+    }
+
+    removeItem<T>(id: number | string):Promise<void>{
+        return new Promise((resolve, reject) => {
+            this.apiService.delete(this.serviceUrl + id)
+            .subscribe(
+              (response: any) => {
+                if (!response.success) reject(response.error);
+                else resolve();
+            },
+            (err: any) => reject(err)
+            )
+          });
+    }
 }

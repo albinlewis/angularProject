@@ -37,7 +37,7 @@ export class ApiService {
       );
   }
 
-  delete(serviceUrl: string):Observable<any>{
+  delete(serviceUrl: string, body?: any):Observable<any>{
     return this.httpClient.delete(ApiService.API_URL + serviceUrl, {headers: this.authService.authHeader()})
       .pipe(
         catchError(this.handleUnauthorizedError)
