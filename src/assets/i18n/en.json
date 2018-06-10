@@ -78,16 +78,23 @@
         "OLD_PASSWORD": "Old Password",
         "NEW_PASSWORD": "New Password",
         "UPDATE_PROFILE": "Update Profile",
+        "DELETE_PROFILE": "Delete Profile",
         "NAME": "Name",
         "EMAIL": "Email",
         "DATE": "Date",
         "PLANT_ID": "Plant Id",
         "FINISHED": "Finished",
-        "NOT_FINISHED": "Not finished"
+        "NOT_FINISHED": "Not finished",
+        "CONFIRM_QUESTION": "Do you really want to delete your profile?"
     },
     "GARDENERS": {
-        "NEARBY": "Nearby gardeners"
-    }, 
+        "NEARBY": "Nearby gardeners",
+        "MAP": "Map",
+        "LIST": "Gardeners",
+        "DISTANCE": "away",
+        "TIME": "minutes",
+        "HERE": "You are here"
+    },
     "YES": "Yes",
     "NO": "No",
     "CONTROLS": {
