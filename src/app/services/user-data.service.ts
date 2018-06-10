@@ -19,4 +19,8 @@ export class UserDataService extends DataService{
   updateUser(update: any): Promise<IUser> {
     return this.updateItem<IUser>("", update);
   }
+
+  removeUser(){
+    return this.removeItem<void>("");
+  }
 }
