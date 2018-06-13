@@ -3,3 +3,9 @@ $(document).ready(function () {
         $(".navbar-collapse").collapse('hide');
     });
 });
+
+$(document).click(function(e) {
+    if (!$(e.target).is('.panel-body')) {
+        $('.collapse').collapse('hide');
+    }
+});
