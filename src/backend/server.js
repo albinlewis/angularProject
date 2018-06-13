@@ -76,7 +76,8 @@ app.use('*', function(req, res){
 const publicVapidKey = config.publicVapidKey;
 const privateVapidKey = config.privateVapidKey;
 // provide vapidKey to web-push
-// identify who sent the push notifications
+// identify (who sent the push notifications) our server to several browser push services available
+// identify our server with public key and sign the message with private key
 webpush.setVapidDetails('mailto:a_loic16@yahoo.fr', publicVapidKey, privateVapidKey);
 
 
