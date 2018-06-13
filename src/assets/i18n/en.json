@@ -63,7 +63,8 @@
     "RESULT": {
         "FOR": "Result for",
         "EMAIL": "Send an email with the result to a gardener",
-        "DISEASES": "Diseases"
+        "DISEASES": "Diseases",
+        "NONE": "No disease"
     },
     "ANALYSIS": {
         "SELECT_A_CROP": "Please select a plant you want to analyse.",

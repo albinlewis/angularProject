@@ -63,7 +63,8 @@
     "RESULT": {
         "FOR": "Ergebnis für",
         "EMAIL": "Sende Email mit Ergebnis an Gärtnerei",
-        "DISEASES": "Krankheiten"
+        "DISEASES": "Krankheiten",
+        "NONE": "Keine Krankheit"
     },
     "ANALYSIS": {
         "SELECT_A_CROP": "Bitte eine Pflanze zur Analyse auswählen",
