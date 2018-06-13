@@ -5,13 +5,13 @@
             "installMode": "prefetch",
             "resources": {
                 "files": [
-
                     "/favicon.ico",
-                    "/manifest_app.json",
+                    "/manifest.json",
                     "/index.html",
-                    "/*.bundle.css",
-                    "/*.bundle.js",
-                    "/*.chunk.js"
+                    "/assets/i18n/*.json",
+                    "/*.css",
+                    "/*.js",
+                    "/*.js"
                 ],
                 "urls":[
                     "https://use.fontawesome.com/releases/v5.0.13/css/*"
@@ -21,10 +21,11 @@
         {
             "name": "assets",
             "installMode": "lazy",
-            "updateMode": "prefetch",
+            "updateMode": "lazy",
             "resources": {
                 "files": [
-                    "assets/**"
+                    "/assets/img/*.jpg",
+                    "/assets/icons/*.png"
                 ]
             }
         }
