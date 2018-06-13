@@ -46,6 +46,7 @@ import { EmailComponent } from './components/email/email.component';
 import { GardenerService } from './services/gardener.service';
 import { StringifyPipe } from './pipes/stringify.pipe';
 import { LanguageSwitchComponent } from './components/language-switch/language-switch.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 export function HttpLoaderFactory(http: HttpClient){
@@ -77,7 +78,7 @@ export function HttpLoaderFactory(http: HttpClient){
         ListmapComponent,
         StringifyPipe,
         LanguageSwitchComponent,
-
+        NotificationsComponent
     ],
     imports: [
 
