@@ -1,0 +1,26 @@
+<div class="list-group">
+    <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let g of mapservice.data">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{g.name}}</h5>
+            <div>
+                <small>
+                    <i class="fas fa-clock mr-2"></i>{{g.mapsdata.duration.text}}</small>
+                <small class="d-flex align-items-center">
+                    <i class="fas fa-car mr-2"></i> {{g.mapsdata.distance.text}}</small>
+            </div>
+        </div>
+        <p class="mb-1 d-flex align-items-center">
+            <i class="fas fa-map-marker mr-2"></i>
+            <span>{{g.adress}}</span>
+        </p>
+        <p class="mb-1 d-flex align-items-center">
+            <i class="fas fa-envelope mr-2"></i>
+            <span>{{g.email}}</span>
+        </p>
+
+        <p class="mb-1 d-flex align-items-center">
+            <i class="fas fa-phone mr-2"></i>
+            <span>{{g.phone}}</span>
+        </p>
+    </a>
+</div>

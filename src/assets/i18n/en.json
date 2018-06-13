@@ -1,0 +1,106 @@
+{
+    "TITLE": "Plant Analyzer",
+    "TITLES": {
+        "REGISTER": "Register",
+        "LOGIN": "Login",
+        "PLANTS": "Plants",
+        "DISEASES": "Diseases",
+        "DISEASE": "Disease",
+        "ANALYSIS": "Analysis",
+        "PROFILE": "Profile",
+        "GARDENERS": "Gardeners",
+        "LOGOUT": "Logout"
+    },
+    "AUTH":{
+        "NAME":"Name",
+        "EMAIL":"Email",
+        "PASSWORD": "Password",
+        "REPEAT": "Repeat Password",
+        "ENTER_NAME": "Enter your name",
+        "NO_VALID_NAME": "Please enter a valid name",
+        "ENTER_EMAIL": "Enter your email",
+        "NO_VALID_EMAIL": "Please enter a valid email",
+        "ENTER_PASSWORD": "Choose a password",
+        "NO_VALID_PASSWORD": "Please enter a valid password",
+        "INVALID_FORM": "Invalid Form",
+        "REGISTER": "Sign Up",
+        "LOGIN": "Sign In",
+        "OH_SNAP": "Oh Snap!",
+        "REMEMBER_ME": "Remember Me"
+    },
+    "DISEASE": {
+        "ALL_DISEASES": "All diseases",
+        "SEARCH": "Search for a disease",
+        "SEARCH_RESULT": "Your search",
+        "NAME": "Name",
+        "CROP": "Crop",
+        "DETECTION_SUPPORTED": "Detection supported", 
+        "EPPO_CODE": "Eppo Code",
+        "SYMPTOMS": "Symptoms",
+        "LEAF_WETNESS": "Leaf Wettness",
+        "BBCH": "BBCH",
+        "TEMPERATURE": "Temperature",
+        "HUMIDITY": "Humidity",
+        "INFORMATION": "Information"
+    },
+    "PLANT": {
+        "ALL_PLANTS": "All plants",
+        "SEARCH": "Search for a plant",
+        "SEARCH_RESULT": "Your search",
+        "NAME": "Name",
+        "DISEASES": "Diseases",
+        "DETECTION_SUPPORTED": "Detection supported",
+        "EPPO_CODE": "Eppo Code",
+        "HAS_NUTRIENT": "Has nutrient",
+        "INFORMATION": "Information"
+    },
+    "EMAIL": {
+        "SENDER": "Sender",
+        "RECEIVER": "Receiver",
+        "MESSAGE": "Message",
+        "ATTACHMENT": "Attachment"
+    },
+    "RESULT": {
+        "FOR": "Result for",
+        "EMAIL": "Send an email with the result to a gardener",
+        "DISEASES": "Diseases"
+    },
+    "ANALYSIS": {
+        "SELECT_A_CROP": "Please select a plant you want to analyse.",
+        "SELECT_IMAGE": "Choose / Make a photo",
+        "TO_EMAIL": "Send the result to my email",
+        "ANALYSE": "Analyse",
+        "PROGRESS": "Your Analysis is progressing. Please wait."
+    },
+    "PROFILE": {
+        "INFORMATION": "Information",
+        "HISTORY": "History",
+        "OLD_PASSWORD": "Old Password",
+        "NEW_PASSWORD": "New Password",
+        "UPDATE_PROFILE": "Update Profile",
+        "DELETE_PROFILE": "Delete Profile",
+        "NAME": "Name",
+        "EMAIL": "Email",
+        "DATE": "Date",
+        "PLANT_ID": "Plant Id",
+        "FINISHED": "Finished",
+        "NOT_FINISHED": "Not finished",
+        "CONFIRM_QUESTION": "Do you really want to delete your profile?"
+    },
+    "GARDENERS": {
+        "NEARBY": "Nearby gardeners",
+        "MAP": "Map",
+        "LIST": "Gardeners",
+        "DISTANCE": "away",
+        "TIME": "minutes",
+        "HERE": "You are here"
+    },
+    "YES": "Yes",
+    "NO": "No",
+    "CONTROLS": {
+        "ADD": "Add",
+        "EDIT": "Edit",
+        "SAVE": "Save",
+        "CANCEL": "Cancel"
+    }
+}

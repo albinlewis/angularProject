@@ -1,0 +1,5 @@
+.default-message{
+    max-height: 12rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

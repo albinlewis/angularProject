@@ -1,0 +1,28 @@
+<div class="col-md-12 d-flex mb-4 mt-4">
+    <div class="ml-auto col-sm-3 p-0">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <input type="text" class="form-control" [placeholder]="'DISEASE.SEARCH' | translate" [(ngModel)]="filterValue" [ngModelOptions]="{standalone: true}">
+        </div>
+    </div>
+</div>
+
+<div>
+    <h3 class="col-md-12" *ngIf="filterValue === ''">{{"DISEASE.ALL_DISEASES" | translate}}:</h3>
+    <h3 class="col-md-12" *ngIf="filterValue !== ''">{{"DISEASE.SEARCH_RESULT" | translate}}: {{filterValue}}</h3>
+</div>
+
+<div>
+    <div class="col-md-12">
+        <ul class="list-group">
+            <li style="cursor:pointer;" class="list-group-item list-group-item-action" *ngFor="let disease of diseases | sort | filter: filterValue"
+                [routerLink]="['/disease', disease._id]">
+                {{disease.name}}
+            </li>
+        </ul>
+    </div>
+</div>

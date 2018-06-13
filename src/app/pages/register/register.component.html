@@ -1,0 +1,48 @@
+<div class="container">
+    <h1>
+        <i class="fas fa-lock"></i> {{"TITLES.REGISTER" | translate}}</h1>
+    <hr>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <label for="name" class="col-sm-2 col-form-label">Name:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" formControlName="name" [placeholder]="'AUTH.ENTER_NAME' | translate">
+                <span *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched" class="help-block">
+                    {{"AUTH.NO_VALID_NAME" | translate}}
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{"AUTH.EMAIL" | translate}}</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="inputEmail3" formControlName="email" [placeholder]="'AUTH.ENTER_EMAIL' | translate">
+                <span *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched" class="help-block">
+                    {{"AUTH.NO_VALID_EMAIL" | translate}}
+                </span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="inputPassword3" formControlName="password" [placeholder]="'AUTH.ENTER_PASSWORD' | translate">
+                <span *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched" class="help-block">
+                    {{'AUTH.NO_VALID_PASSWORD' | translate}}
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" [disabled]="!registerForm.valid">{{"AUTH.REGISTER" | translate}}</button>
+                <span *ngIf="!registerForm.valid && registerForm.touched" class="help-block">
+                    {{"AUTH.INVALID_FORM" | translate}}
+                </span>
+            </div>
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+            <strong>{{"AUTH.OH_SNAP" | translate}}</strong> {{errorResponse}}
+        </div>
+    </form>
+</div>

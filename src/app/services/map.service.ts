@@ -2,25 +2,24 @@ import {Injectable} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
 
-import {LocationService} from './location.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import { ApiService } from './api.service';
 import { IGardener } from '../model/IGardener';
+import { GardenerService } from './gardener.service';
 
 @Injectable()
 export class MapService {
-    public static API_URL: string = environment.API_HOST + '/api/';
-
+    
     lat: number = 49.870221;
     lng: number =  8.664873;
     data: IGardener[] = [];
 
     destinat: any[] = [];
 
-    constructor(private locationservice: LocationService, 
+    constructor(
             private  mapsapi: MapsAPILoader, 
-            private apiService: ApiService) {
+            private gardenerService: GardenerService) {
     }
 
     setCurrentLocation(){
@@ -56,33 +55,33 @@ export class MapService {
     }
 
     sortarray() {
-
         this.data.sort(function (a, b) {
             return a.mapsdata.distance.value - b.mapsdata.distance.value;
         });
-        console.log(this.data);
     }
 
     getUserLocation() {
 
-        return this.apiService.get('/gardeners').toPromise()
-            .then((response: any) => {
-                for (const r of response.data) {
-                    r.mapsdata = { distance: {}, duration: {} };
+        return this.gardenerService.getAllGardeners()
+            .then(gardeners => {
+                for (const g of gardeners) {
+                    g.mapsdata = { distance: {}, duration: {} };
                 }
-                this.data = response.data;
+                this.data = gardeners;
 
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(position => {
+                        console.log(position);
                         this.lat = position.coords.latitude;
                         this.lng = position.coords.longitude;
+                        this.calculateDistance();
                     }, error => {
                         console.error(error);
                     });
-                    this.calculateDistance();
+                    
                 }
 
-            }).catch(err => console.log(err));
+            });
     }
 
 }

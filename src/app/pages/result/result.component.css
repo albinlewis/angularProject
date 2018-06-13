@@ -1,0 +1,8 @@
+.list-group-item-action{
+    cursor: pointer;
+}
+
+.modal-dialog {
+    width: 100%;
+    max-width: 85%;
+}

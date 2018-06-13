@@ -1,0 +1,29 @@
+<agm-map [latitude]="mapservice.lat"
+         [longitude]="mapservice.lng"
+         [zoom]="zoom"
+>
+
+    <agm-marker
+                [latitude]="mapservice.lat"
+                [longitude]="mapservice.lng"
+                [iconUrl]= "'../../assets/icons/icons8-map-pin-50.png'"
+                (markerClick)="test()" >
+
+        <agm-info-window>
+            <h4><strong>{{"GARDENERS.HERE" | translate}}</strong></h4>
+        </agm-info-window>
+    </agm-marker>
+
+
+    <agm-marker *ngFor="let m of mapservice.data"
+                [latitude]="m.latitude"
+                [longitude]="m.longitude"
+                (markerClick)="test()" >
+
+        <agm-info-window>
+            <h4><strong> {{m.name}}!</strong></h4>
+            <p>{{m.adress}}</p>
+            <p>{{m.mapsdata.distance.text}} {{'GARDENERS.DISTANCE' | translate}}</p>
+        </agm-info-window>
+    </agm-marker>
+</agm-map>

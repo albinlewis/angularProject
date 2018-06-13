@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>
+        <i class="fas fa-sign-in-alt"></i> {{"TITLES.LOGIN" | translate}}</h1>
+    <hr>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">{{"AUTH.EMAIL" | translate}}:</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" formControlName="email" id="inputEmail3" [placeholder]="'AUTH.EMAIL' | translate">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">{{"AUTH.PASSWORD" | translate}}:</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" formControlName="password" id="inputPassword3" [placeholder]="'AUTH.PASSWORD' | translate">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" formControlName="loggedIn"> {{"AUTH.REMEMBER_ME" | translate}}
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success">{{"AUTH.LOGIN" | translate}}</button>
+            </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="error">
+            <strong>{{"AUTH.OH_SNAP" | translate}}</strong> {{errorResponse}}
+        </div>
+    </form>
+</div>

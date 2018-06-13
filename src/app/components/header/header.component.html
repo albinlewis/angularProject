@@ -1,0 +1,36 @@
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
+    <a class="navbar-brand" routerLink="/">{{ "TITLE" | translate }}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav">
+                <li routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}"><a class="nav-link" routerLink="/">{{"TITLES.PLANTS" | translate }}<span class="sr-only">(current)</span></a></li>
+                <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/diseases">{{"TITLES.DISEASES" | translate }}</a></li>
+                <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/analyse">{{"TITLES.ANALYSIS" | translate }}</a></li>
+                <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/gardener">{{"TITLES.GARDENERS" | translate }}</a></li>
+
+                <li routerLinkActive="active" *ngIf="authservice.isAuthentificated()" class="nav-item"><a class="nav-link" routerLink="/profile">{{"TITLES.PROFILE" | translate }}</a></li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <ng-template [ngIf]="!authservice.isAuthentificated()">
+                <li class="nav-item"><a class="nav-link" routerLink="/register">{{"TITLES.REGISTER" | translate }}</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/login">{{"TITLES.LOGIN" | translate }}</a></li>
+                </ng-template>
+                <li *ngIf="authservice.isAuthentificated()" style="cursor: pointer;" class="nav-item" (click)="logout()"><a class="nav-link">{{"TITLES.LOGOUT" | translate }}</a></li>
+            </ul>
+            <app-language-switch></app-language-switch>
+        </div><!-- /.navbar-collapse -->
+</nav>
+
+<script>
+    $(document).ready(function () {
+        $(".navbar-nav li a").click(function(event) {
+            $(".navbar-collapse").collapse('hide');
+        });
+    });
+</script>

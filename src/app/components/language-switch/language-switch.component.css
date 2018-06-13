@@ -1,0 +1,13 @@
+select {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+option {
+    color: #000;
+}
+
+select:focus{
+    outline: none;
+}

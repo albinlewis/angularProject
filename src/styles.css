@@ -36,3 +36,47 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.mat-tab-label{
+    width: 50%;
+}
+@media screen and (max-width: 541px){
+    .agm-info-window-content{
+        width: 200px;
+
+    }
+    .mat-tab-body-content .mb-1{
+        width: 226px;
+
+    }
+
+
+
+
+}
+
+
+@media screen and (max-width: 375px){
+    .mat-tab-body-content .mb-1{
+        width: 187px;
+
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .mat-tab-body-content .mb-1 {
+        width: 173px;
+
+    }
+}
+@media screen and (max-width: 320px){
+    .mat-tab-body-content .mb-1{
+        width: 133px;
+        font-size: 14px;
+
+    }
+
+}
+
+
+

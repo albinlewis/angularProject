@@ -24,7 +24,7 @@ router.post('/gardeners', gardenerController.postGardener);
 
 router.post('/notification', notificationController.postNotification);
 
-router.post('/email', emailController.email);
+router.post('/email', middleware.checkBody(["sender", "receiver", "text"]), emailController.email);
 
 router.post('/analysis',
       middleware.checkBody(["crop_id"]),
@@ -38,5 +38,9 @@ router.get('/history', middleware.verifyJWT_MW(), historyController.history);
 // User function: registration, login, deleting and updating
 router.post('/register', middleware.checkBody(['name', 'email', 'password'], true), authController.register);
 router.post('/login', middleware.verifyLoginData, authController.login);
-router.delete('/user', middleware.verifyJWT_MW(), middleware.verifyLoginData, userController.remove);
-
+router.delete('/users', middleware.verifyJWT_MW(), middleware.verifyLoginData, userController.remove);
+router.patch('/users', 
+      middleware.checkBody(['password']), 
+      middleware.verifyJWT_MW(),
+      middleware.verifyLoginData,
+      userController.update );
