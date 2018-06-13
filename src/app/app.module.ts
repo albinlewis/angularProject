@@ -76,8 +76,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MapComponent,
         ListmapComponent,
         StringifyPipe,
-        LanguageSwitchComponent,
-
+        LanguageSwitchComponent
     ],
     imports: [
 
