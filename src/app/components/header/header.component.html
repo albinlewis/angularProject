@@ -8,18 +8,18 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="main-navigation">
             <ul class="navbar-nav">
-                <li routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}"><a class="nav-link" routerLink="/">{{"TITLES.PLANTS" | translate }}<span class="sr-only">(current)</span></a></li>
+                <li routerLinkActive="active" class="nav-item" [routerLinkActiveOptions]="{exact: true}"><a class="nav-link"  routerLink="/">{{"TITLES.PLANTS" | translate }}<span class="sr-only">(current)</span></a></li>
                 <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/diseases">{{"TITLES.DISEASES" | translate }}</a></li>
                 <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/analyse">{{"TITLES.ANALYSIS" | translate }}</a></li>
                 <li routerLinkActive="active" class="nav-item"><a class="nav-link" routerLink = "/gardener">{{"TITLES.GARDENERS" | translate }}</a></li>
 
-                <li routerLinkActive="active" *ngIf="authservice.isAuthentificated()" class="nav-item"><a class="nav-link" routerLink="/profile">{{"TITLES.PROFILE" | translate }}</a></li>
+                <li routerLinkActive="active"  data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="authservice.isAuthentificated()" class="nav-item"><a class="nav-link" routerLink="/profile">{{"TITLES.PROFILE" | translate }}</a></li>
 
             </ul>
             <ul class="navbar-nav ml-auto">
                 <ng-template [ngIf]="!authservice.isAuthentificated()">
-                <li class="nav-item"><a class="nav-link" routerLink="/register">{{"TITLES.REGISTER" | translate }}</a></li>
-                <li class="nav-item"><a class="nav-link" routerLink="/login">{{"TITLES.LOGIN" | translate }}</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/register">{{"TITLES.REGISTER" | translate }}</a></li>
+                <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/login">{{"TITLES.LOGIN" | translate }}</a></li>
                 </ng-template>
                 <li *ngIf="authservice.isAuthentificated()" style="cursor: pointer;" class="nav-item" (click)="logout()"><a class="nav-link">{{"TITLES.LOGOUT" | translate }}</a></li>
             </ul>
