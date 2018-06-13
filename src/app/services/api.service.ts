@@ -1,9 +1,8 @@
 
-import {throwError as observableThrowError,  Observable } from 'rxjs';
+import {Observable, empty, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
-
 
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
@@ -47,9 +46,9 @@ export class ApiService {
   private handleUnauthorizedError(err){
     if(err.status === 401){
       this.authService.logout();
-      return new Observable();
+      return empty();
     }
-    return observableThrowError(err);
+    return throwError(err);
   }
 
 }
