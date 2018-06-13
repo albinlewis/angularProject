@@ -18,19 +18,12 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <ng-template [ngIf]="!authservice.isAuthentificated()">
-                <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/register">{{"TITLES.REGISTER" | translate }}</a></li>
-                <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/login">{{"TITLES.LOGIN" | translate }}</a></li>
+                <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show"><a class="nav-link"  routerLink="/register">{{"TITLES.REGISTER" | translate }}</a></li>
+                <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show"><a class="nav-link" routerLink="/login">{{"TITLES.LOGIN" | translate }}</a></li>
                 </ng-template>
                 <li *ngIf="authservice.isAuthentificated()" style="cursor: pointer;" class="nav-item" (click)="logout()"><a class="nav-link">{{"TITLES.LOGOUT" | translate }}</a></li>
+                <li  data-toggle="collapse" data-target=".navbar-collapse.show"><app-language-switch></app-language-switch></li>
             </ul>
-            <app-language-switch></app-language-switch>
+
         </div><!-- /.navbar-collapse -->
 </nav>
-
-<script>
-    $(document).ready(function () {
-        $(".navbar-nav li a").click(function(event) {
-            $(".navbar-collapse").collapse('hide');
-        });
-    });
-</script>

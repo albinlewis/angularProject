@@ -9,6 +9,6 @@ export class NotificationService {
     }
 
     addPushSubscriber(sub: any) {
-        return this.http.post('/notifications', sub);
+        return this.http.post('/api/notification', sub);
     }
 }
