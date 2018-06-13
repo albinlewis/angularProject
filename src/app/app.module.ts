@@ -41,6 +41,7 @@ import {LocationService} from './services/location.service';
 import { MapComponent } from './garderner/map/map.component';
 import { ListmapComponent } from './garderner/listmap/listmap.component';
 import {MapService} from './services/map.service';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 
@@ -67,6 +68,7 @@ import {MapService} from './services/map.service';
         GardernerComponent,
         MapComponent,
         ListmapComponent,
+        NotificationsComponent,
 
     ],
     imports: [
