@@ -45,6 +45,7 @@ import {MapService} from './services/map.service';
 import { EmailComponent } from './components/email/email.component';
 import { GardenerService } from './services/gardener.service';
 import { StringifyPipe } from './pipes/stringify.pipe';
+import { LanguageSwitchComponent } from './components/language-switch/language-switch.component';
 
 
 export function HttpLoaderFactory(http: HttpClient){
@@ -75,6 +76,7 @@ export function HttpLoaderFactory(http: HttpClient){
         MapComponent,
         ListmapComponent,
         StringifyPipe,
+        LanguageSwitchComponent,
 
     ],
     imports: [

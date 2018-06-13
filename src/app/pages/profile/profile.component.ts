@@ -54,4 +54,11 @@ export class ProfileComponent implements OnInit {
         console.log("No valid password");
       }
   }
+
+  deleteProfile(){
+    this.userDataService.removeUser()
+      .then(() => {
+        this.router.navigate(["/login"]);
+      }).catch(err => console.error(err));
+  }
 }

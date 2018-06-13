@@ -10,7 +10,7 @@
                 (markerClick)="test()" >
 
         <agm-info-window>
-            <h4><strong>You are here</strong></h4>
+            <h4><strong>{{"GARDENERS.HERE" | translate}}</strong></h4>
         </agm-info-window>
     </agm-marker>
 
@@ -23,7 +23,7 @@
         <agm-info-window>
             <h4><strong> {{m.name}}!</strong></h4>
             <p>{{m.adress}}</p>
-            <p>{{m.mapsdata.distance.text}} far!</p>
+            <p>{{m.mapsdata.distance.text}} {{'GARDENERS.DISTANCE' | translate}}</p>
         </agm-info-window>
     </agm-marker>
 </agm-map>
