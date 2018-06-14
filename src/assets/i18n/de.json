@@ -88,9 +88,9 @@
         "NOT_FINISHED": "Nicht beendet"
     },
     "GARDENERS": {
-        "NEARBY": "Gärtnerein in der Nähe",
+        "NEARBY": "Gärtnereien in der Nähe",
         "MAP": "Karte",
-        "LIST": "Gärtnerein",
+        "LIST": "Gärtnereien",
         "DISTANCE": "entfernt",
         "TIME": "Minuten",
         "HERE": "Du bist hier"
