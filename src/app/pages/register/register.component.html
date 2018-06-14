@@ -7,7 +7,7 @@
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">Name:</label>
             <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" formControlName="name" [placeholder]="'AUTH.ENTER_NAME' | translate">
+                <input type="text" class="form-control" id="name" autocomplete="name" formControlName="name" [placeholder]="'AUTH.ENTER_NAME' | translate">
                 <span *ngIf="!registerForm.get('name').valid && registerForm.get('name').touched" class="help-block">
                     {{"AUTH.NO_VALID_NAME" | translate}}
                 </span>
@@ -16,7 +16,7 @@
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">{{"AUTH.EMAIL" | translate}}</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="inputEmail3" formControlName="email" [placeholder]="'AUTH.ENTER_EMAIL' | translate">
+                <input type="email" class="form-control" autocomplete="email" id="inputEmail3" formControlName="email" [placeholder]="'AUTH.ENTER_EMAIL' | translate">
                 <span *ngIf="!registerForm.get('email').valid && registerForm.get('email').touched" class="help-block">
                     {{"AUTH.NO_VALID_EMAIL" | translate}}
                 </span>
@@ -25,7 +25,7 @@
         <div class="form-group row">
             <label for="inputPassword3" class="col-sm-2 col-form-label">Password:</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" id="inputPassword3" formControlName="password" [placeholder]="'AUTH.ENTER_PASSWORD' | translate">
+                <input type="password" class="form-control" autocomplete="new-password" id="inputPassword3" formControlName="password" [placeholder]="'AUTH.ENTER_PASSWORD' | translate">
                 <span *ngIf="!registerForm.get('password').valid && registerForm.get('password').touched" class="help-block">
                     {{'AUTH.NO_VALID_PASSWORD' | translate}}
                 </span>
