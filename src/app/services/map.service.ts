@@ -39,15 +39,12 @@ export class MapService {
                 travelMode: google.maps.TravelMode.DRIVING
             }, (response, status) => {
                 if (status = google.maps.DistanceMatrixStatus.OK) {
-                    console.log(response);
                     let i = 0;
                     for (const d of this.data) {
-
                         d.mapsdata = response.rows[0].elements[i];
                         i++;
                     }
                     this.sortarray();
-
                 }
             });
         });
@@ -71,7 +68,6 @@ export class MapService {
 
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(position => {
-                        console.log(position);
                         this.lat = position.coords.latitude;
                         this.lng = position.coords.longitude;
                         this.calculateDistance();

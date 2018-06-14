@@ -6,8 +6,7 @@
     <agm-marker
                 [latitude]="mapservice.lat"
                 [longitude]="mapservice.lng"
-                [iconUrl]= "'../../assets/icons/icons8-map-pin-50.png'"
-                (markerClick)="test()" >
+                [iconUrl]= "'../../assets/icons/icons8-map-pin-50.png'">
 
         <agm-info-window>
             <h4><strong>{{"GARDENERS.HERE" | translate}}</strong></h4>
@@ -17,8 +16,7 @@
 
     <agm-marker *ngFor="let m of mapservice.data"
                 [latitude]="m.latitude"
-                [longitude]="m.longitude"
-                (markerClick)="test()" >
+                [longitude]="m.longitude">
 
         <agm-info-window>
             <h4><strong> {{m.name}}!</strong></h4>

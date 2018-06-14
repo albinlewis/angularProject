@@ -10,19 +10,10 @@ import {MapService} from '../../../services/map.service';
 })
 export class MapComponent implements OnInit {
 
-    title = 'My first AGM project';
-    lat: number;
-    lng: number;
     zoom = 11;
 
     constructor( public mapservice: MapService) {
     }
 
-    ngOnInit() {
-
-    }
-
-    test() {
-        console.log(this.lat);
-    }
+    ngOnInit() {}
 }
