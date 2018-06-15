@@ -1,8 +1,10 @@
 <h2 class="col-md-12">{{"TITLES.PROFILE" | translate}}</h2>
 <hr>
-
+<div *ngIf="errorMessage" class="col-md-12 alert alert-danger" role="alert">
+    {{errorMessage | translate}}!
+</div>
 <div class="col-md-12">
-    <h3 class="mt-5">{{"PROFILE.INFORMATION" | translate}}</h3>
+    <h3 class="mt-3">{{"PROFILE.INFORMATION" | translate}}</h3>
     <form (ngSubmit)="updateProfile()">
         <div class="form-group row">
             <label for="name" class="col-sm-2 col-form-label">{{"PROFILE.NAME" | translate}}:</label>
@@ -55,6 +57,7 @@
             </tr>
         </tbody>
     </table>
+    <h5 class="pl-2" *ngIf="history.length <= 0">{{"PROFILE.NO_ANALYSIS" | translate}}</h5>
 </div>
 
 <div class="modal" id="confirm_dialog" tabindex="-1" role="dialog" aria-hidden="true">
@@ -67,8 +70,8 @@
                 </button>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger">{{"PROFILE.DELETE_PROFILE" | translate}}</button>
-                <button type="button" (click)="deleteProfile()" class="btn btn-secondary" data-dismiss="modal">{{"CONTROLS.CANCEL" | translate}}</button>
+                <button type="button" (click)="deleteProfile()" class="btn btn-danger"  data-dismiss="modal">{{"PROFILE.DELETE_PROFILE" | translate}}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{"CONTROLS.CANCEL" | translate}}</button>
             </div>
         </div>
     </div>
