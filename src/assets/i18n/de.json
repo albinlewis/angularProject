@@ -11,6 +11,13 @@
         "GARDENERS": "Gärtnereien",
         "LOGOUT": "Ausloggen"
     },
+    "LOGOUT": {
+        "SUCCESS": "Erfolgreich abgemeldet!",
+        "UPDATE": "Profil wurde erfolgreich geändert. Bitte erneut anmelden!",
+        "DELETE": "Profil wurde erfolgreich gelöscht. Tut uns leid sie gehen zu lassen.",
+        "REGISTERED": "Sie wurden erfolgreich registriert. Sie können sich nun anmelden.",
+        "TIMEOUT": "Sie wurden ausgeloggt, weil ihre Sitzung abgelaufen ist!"
+    },
     "AUTH":{
         "NAME":"Name",
         "EMAIL":"Email",
@@ -22,6 +29,7 @@
         "NO_VALID_EMAIL": "Bitte gültige Email Adresse eingeben",
         "ENTER_PASSWORD": "Wähle ein Passwort",
         "NO_VALID_PASSWORD": "Bitte ein gültiges Passwort eintragen",
+        "BAD_CREDENTIALS": "Fasche Anmeldedaten",
         "INVALID_FORM": "Ungültiges Formular",
         "REGISTER": "Registrieren",
         "LOGIN": "Anmelden",
@@ -85,7 +93,10 @@
         "DATE": "Datum",
         "PLANT_ID": "Pflanzen Id",
         "FINISHED": "Beendet",
-        "NOT_FINISHED": "Nicht beendet"
+        "NOT_FINISHED": "Nicht beendet",
+        "UPDATE_FAILED": "Profil konnte nicht aktualisiert werden",
+        "DELETE_FAILED": "Profil konnte nicht gelöscht werden.",
+        "NO_ANALYSIS": "Sie haben noch keine Analysen getätigt."
     },
     "GARDENERS": {
         "NEARBY": "Gärtnereien in der Nähe",
