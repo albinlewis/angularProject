@@ -85,7 +85,7 @@ function getOptionsFromRequest(req, imagePath, imageName) {
         },
         formData: {
             crop_id: req.body.crop_id,
-            notification_url: req.body.notification_url || config.base_url,
+            notification_url: config.base_url + "/api/notifications/result",
             notification_email: req.body.notification_email,
             //notification_token: req.body.notification_token,
             device_type: req.body.device_type || 'android',

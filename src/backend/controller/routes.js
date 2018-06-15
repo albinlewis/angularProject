@@ -24,7 +24,8 @@ router.get('/gardeners', gardenerController.getGardeners);
 router.get('/gardeners/:id', gardenerController.getGardener);
 router.post('/gardeners', gardenerController.postGardener);
 
-router.post('/notification', notificationController.postNotification);
+router.post('/notificaions/result', notificationController.receiveFromApi);
+router.post('/notifications', notificationController.postNotification);
 
 router.post('/email', middleware.checkBody(["sender", "receiver", "subject", "message"]), emailController.email);
 
