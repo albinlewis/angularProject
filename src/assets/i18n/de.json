@@ -66,7 +66,9 @@
         "SENDER": "Sender",
         "RECEIVER": "Empfänger",
         "MESSAGE": "Nachricht",
-        "ATTACHMENT": "Anhang"
+        "ATTACHMENT": "Anhang",
+        "SUCCESS": "Email wurde erfolgreich versendet!",
+        "FAILED": "Email konnte nicht versendet werden!"
     },
     "RESULT": {
         "FOR": "Ergebnis für",
