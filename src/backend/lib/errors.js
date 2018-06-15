@@ -50,19 +50,20 @@ class DBError extends PseError{
 }
 
 /** Sends errors to client */
-function sendError(res, err, status=400){
+function sendError(res, err, status=null){
 
     let body = {
         success: false
     };
 
     if (err instanceof PseError){
-        status = err.status || status;
+        status = status || err.status || 400;
         body.error = {
             name: err.name,
             message: err.message
         };
     }else{
+        status = 400;
         body.error = err;
     }
 

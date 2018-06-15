@@ -15,6 +15,7 @@ function update(req, res) {
         user = user.toObject();
         delete user.password;
         res.send({
+            success: true,
             data: user
         });
     }).catch(err => {

@@ -99,7 +99,6 @@ function verifyJWT_MW(required=true) {
                 }).catch(err => {
                     let invalidError = new errors.AuthError("Invalid bearer token!");
                     errors.sendError(res, invalidError);
-                    winston.error(err);
                 });
         }
     };
@@ -137,7 +136,7 @@ function verifyLoginData(req, res, next) {
                 req.user = user;
                 next();
             }).catch(err => {
-                errors.sendError(res, err);
+                errors.sendError(res, err, 400);
             });
 
     } catch (err) {
