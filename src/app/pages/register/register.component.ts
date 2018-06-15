@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
         this.authservice.register(this.registerForm.value)
             .then(message => {
                 this.registerForm.reset();
-                this.route.navigate(['/login']);
+                this.route.navigate(['/login'], {queryParams: {reason: 'registered'}});
             }).catch(err => {
                 this.snackBar.open('Registration', 'failed', {
                     duration: 3000,

@@ -3,6 +3,12 @@
         <i class="fas fa-sign-in-alt"></i> {{"TITLES.LOGIN" | translate}}</h1>
     <hr>
 
+    <div class="alert alert-success" *ngIf="logout && !logoutReason">{{"LOGOUT.SUCCESS" | translate}}</div>
+    <div class="alert alert-success" *ngIf="logout && logoutReason === 'update'">{{"LOGOUT.UPDATE" | translate}}</div>
+    <div class="alert alert-success" *ngIf="logout && logoutReason === 'delete'">{{"LOGOUT.DELETE" | translate}}</div>
+    <div class="alert alert-success" *ngIf="logoutReason === 'registered'">{{"LOGOUT.REGISTERED" | translate}}</div>
+    <div class="alert alert-danger" *ngIf="logout && logoutReason === 'timeout'">{{"LOGOUT.TIMEOUT" | translate}}</div>
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">{{"AUTH.EMAIL" | translate}}:</label>

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {AuthService} from '../../services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
@@ -14,7 +14,13 @@ export class LoginComponent implements OnInit {
     errorResponse: string;
     error: boolean = false;
 
-    constructor(private authservice: AuthService, public snackBar: MatSnackBar, private route: Router) {
+    logout: boolean = false;
+    logoutReason: string;
+
+    constructor(private authservice: AuthService, 
+            public snackBar: MatSnackBar, 
+            private router: Router,
+            private route: ActivatedRoute) {
     }
 
     ngOnInit() {
@@ -25,6 +31,11 @@ export class LoginComponent implements OnInit {
                 'loggedIn': new FormControl(null)
             }
         );
+
+        this.route.queryParams.subscribe(params => {
+            this.logout = 'true' === params["logout"];
+            this.logoutReason = params["reason"];
+        })
     }
 
     onSubmit() {
@@ -33,15 +44,13 @@ export class LoginComponent implements OnInit {
                 this.snackBar.open('Login', 'succeed', {
                     duration: 3000,
                 });
-                this.route.navigate(['/profile']);
+                this.router.navigate(['/profile']);
             }).catch(err => {
                 this.snackBar.open('Login', 'failed', {
                     duration: 3000,
                 });
                 this.error = true;
                 this.errorResponse  = err.error.error.message;
-
-                console.log(err);
             });
     }
 
