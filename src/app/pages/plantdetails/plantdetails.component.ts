@@ -37,6 +37,6 @@ export class PlantdetailsComponent implements OnInit, OnDestroy {
     }
 
     onShowAnalyse() {
-        this.router.navigate(['/result']);
+        this.router.navigate(['/analyse'], {queryParams: {plant: this.plant._id}});
     }
 }
