@@ -27,7 +27,9 @@
         <button type="button" type="submit" class="btn btn-primary btn-lg">{{"ANALYSIS.ANALYSE" | translate}}</button>
     </div>
 </form>
-
+<div class="col-md-8 alert alert-danger mx-auto" style="display: none;" #error>
+    {{"ANALYSIS.NO_RESULT" | translate}}
+</div>
 <div class="cover" #loader>
     <div class="loader"></div>
     <h3>{{"ANALYSIS.PROGRESS" | translate}}</h3>

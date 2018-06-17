@@ -81,7 +81,8 @@
         "SELECT_IMAGE": "Foto auswählen / machen",
         "TO_EMAIL": "Sende Ergbnis an meine Email",
         "ANALYSE": "Analysieren",
-        "PROGRESS": "Ihr Foto wird analysiert. Bitte warten."
+        "PROGRESS": "Ihr Foto wird analysiert. Bitte warten.",
+        "NO_RESULT": "Tut uns leid, aber wir konnten kein Ergebnis für ihre Analyse erhalten. Bitte versuchen sie es später noch einmal",
     },
     "PROFILE": {
         "INFORMATION": "Information",

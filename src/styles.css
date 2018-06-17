@@ -28,6 +28,14 @@ body {
   animation: spin 2s linear infinite;
 }
 
+.modal-dialog{
+    margin: 0 auto;
+}
+
+.modal {
+    padding: 0 !important;
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
@@ -43,11 +51,11 @@ body {
 }
 @media screen and (max-width: 541px){
     .agm-info-window-content{
-        width: 200px;
+        width: 12.5rem;
 
     }
     .mat-tab-body-content .mb-1{
-        width: 226px;
+        width: 14.125rem;
 
     }
 
@@ -59,22 +67,21 @@ body {
 
 @media screen and (max-width: 375px){
     .mat-tab-body-content .mb-1{
-        width: 187px;
-
+        width: 11.68rem;
     }
 
 }
 
 @media screen and (max-width: 360px) {
     .mat-tab-body-content .mb-1 {
-        width: 173px;
+        width: 10.8rem;
 
     }
 }
 @media screen and (max-width: 320px){
     .mat-tab-body-content .mb-1{
-        width: 133px;
-        font-size: 14px;
+        width: 8.3rem;
+        font-size: 1em;
 
     }
 

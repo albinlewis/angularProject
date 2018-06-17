@@ -81,6 +81,7 @@
         "SELECT_IMAGE": "Choose / Make a photo",
         "TO_EMAIL": "Send the result to my email",
         "ANALYSE": "Analyse",
+        "NO_RESULT": "Sorry we couldnt get a result for your image in time. Please try again later.",
         "PROGRESS": "Your Analysis is progressing. Please wait."
     },
     "PROFILE": {

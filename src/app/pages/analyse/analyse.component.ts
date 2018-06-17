@@ -24,6 +24,7 @@ export class AnalyseComponent implements OnInit {
     @ViewChild(NgForm) analysisForm:NgForm;
     @ViewChild('image') image;
     @ViewChild('loader') loader;
+    @ViewChild('error') error:ElementRef;
 
     constructor(private pService: PlantService, 
         private aService: AnalysisService,
@@ -69,6 +70,7 @@ export class AnalyseComponent implements OnInit {
                 })
                 .catch(err => {
                     this.stopAnalysis();
+                    this.error.nativeElement.style.display = 'block';
                     console.error(err);
                 });
         }
