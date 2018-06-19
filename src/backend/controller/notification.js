@@ -39,7 +39,8 @@ function sendPushNotification(job){
         }
     };
     winston.info("Sending push notification!");
-    pushWeb.sendNotification(job.subscription, JSON.stringify(notificationPayload))
+    console.log(job.subscription);
+    pushWeb.sendNotification(JSON.parse(job.subscription), JSON.stringify(notificationPayload))
         .catch(err => winston.error(err));
 }
 
@@ -70,7 +71,7 @@ async function receiveFromApi(req, res){
                 job.finish = true;
                 
                 job = await job.save();
-                console.log(job);
+                console.log(job._id + " fetched and saved");
                 if(job.subscription) sendPushNotification(job);
             }else{
                 winston.error(`Response statuscode of api is ${apiResponse.statusCode}`);
