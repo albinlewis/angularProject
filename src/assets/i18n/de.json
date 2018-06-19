@@ -82,7 +82,7 @@
         "TO_EMAIL": "Sende Ergbnis an meine Email",
         "ANALYSE": "Analysieren",
         "PROGRESS": "Ihr Foto wird analysiert. Bitte warten.",
-        "NO_RESULT": "Tut uns leid, aber wir konnten kein Ergebnis für ihre Analyse erhalten. Bitte versuchen sie es später noch einmal",
+        "NO_RESULT": "Tut uns leid, aber wir konnten kein Ergebnis für ihre Analyse erhalten. Bitte versuchen sie es später noch einmal"
     },
     "PROFILE": {
         "INFORMATION": "Information",
@@ -99,7 +99,8 @@
         "NOT_FINISHED": "Nicht beendet",
         "UPDATE_FAILED": "Profil konnte nicht aktualisiert werden",
         "DELETE_FAILED": "Profil konnte nicht gelöscht werden.",
-        "NO_ANALYSIS": "Sie haben noch keine Analysen getätigt."
+        "NO_ANALYSIS": "Sie haben noch keine Analysen getätigt.",
+        "MEMBER_SINCE": "Mitglied seit"
     },
     "GARDENERS": {
         "NEARBY": "Gärtnereien in der Nähe",

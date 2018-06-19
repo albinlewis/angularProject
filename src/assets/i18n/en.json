@@ -100,7 +100,8 @@
         "CONFIRM_QUESTION": "Do you really want to delete your profile?",
         "UPDATE_FAILED": "Failed to update your profile",
         "DELETE_FAILED": "Failed to delete your profie",
-        "NO_ANALYSIS": "No analysis yet executed."
+        "NO_ANALYSIS": "No analysis yet executed.",
+        "MEMBER_SINCE": "Member since"
     },
     "GARDENERS": {
         "NEARBY": "Nearby gardeners",
