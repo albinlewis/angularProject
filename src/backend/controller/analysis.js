@@ -46,7 +46,7 @@ function analysis(req, res) {
                                                 success: true,
                                                 data: jobId
                                             });
-                                            
+
                                             completeJob(jobId, data.body);
                                             clearInterval(interval);
                                         }
@@ -142,16 +142,16 @@ function addJob(imageName, plantJob, resultIdJob, user = null) {
 
 function completeJob(id, result) {
     Job.findByIdAndUpdate(id, {
-            $set: {
-                result: result,
-                finish: true
-            }
-        }, {
-            safe: true,
-            upsert: true
-        }).catch(err => {
-            winston.error('Could not complete Job', err);
-        });
+        $set: {
+            result: result,
+            finish: true
+        }
+    }, {
+        safe: true,
+        upsert: true
+    }).catch(err => {
+        winston.error('Could not complete Job', err);
+    });
 }
 
 function addToUser(userId, jobId) {
@@ -174,14 +174,35 @@ function addToUser(userId, jobId) {
 function getJob(req, res) {
     let id = req.params.id;
 
-    Job.findById(id).populate('result.disease_id', ['name', 'symptoms']).populate('plant',['name', 'image_url'])
+    Job.findById(id).populate('result.disease_id', ['name', 'symptoms']).populate('plant', ['name', 'image_url'])
         .then(job => {
-            res.status(200);
-            res.send({
-                success: true,
-                data: job
-            });
+            if (job.finish === true) {
+                res.send({
+                    success: true,
+                    data: job
+                });
+            } else {
+                getResults(job.resultId)
+                    .then(response => {
+                        if (response.statusCode === 204) throw new errors.TimeoutError('Results are stil not available');
+                        else {
+                            job.result = response.body;
+                            job.finish = true;
+                            job.save().then(job => {
+                                Job.findById(job._id).populate('result.disease_id', ['name', 'symptoms']).populate('plant', ['name', 'image_url'])
+                                    .then(job => {
+                                        res.send({
+                                            success: true,
+                                            data: job
+                                        })
+                                    })
+                            });
+                        }
+                    });
+            }
         }).catch(err => {
+            console.log("Test");
+            winston.error(err);
             errors.sendError(res, err);
         });
 

@@ -3,7 +3,22 @@ const winston = require('winston');
 const User = require('../model/user');
 const errors = require('../lib/errors');
 
-// ToDo: Implement profile update
+function getUser(req, res){
+    User.findById(req.tokenData._id)
+        .then(user => {
+            user = user.toObject();
+            delete user.password;
+            res.send({
+                success: true,
+                data: user
+            })
+        }).catch(err => {
+            winston.error(err);
+            errors.sendError(err);
+        });
+}
+
+
 function update(req, res) {
     let update = req.body;
     delete update.email;
@@ -41,6 +56,7 @@ function remove(req, res) {
 }
 
 module.exports = {
+    getUser,
     update,
     remove
 };

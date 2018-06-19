@@ -1,17 +1,18 @@
 const nodemailer = require('nodemailer');
 const logger = require('winston');
+const errors = require('../lib/errors');
 
 function email(req, res) {
 
-    var sender = req.body.sender;
-    var receiver = req.body.receiver;
-    var subject = req.body.subject;
-    var msg = req.body.message;
+    let sender = req.body.sender;
+    let receiver = req.body.receiver;
+    let subject = req.body.subject;
+    let msg = req.body.message;
 
 
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
-    nodemailer.createTestAccount((err, account) => {
+    nodemailer.createTestAccount().then(account => {
         // create reusable transporter object using the default SMTP transport
         let transporter = nodemailer.createTransport({
             host: 'smtp.ethereal.email',
@@ -32,12 +33,14 @@ function email(req, res) {
         };
 
         // send the E-mail with sendMail using the defined transporter
-        transporter.sendMail(mailOptions, (err, info) => {
-            if(err) {
-                logger.error(err);
-            }
-            res.send(info);
-        });
+        transporter.sendMail(mailOptions)
+            .then(info => res.send({
+                success: true,
+                data: info
+            }));
+    }).catch(err => {
+        winston.error(err);
+        errors.sendError(err);
     });
 
 }

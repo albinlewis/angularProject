@@ -24,7 +24,8 @@ router.get('/gardeners', gardenerController.getGardeners);
 router.get('/gardeners/:id', gardenerController.getGardener);
 router.post('/gardeners', gardenerController.postGardener);
 
-router.post('/notificaions/result', notificationController.receiveFromApi);
+router.post('/notifications/result', notificationController.receiveFromApi);
+router.post('/notifications/result/:id', notificationController.receiveFromApi);
 router.post('/notifications', notificationController.postNotification);
 
 router.post('/email', middleware.checkBody(["sender", "receiver", "subject", "message"]), emailController.email);
@@ -40,10 +41,14 @@ router.get('/result/:id',
 
 router.get('/history', middleware.verifyJWT_MW(), historyController.history);
 
-// User function: registration, login, deleting and updating
+// Authentification function: registration, login
 router.post('/register', middleware.checkBody(['name', 'email', 'password'], true), authController.register);
 router.post('/login', middleware.verifyLoginData, authController.login);
 
+// User functions - Verification by AuthToken
+router.get('/users',
+    middleware.verifyJWT_MW(),
+    userController.getUser);
 
 router.post('/users/delete',
     middleware.verifyJWT_MW(),
