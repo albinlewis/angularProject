@@ -10,58 +10,53 @@ const router = require('express').Router(),
     randomstring = require('randomstring');
 
 // Request from the User to our Server
-function analysis(req, res) {
+async function analysis(req, res) {
     let cropId = req.body.crop_id;
-
+    const subscription = req.body.subscription;
+    console.log(subscription);
     let jobImage = req.files.image_file;
     let extension = req.files.image_file.name.split('.')[1];
     let filename = `${randomstring.generate()}.${extension}`;
     let relImagePath = '../assets/analysis/' + filename;
     let imagePath = path.resolve(__dirname, relImagePath);
+    try {
+        await moveFile(jobImage, imagePath);
 
-    moveFile(jobImage, imagePath)
-        .then(path => {
-            const options = getOptionsFromRequest(req, path, filename);
-            getRequestId(options)
-                .then(request_id => {
-                    winston.info(`result request_id ${request_id}`);
-                    addJob(filename, cropId, request_id, req.tokenData)
-                        .then(jobId => {
-                            let counter = config.api.reload_counter;
-                            let sent = false;
-                            let interval = setInterval(() => {
-                                getResults(request_id)
-                                    .then(data => {
-                                        if (counter < 0) {
-                                            winston.error(`Could not get result ${request_id} in time.`);
-                                            clearInterval(interval);
-                                            throw new errors.ResultTimeOutError('Result could not be fetched in time!');
-                                        } else if (data.statusCode === 204) {
-                                            winston.info(`Wait for result ${request_id}`);
-                                            counter--;
-                                        } else {
-                                            sent = true;
-                                            res.status(200);
-                                            res.send({
-                                                success: true,
-                                                data: jobId
-                                            });
+        const options = getOptionsFromRequest(req, imagePath, filename);
+        const request_id = (await rp(options)).request_id;
+        winston.info(`result request_id ${request_id}`);
 
-                                            completeJob(jobId, data.body);
-                                            clearInterval(interval);
-                                        }
-                                    }).catch(err => {
-                                        winston.error(err);
-                                        errors.sendError(res, err, 500);
-                                    });
-                            }, config.api.reload_timer);
-                        });
+        const jobId = await addJob(filename, cropId, request_id, req.tokenData, subscription);
+        if (subscription) {
+            res.send({
+                success: true,
+                method: 'push',
+                data: jobId
+            });
+        } else {
+            const response = await getResults(request_id);
 
+            if (response.statusCode === 204) {
+                winston.error(`Could not get result ${request_id}.`);
+                res.send({
+                    success: false,
+                    method: 'poll',
+                    data: jobId
                 });
-        }).catch(err => {
-            winston.error(err);
-            errors.sendError(res, err, 500);
-        });
+            } else {
+                res.status(200);
+                res.send({
+                    success: true,
+                    method: 'poll',
+                    data: jobId
+                });
+                completeJob(jobId, response.body);
+            }
+        }
+    } catch (err) {
+        winston.error(err);
+        errors.sendError(res, err, 500);
+    };
 }
 
 // Move imagefile from request into folder
@@ -101,12 +96,6 @@ function getOptionsFromRequest(req, imagePath, imageName) {
     };
 }
 
-// Get Request id Promise
-function getRequestId(options) {
-    return rp(options)
-        .then(res => res.request_id);
-}
-
 // Get results by request id
 function getResults(request_id) {
     const options = {
@@ -118,15 +107,16 @@ function getResults(request_id) {
         json: true,
         resolveWithFullResponse: true,
     };
-    return rp(options).then(res => res);
+    return rp(options);
 }
 
-function addJob(imageName, plantJob, resultIdJob, user = null) {
+function addJob(imageName, plantJob, resultIdJob, user = null, subscription = null) {
     // new Job
     let job = new Job({
         image_url: '/uploads/analysis/' + imageName,
         plant: plantJob,
-        resultId: resultIdJob
+        resultId: resultIdJob,
+        subscription: subscription
     });
 
     // new job in the DB
@@ -170,41 +160,55 @@ function addToUser(userId, jobId) {
             winston.warn("addToUser: " + err);
         });
 }
-
-function getJob(req, res) {
+/**
+ * Get the job by params id
+ * 
+ * If job is already finished send to client
+ * Else try to get the result from the api
+ *      If result is now available save results to object and return to client
+ *      Else return TimeOutError
+ * 
+ * @param {*} req Request
+ * @param {*} res Response
+ */
+async function getJob(req, res) {
     let id = req.params.id;
+    try {
+        let job = await Job.findById(id).populate('result.disease_id', ['name', 'symptoms']).populate('plant', ['name', 'image_url']);
 
-    Job.findById(id).populate('result.disease_id', ['name', 'symptoms']).populate('plant', ['name', 'image_url'])
-        .then(job => {
-            if (job.finish === true) {
+        if (!job) throw errors.DBError('Job could not be found');
+
+        if (job.finish) {
+            res.send({
+                success: true,
+                data: job
+            });
+        } else {
+
+            const apiResponse = await getResults(job.resultId);
+
+            if (apiResponse.statusCode === 204) {
+                res.send({
+                    success: false,
+                    data: job._id
+                });
+            }
+            else {
+                job.result = apiResponse.body;
+                job.finish = true;
+                job = await job.save();
+                job = await Job.findById(job._id).populate('result.disease_id', ['name', 'symptoms']).populate('plant', ['name', 'image_url'])
+
                 res.send({
                     success: true,
                     data: job
                 });
-            } else {
-                getResults(job.resultId)
-                    .then(response => {
-                        if (response.statusCode === 204) throw new errors.TimeoutError('Results are stil not available');
-                        else {
-                            job.result = response.body;
-                            job.finish = true;
-                            job.save().then(job => {
-                                Job.findById(job._id).populate('result.disease_id', ['name', 'symptoms']).populate('plant', ['name', 'image_url'])
-                                    .then(job => {
-                                        res.send({
-                                            success: true,
-                                            data: job
-                                        })
-                                    })
-                            });
-                        }
-                    });
             }
-        }).catch(err => {
-            console.log("Test");
-            winston.error(err);
-            errors.sendError(res, err);
-        });
+        }
+    } catch (err) {
+        winston.error(err);
+        errors.sendError(res, err);
+    }
 
 }
 

@@ -26,6 +26,16 @@ const jobSchema = new mongoose.Schema({
             }
         ]
     },
+    subscription: {
+        type: {
+            endpoint: String,
+            keys: {
+                auth: String,
+                p256dh: String
+            }
+        },
+        default: null
+    },
     finish: {
         type: Boolean,
         default: false

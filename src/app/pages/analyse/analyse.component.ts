@@ -6,6 +6,7 @@ import { AnalysisService } from '../../services/analysis.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
     selector: 'app-analyse',
@@ -16,6 +17,8 @@ import { UserService } from '../../services/user.service';
 export class AnalyseComponent implements OnInit {
     url = '';
     showImage = false;
+    push: boolean = false;
+
     notification_email: string = "";
     plants: IPlant[] = [];
 
@@ -23,12 +26,12 @@ export class AnalyseComponent implements OnInit {
 
     @ViewChild(NgForm) analysisForm:NgForm;
     @ViewChild('image') image;
-    @ViewChild('loader') loader;
     @ViewChild('error') error:ElementRef;
 
     constructor(private pService: PlantService, 
         private aService: AnalysisService,
         public userService: UserService,
+        private notificationService: NotificationService,
         private router: Router,
         private route: ActivatedRoute) {
 
@@ -36,7 +39,6 @@ export class AnalyseComponent implements OnInit {
 
     ngOnInit() {
         if(this.userService.getUser()) this.notification_email = this.userService.getUser().email;
-        this.stopAnalysis();
         this.getPlants();
     }
 
@@ -51,25 +53,25 @@ export class AnalyseComponent implements OnInit {
         });
     }
 
-
-    startAnalysis(){this.loader.nativeElement.style.display = 'flex';}
-    stopAnalysis(){this.loader.nativeElement.style.display = 'none';}
-
     onSubmit(){
         let element = this.image.nativeElement;
         if(this.selected && element.files && element.files[0]){
-            this.startAnalysis();
             const formData = new FormData();
             formData.append('image_file', element.files[0]);
             formData.append('crop_id', this.selected.toString());
             formData.append('notification_email', this.notification_email);
+            if(this.notificationService.subscription) 
+                formData.append('subscription', JSON.stringify(this.notificationService.subscription));
+                
             this.aService.startAnalysis(formData)
                 .then(res => {
-                    this.stopAnalysis();
-                    this.router.navigate(["result", res.data]);
+                    if(res.method === 'poll'){
+                        this.router.navigate(["result", res.data]);
+                    }else{
+                        this.push = true;
+                    }
                 })
                 .catch(err => {
-                    this.stopAnalysis();
                     this.error.nativeElement.style.display = 'block';
                     console.error(err);
                 });

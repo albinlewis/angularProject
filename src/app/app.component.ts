@@ -9,13 +9,12 @@ import {NotificationService} from './services/notification.service';
     styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-    readonly VAPID_PUBLIC_KEY = 'BNaGf2POUom9qpnI45OSE8gmzjeqdvk-4HoV7Is-3RjPeCWMtgcukwEVPp0K2xMdfmSrGCS2be5rFIYX2qRwoEc';
+    
 
     constructor(translate: TranslateService,
-            private notificationService: NotificationService) {
+        private notificationService: NotificationService) {
         translate.setDefaultLang('en');
         translate.use('en');
-        // this.subscribeToNotifications();
+        this.notificationService.subscribeToNotifications();
     }
-
 }

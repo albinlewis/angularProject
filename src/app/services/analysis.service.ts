@@ -10,23 +10,11 @@ export class AnalysisService{
   constructor(private apiService: ApiService) { }
 
   startAnalysis(data: FormData): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.apiService.post('analysis', data)
-        .subscribe(
-          (res: any) => resolve(res),
-          (err: any) => reject(err)
-        )
-    });
+    return this.apiService.post('analysis', data).toPromise();
   }
 
-  getResult(id: string): Promise<IJob>{
-    return new Promise<IJob>((resolve, reject) => {
-      this.apiService.get('result/' + id)
-        .subscribe(
-          (res: any) => resolve(res.data),
-          (err: any) => reject(err)
-        )
-    });
+  getResult(id: string): Promise<any>{
+    return this.apiService.get('result/' + id).toPromise();
   }
 
   getHistory(){

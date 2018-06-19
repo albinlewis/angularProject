@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AnalysisService } from '../../services/analysis.service';
 import { IJob } from '../../model/IJob';
 import { Subscription } from 'rxjs';
@@ -18,16 +18,19 @@ export class ResultComponent implements OnInit {
     job: IJob;
     sub: Subscription;
     apiHost: string = environment.API_HOST;
-    gardeners: IGardener[] =  [];
+    gardeners: IGardener[] = [];
 
+
+    @ViewChild('loader') loader;
     @ViewChild("email") emailModal: EmailComponent;
 
-    constructor(private router: Router, 
-        private route: ActivatedRoute, 
+    constructor(private router: Router,
+        private route: ActivatedRoute,
         private aService: AnalysisService,
         private gService: GardenerService) { }
 
     ngOnInit() {
+        this.stopAnalysis();
         this.sub = this.route.params.subscribe((params: Params) => {
             let id = params['id'];
             this.getResult(id);
@@ -35,21 +38,32 @@ export class ResultComponent implements OnInit {
         this.getGardeners();
     }
 
-    getResult(id:string){
-        this.aService.getResult(id)
-            .then(job => {
-                this.job = job;
-            })
-            .catch(err => console.log(err));
+    startAnalysis() { this.loader.nativeElement.style.display = 'flex'; }
+    stopAnalysis() { this.loader.nativeElement.style.display = 'none'; }
+
+    getResult(id: string) {
+        let interval = setInterval(() => {
+            this.aService.getResult(id)
+                .then(res => {
+                    if(res.success){
+                        this.job = res.data;
+                        this.stopAnalysis();
+                        clearInterval(interval);
+                    }else{
+                        this.startAnalysis();
+                    }
+                })
+                .catch(err => console.error(err));
+        }, 1000);
     }
 
-    getGardeners(){
+    getGardeners() {
         this.gService.getAllGardeners()
             .then(gardeners => this.gardeners = gardeners)
             .catch(err => console.error("Fehler"));
     }
 
-    sendEmail(){
+    sendEmail() {
         this.emailModal.send();
     }
 }

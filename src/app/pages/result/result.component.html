@@ -5,7 +5,7 @@
         <div class="col-md-6">
             <small>Job Id: {{job?._id}}</small>
             <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#emailModal">
-              <i class="fas fa-envelope mr-2"></i>{{"RESULT.EMAIL" | translate}}
+                <i class="fas fa-envelope mr-2"></i>{{"RESULT.EMAIL" | translate}}
             </button>
             <h3>{{"RESULT.DISEASES" | translate}}</h3>
             <div class="list-group">
@@ -13,31 +13,32 @@
                     [routerLink]="['/disease', result?.disease_id?._id]">{{result?.disease_id?.name || ("RESULT.NONE" | translate)}}
                     <span class="badge badge-primary badge-pill">{{result?.confidence * 100 | number: '1.2'}}%</span>
                 </li>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
-  <!-- Modal -->
-  <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
+<div class="cover" tabindex="1" #loader>
+    <div class="loader"></div>
+    <h3 class="mx-4 text-center">{{"ANALYSIS.PROGRESS" | translate}}</h3>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="emailModalLabel">{{"RESULT.EMAIL" | translate}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="emailModalLabel">{{"RESULT.EMAIL" | translate}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-email #email [receivers]="gardeners" [message]="job?.result | stringify"></app-email>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="sendEmail()">Send</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <app-email #email [receivers]="gardeners" [message]="job?.result | stringify"></app-email>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="sendEmail()">Send</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>

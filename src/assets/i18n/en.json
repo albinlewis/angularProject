@@ -82,7 +82,8 @@
         "TO_EMAIL": "Send the result to my email",
         "ANALYSE": "Analyse",
         "NO_RESULT": "Sorry we couldnt get a result for your image in time. Please try again later.",
-        "PROGRESS": "Your Analysis is progressing. Please wait."
+        "PROGRESS": "Waiting for analysis result.",
+        "PUSH": "Successfully startet the analysis. You will be notified when the result is ready."
     },
     "PROFILE": {
         "INFORMATION": "Information",
