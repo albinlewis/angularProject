@@ -1,14 +1,16 @@
-const router = require('express').Router({mergeParams: true}),
-      plantController = require('./plant'),
-      diseaseController = require('./disease'),
-      analysisController = require('./analysis'),
-      historyController = require('./history'),
-	userController = require('./user'),
-	authController = require('./auth'),
+const router = require('express').Router({
+        mergeParams: true
+    }),
+    plantController = require('./plant'),
+    diseaseController = require('./disease'),
+    analysisController = require('./analysis'),
+    historyController = require('./history'),
+    userController = require('./user'),
+    authController = require('./auth'),
     gardenerController = require('./gardener'),
     notificationController = require('./notification'),
     emailController = require('./email'),
-	middleware = require('../lib/middleware');
+    middleware = require('../lib/middleware');
 
 module.exports = router;
 
@@ -22,25 +24,39 @@ router.get('/gardeners', gardenerController.getGardeners);
 router.get('/gardeners/:id', gardenerController.getGardener);
 router.post('/gardeners', gardenerController.postGardener);
 
-router.post('/notification', notificationController.postNotification);
+router.post('/notifications/result', notificationController.receiveFromApi);
+router.post('/notifications/result/:id', notificationController.receiveFromApi);
+router.post('/notifications', notificationController.postNotification);
 
 router.post('/email', middleware.checkBody(["sender", "receiver", "subject", "message"]), emailController.email);
 
 router.post('/analysis',
-      middleware.checkBody(["crop_id"]),
-      middleware.checkFiles(["image_file"]),
-      middleware.verifyJWT_MW(false),
-      analysisController.analysis);
+    middleware.checkBody(["crop_id"]),
+    middleware.checkFiles(["image_file"]),
+    middleware.verifyJWT_MW(false),
+    analysisController.analysis);
+
 router.get('/result/:id',
-      analysisController.getJob);
+    analysisController.getJob);
+
 router.get('/history', middleware.verifyJWT_MW(), historyController.history);
 
-// User function: registration, login, deleting and updating
+// Authentification function: registration, login
 router.post('/register', middleware.checkBody(['name', 'email', 'password'], true), authController.register);
 router.post('/login', middleware.verifyLoginData, authController.login);
-router.delete('/users', middleware.verifyJWT_MW(), middleware.verifyLoginData, userController.remove);
-router.patch('/users', 
-      middleware.checkBody(['password']), 
-      middleware.verifyJWT_MW(),
-      middleware.verifyLoginData,
-      userController.update );
+
+// User functions - Verification by AuthToken
+router.get('/users',
+    middleware.verifyJWT_MW(),
+    userController.getUser);
+
+router.post('/users/delete',
+    middleware.verifyJWT_MW(),
+    middleware.verifyLoginData,
+    userController.remove);
+
+router.patch('/users',
+    middleware.checkBody(['password']),
+    middleware.verifyJWT_MW(),
+    middleware.verifyLoginData,
+    userController.update);

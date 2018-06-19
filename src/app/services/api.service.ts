@@ -6,6 +6,7 @@ import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -13,7 +14,7 @@ export class ApiService {
 
   public static API_URL: string = environment.API_HOST + "/api/";
 
-  constructor(private httpClient: HttpClient, private authService: AuthService) { }
+  constructor(private httpClient: HttpClient, private authService: AuthService, private router: Router) { }
 
   get(serviceUrl: string):Observable<any>{
     return this.httpClient.get(ApiService.API_URL + serviceUrl, {headers: this.authService.authHeader()})
@@ -43,9 +44,10 @@ export class ApiService {
       );
   }
   
-  private handleUnauthorizedError(err){
+  private handleUnauthorizedError = (err) => {
     if(err.status === 401){
       this.authService.logout();
+      this.router.navigate(["/login"], {queryParams: {logout: true, reason: "timeout"}});
       return empty();
     }
     return throwError(err);

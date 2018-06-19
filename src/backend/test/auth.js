@@ -35,12 +35,11 @@ describe("Authentication", () => {
                 .end((err, res) => {
                     res.should.have.status(201);
                     res.body.success.should.eq(true);
-                    res.body.should.have.property('token');
                     done();
                 });
         });
 
-        it("Doubled username: should get an error", done => {
+        it("Doubled email: should get an error", done => {
             let user = new User(examples.user);
             user.save((err, user) => {
                 chai

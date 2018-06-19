@@ -6,3 +6,11 @@
     width: 100%;
     max-width: 85%;
 }
+
+
+button {
+    height: auto;
+    word-break: normal;
+    white-space: normal;
+    max-width: 100%;
+}

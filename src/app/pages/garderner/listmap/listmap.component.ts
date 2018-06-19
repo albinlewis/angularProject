@@ -10,9 +10,6 @@ export class ListmapComponent implements OnInit {
 
   constructor(public mapservice: MapService) { }
 
-  ngOnInit() {
-
-      console.log(this.mapservice.data);
-  }
+  ngOnInit() {}
 
 }

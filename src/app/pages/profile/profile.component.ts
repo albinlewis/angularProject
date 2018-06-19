@@ -6,6 +6,7 @@ import { IJob } from '../../model/IJob';
 import { UserDataService } from '../../services/user-data.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +16,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
+  errorMessage: string;
   user: IUser;
   history: IJob[] = [];
 
@@ -43,22 +45,30 @@ export class ProfileComponent implements OnInit {
       this.userDataService.updateUser(this.update)
         .then(user => {
           this.user = user;
+          this.errorMessage = null;
           this.userService.setUser(user);
           this.authService.logout();
-          this.router.navigate(["/login"]);
+          this.router.navigate(["/login"], {queryParams: {logout: true, reason: 'update'}});
         }).catch(err => {
-          this.authService.logout();
-          this.router.navigate(["/login"]);
+          this.errorMessage = err.error.message || 'PROFILE.UPDATE_FAILED';
         });
       }else{
-        console.log("No valid password");
+        this.errorMessage = "AUTH.NO_VALID_PASSWORD";
       }
   }
 
   deleteProfile(){
-    this.userDataService.removeUser()
-      .then(() => {
-        this.router.navigate(["/login"]);
-      }).catch(err => console.error(err));
+    if(typeof this.update.password === 'string' && this.update.password.length >= 8){
+      this.userDataService.removeUser(this.update)
+        .then(()=>{
+          this.errorMessage = null;
+          this.authService.logout();
+          this.router.navigate(["/login"], {queryParams: {logout: true, reason: 'delete'}});
+        }).catch(err => {
+          this.errorMessage = err.error.message || 'PROFILE.DELETE_FAILED';
+        });
+    }else{
+      this.errorMessage = "AUTH.NO_VALID_PASSWORD";
+    }
   }
 }

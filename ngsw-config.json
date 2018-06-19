@@ -25,6 +25,7 @@
             "resources": {
                 "files": [
                     "/assets/img/*.jpg",
+                    "/assets/img/*.webp",
                     "/assets/icons/*.png"
                 ]
             }
@@ -35,7 +36,7 @@
         "urls": ["/plants/*", "/diseases/*"],
         "cacheConfig": {
             "strategy": "freshness",
-            "maxAge": "3d",
+            "maxAge": "7d",
             "timeout": "3s"
         }
     },{
@@ -44,6 +45,14 @@
         "cacheConfig": {
             "strategy": "freshness",
             "maxAge": "3d",
+            "timeout": "2s"
+        }
+    },{
+        "name": "gardeners-api",
+        "urls": ["/gardeners"],
+        "cacheConfig": {
+            "strategy": "freshness",
+            "maxAge": "7d",
             "timeout": "2s"
         }
     }]

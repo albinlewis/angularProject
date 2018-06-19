@@ -3,17 +3,29 @@
         <i class="fas fa-sign-in-alt"></i> {{"TITLES.LOGIN" | translate}}</h1>
     <hr>
 
+    <div class="alert alert-success" *ngIf="logout && !logoutReason">{{"LOGOUT.SUCCESS" | translate}}</div>
+    <div class="alert alert-success" *ngIf="logout && logoutReason === 'update'">{{"LOGOUT.UPDATE" | translate}}</div>
+    <div class="alert alert-success" *ngIf="logout && logoutReason === 'delete'">{{"LOGOUT.DELETE" | translate}}</div>
+    <div class="alert alert-success" *ngIf="logoutReason === 'registered'">{{"LOGOUT.REGISTERED" | translate}}</div>
+    <div class="alert alert-danger" *ngIf="logout && logoutReason === 'timeout'">{{"LOGOUT.TIMEOUT" | translate}}</div>
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="form-group row">
             <label for="inputEmail3" class="col-sm-2 col-form-label">{{"AUTH.EMAIL" | translate}}:</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" formControlName="email" id="inputEmail3" [placeholder]="'AUTH.EMAIL' | translate">
+                <input type="email" class="form-control" 
+                autocomplete="email"
+                formControlName="email" id="inputEmail3" 
+                [placeholder]="'AUTH.EMAIL' | translate">
             </div>
         </div>
         <div class="form-group row">
             <label for="inputPassword3" class="col-sm-2 col-form-label">{{"AUTH.PASSWORD" | translate}}:</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" formControlName="password" id="inputPassword3" [placeholder]="'AUTH.PASSWORD' | translate">
+                <input type="password" class="form-control" 
+                autocomplete="current-password"
+                formControlName="password" id="inputPassword3" 
+                [placeholder]="'AUTH.PASSWORD' | translate">
             </div>
         </div>
         <div class="form-group row">

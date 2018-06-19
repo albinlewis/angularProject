@@ -22,7 +22,7 @@
                 <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show"><a class="nav-link" routerLink="/login">{{"TITLES.LOGIN" | translate }}</a></li>
                 </ng-template>
                 <li *ngIf="authservice.isAuthentificated()" style="cursor: pointer;" class="nav-item" (click)="logout()"><a class="nav-link">{{"TITLES.LOGOUT" | translate }}</a></li>
-                <li  data-toggle="collapse" data-target=".navbar-collapse.show"><app-language-switch></app-language-switch></li>
+                <li><app-language-switch></app-language-switch></li>
             </ul>
 
         </div><!-- /.navbar-collapse -->

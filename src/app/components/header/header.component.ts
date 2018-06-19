@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
         this.snackBar.open('Logout', 'succeed', {
             duration: 2000,
         });
-        this.route.navigate(['/login']);
+        this.route.navigate(['/login'], {queryParams: {logout: true}});
 
     }
 

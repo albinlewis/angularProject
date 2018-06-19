@@ -20,7 +20,7 @@ export class UserDataService extends DataService{
     return this.updateItem<IUser>("", update);
   }
 
-  removeUser(){
-    return this.removeItem<void>("");
+  removeUser(user: IUser){
+    return this.apiService.post(this.serviceUrl + "/delete", user).toPromise();
   }
 }

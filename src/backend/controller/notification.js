@@ -26,6 +26,14 @@ function postNotification (req, res) {
     });
 }
 
+function receiveFromApi(req, res){
+    console.log(req.params);
+    console.log(req.query);
+    console.log(req.body);
+    res.send();
+}
+
 module.exports = {
-    postNotification: postNotification,
+    postNotification,
+    receiveFromApi
 };

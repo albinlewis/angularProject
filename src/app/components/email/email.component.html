@@ -1,17 +1,20 @@
-<form [formGroup]="emailForm">
+<div class="alert alert-success" *ngIf="sent" role="alert"><i class="fas fa-check mr-2"></i>{{"EMAIL.SUCCESS" | translate}}</div>
+<div class="alert alert-danger" *ngIf="!sent && error" role="alert">{{"EMAIL.FAILED" | translate}}</div>
+
+<form [formGroup]="emailForm" *ngIf="!sent">
     <div class="form-group row">
         <label for="email_sender" class="col-sm-2 col-form-label">{{"EMAIL.SENDER" | translate}}:</label>
         <div class="col-sm-10">
-            <input type="email" class="form-control" formControlName="email_sender" id="email_sender" placeholder="Sender email" required>
+            <input type="email" autocomplete="email" class="form-control" formControlName="email_sender" id="email_sender" placeholder="Sender email" required>
         </div>
     </div>
     <div class="form-group row">
         <label for="email_receiver" class="col-sm-2 col-form-label">{{"EMAIL.RECEIVER" | translate}}:</label>
         <div class="col-sm-10">
-            <select *ngIf="receivers" type="email" class="form-control" formControlName="email_receiver" id="email_receiver" placeholder="Receiver email" required>
-                <option *ngFor="let recv of receivers" [value]="recv.email">{{recv.name}}</option>
+            <select *ngIf="receivers" type="email" autocomplete="email" class="form-control" formControlName="email_receiver" id="email_receiver" placeholder="Receiver email" required>
+                <option *ngFor="let recv of receivers" [value]="recv?.email">{{recv?.name}}</option>
             </select>
-            <input *ngIf="!receivers || receivers.length == 0" type="email" class="form-control" formControlName="email_receiver" id="email_receiver" placeholder="Receiver email">
+            <input *ngIf="!receivers || receivers.length === 0" type="email" autocomplete="email" class="form-control" formControlName="email_receiver" id="email_receiver" placeholder="Receiver email">
         </div>
     </div>
     <div class="form-group row">

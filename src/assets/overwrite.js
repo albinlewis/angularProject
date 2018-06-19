@@ -5,7 +5,7 @@ $(document).ready(function () {
 });
 
 $(document).click(function(e) {
-    if (!$(e.target).is('.panel-body')) {
+    if (!$(e.target).is('.no-collapse')) {
         $('.collapse').collapse('hide');
     }
 });

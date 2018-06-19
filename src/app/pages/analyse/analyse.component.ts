@@ -3,7 +3,7 @@ import { PlantService } from '../../services/plant.service';
 import { IPlant } from '../../model/IPlant';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { AnalysisService } from '../../services/analysis.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 
@@ -19,14 +19,18 @@ export class AnalyseComponent implements OnInit {
     notification_email: string = "";
     plants: IPlant[] = [];
 
+    selected: number;
+
     @ViewChild(NgForm) analysisForm:NgForm;
     @ViewChild('image') image;
     @ViewChild('loader') loader;
+    @ViewChild('error') error:ElementRef;
 
     constructor(private pService: PlantService, 
         private aService: AnalysisService,
         public userService: UserService,
-        private router: Router) {
+        private router: Router,
+        private route: ActivatedRoute) {
 
     }
 
@@ -37,7 +41,14 @@ export class AnalyseComponent implements OnInit {
     }
 
     getPlants(){
-        this.pService.getAllPlants().then(plants => this.plants = plants);
+        this.pService.getAllPlants().then(plants => {
+            this.plants = plants;
+            this.route.queryParams.subscribe(params => {
+                let preselect = params["plant"];
+                if(preselect) this.selected = +preselect;
+                else this.selected = plants[0]._id;
+            })
+        });
     }
 
 
@@ -46,11 +57,11 @@ export class AnalyseComponent implements OnInit {
 
     onSubmit(){
         let element = this.image.nativeElement;
-        if(element.files && element.files[0]){
+        if(this.selected && element.files && element.files[0]){
             this.startAnalysis();
             const formData = new FormData();
             formData.append('image_file', element.files[0]);
-            formData.append('crop_id', this.analysisForm.value.crop_id);
+            formData.append('crop_id', this.selected.toString());
             formData.append('notification_email', this.notification_email);
             this.aService.startAnalysis(formData)
                 .then(res => {
@@ -59,6 +70,7 @@ export class AnalyseComponent implements OnInit {
                 })
                 .catch(err => {
                     this.stopAnalysis();
+                    this.error.nativeElement.style.display = 'block';
                     console.error(err);
                 });
         }
@@ -77,5 +89,6 @@ export class AnalyseComponent implements OnInit {
             };
         }
     }
+
 
 }

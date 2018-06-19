@@ -11,6 +11,13 @@
         "GARDENERS": "Gardeners",
         "LOGOUT": "Logout"
     },
+    "LOGOUT": {
+        "SUCCESS": "Successfully logged out!",
+        "UPDATE": "Successfully updated your profile!",
+        "DELETE": "Successfully deleted your profile! We are sorry to let you go.",
+        "REGISTERED": "You account was successfully registered. You can sign in now.",
+        "TIMEOUT": "You have been logged out, because your session time ended!"
+    },
     "AUTH":{
         "NAME":"Name",
         "EMAIL":"Email",
@@ -22,6 +29,7 @@
         "NO_VALID_EMAIL": "Please enter a valid email",
         "ENTER_PASSWORD": "Choose a password",
         "NO_VALID_PASSWORD": "Please enter a valid password",
+        "BAD_CREDENTIALS": "Wrong crendentials",
         "INVALID_FORM": "Invalid Form",
         "REGISTER": "Sign Up",
         "LOGIN": "Sign In",
@@ -58,7 +66,9 @@
         "SENDER": "Sender",
         "RECEIVER": "Receiver",
         "MESSAGE": "Message",
-        "ATTACHMENT": "Attachment"
+        "ATTACHMENT": "Attachment",
+        "SUCCESS": "Successfully sent your email!",
+        "FAILED": "Failed to send your email!"
     },
     "RESULT": {
         "FOR": "Result for",
@@ -71,12 +81,13 @@
         "SELECT_IMAGE": "Choose / Make a photo",
         "TO_EMAIL": "Send the result to my email",
         "ANALYSE": "Analyse",
+        "NO_RESULT": "Sorry we couldnt get a result for your image in time. Please try again later.",
         "PROGRESS": "Your Analysis is progressing. Please wait."
     },
     "PROFILE": {
         "INFORMATION": "Information",
         "HISTORY": "History",
-        "OLD_PASSWORD": "Old Password",
+        "OLD_PASSWORD": "Current Password",
         "NEW_PASSWORD": "New Password",
         "UPDATE_PROFILE": "Update Profile",
         "DELETE_PROFILE": "Delete Profile",
@@ -86,7 +97,11 @@
         "PLANT_ID": "Plant Id",
         "FINISHED": "Finished",
         "NOT_FINISHED": "Not finished",
-        "CONFIRM_QUESTION": "Do you really want to delete your profile?"
+        "CONFIRM_QUESTION": "Do you really want to delete your profile?",
+        "UPDATE_FAILED": "Failed to update your profile",
+        "DELETE_FAILED": "Failed to delete your profie",
+        "NO_ANALYSIS": "No analysis yet executed.",
+        "MEMBER_SINCE": "Member since"
     },
     "GARDENERS": {
         "NEARBY": "Nearby gardeners",
