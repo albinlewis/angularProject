@@ -16,6 +16,7 @@ export class EmailComponent implements OnInit {
   @Input() message: string = "";
   emailForm: FormGroup;
   sent: boolean = false;
+  error: boolean = false;
 
   constructor(private emailService: EmailService,
           private userService: UserService) { }
@@ -37,12 +38,15 @@ export class EmailComponent implements OnInit {
       let email: IEmail = {
         sender: this.emailForm.get('email_sender').value,
         receiver: this.emailForm.get('email_receiver').value,
-        subject: "Email von PSE HDA app",
+        subject: "Krankheitsanalyse von " + this.emailForm.get('email_sender').value,
         message: this.emailForm.get('email_message').value + "\n\n" + this.message
       };
       this.emailService.sendEmail(email)
         .then(x => this.sent = true)
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          this.error = true;
+        });
     }
   }
 }

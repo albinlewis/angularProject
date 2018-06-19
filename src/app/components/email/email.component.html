@@ -1,4 +1,6 @@
-<div class="alert alert-success" *ngIf="sent" role="alert"><i class="fas fa-check"></i>{{"EMAIL.SUCCESS" | translate}}</div>
+<div class="alert alert-success" *ngIf="sent" role="alert"><i class="fas fa-check mr-2"></i>{{"EMAIL.SUCCESS" | translate}}</div>
+<div class="alert alert-danger" *ngIf="!sent && error" role="alert">{{"EMAIL.FAILED" | translate}}</div>
+
 <form [formGroup]="emailForm" *ngIf="!sent">
     <div class="form-group row">
         <label for="email_sender" class="col-sm-2 col-form-label">{{"EMAIL.SENDER" | translate}}:</label>
