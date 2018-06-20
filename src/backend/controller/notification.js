@@ -6,7 +6,7 @@ const winston = require('winston');
 
 function postNotification (req, res) {
     const subscription = req.body.subscription;
-    
+    console.log(subscription);
     const notificationPayload = {
         notification: {
             title: "You`re result is there!",
@@ -14,7 +14,7 @@ function postNotification (req, res) {
             icon: '/uploads/icon.png',
             vibrate: [100, 50, 100],
             data: {
-                url: "localhost:3000/result/" + req.body.job
+                url: "/result/" + req.body.job
             }
         }
     };
@@ -25,13 +25,13 @@ function postNotification (req, res) {
 }
 
 function sendPushNotification(job){
-    const url = `${config.base_url}/result/${job._id}`;
+    const url = `/result/${job._id}`;
 
     const notificationPayload = {
         notification: {
             title: "You`re result is there!",
             body: `We received the results for your analysed plant! Follow ${url}`,
-            icon: '../assets/icon.png',
+            icon: '/uploads/icon.png',
             vibrate: [100, 50, 100],
             data: {
                 url: url
@@ -39,7 +39,7 @@ function sendPushNotification(job){
         }
     };
     winston.info("Sending push notification!");
-    console.log(job.subscription);
+    
     pushWeb.sendNotification(JSON.parse(job.subscription), JSON.stringify(notificationPayload))
         .catch(err => winston.error(err));
 }
