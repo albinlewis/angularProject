@@ -18,6 +18,7 @@ export class AnalyseComponent implements OnInit {
     url = '';
     showImage = false;
     push: boolean = false;
+    load: boolean = false;
 
     notification_email: string = "";
     plants: IPlant[] = [];
@@ -62,7 +63,7 @@ export class AnalyseComponent implements OnInit {
             formData.append('notification_email', this.notification_email);
             if(this.notificationService.subscription) 
                 formData.append('subscription', JSON.stringify(this.notificationService.subscription));
-                
+            this.load = true;    
             this.aService.startAnalysis(formData)
                 .then(res => {
                     if(res.method === 'poll'){
@@ -70,9 +71,11 @@ export class AnalyseComponent implements OnInit {
                     }else{
                         this.push = true;
                     }
+                    this.load = false;
                 })
                 .catch(err => {
                     this.error.nativeElement.style.display = 'block';
+                    this.load = false;
                     console.error(err);
                 });
         }
