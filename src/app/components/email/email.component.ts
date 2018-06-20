@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { IEmail } from '../../model/IEmail';
@@ -14,9 +14,12 @@ export class EmailComponent implements OnInit {
 
   @Input() receivers: {email: string, name: string}[];
   @Input() message: string = "";
+
   emailForm: FormGroup;
   sent: boolean = false;
   error: boolean = false;
+
+  @ViewChild('open') openButton: ElementRef;
 
   constructor(private emailService: EmailService,
           private userService: UserService) { }
@@ -48,5 +51,9 @@ export class EmailComponent implements OnInit {
           this.error = true;
         });
     }
+  }
+
+  open(){
+    this.openButton.nativeElement.click();
   }
 }

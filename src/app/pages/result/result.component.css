@@ -2,11 +2,6 @@
     cursor: pointer;
 }
 
-.modal-dialog {
-    width: 100%;
-    max-width: 85%;
-}
-
 .cover {
     z-index: 999;
     width: 100%;

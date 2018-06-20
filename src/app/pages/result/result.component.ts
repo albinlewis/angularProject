@@ -22,7 +22,7 @@ export class ResultComponent implements OnInit {
 
 
     @ViewChild('loader') loader;
-    @ViewChild("email") emailModal: EmailComponent;
+    @ViewChild('email') email: EmailComponent;
 
     constructor(private router: Router,
         private route: ActivatedRoute,
@@ -36,6 +36,10 @@ export class ResultComponent implements OnInit {
             this.getResult(id);
         });
         this.getGardeners();
+    }
+
+    openEmail(){
+        this.email.open();
     }
 
     startAnalysis() { this.loader.nativeElement.style.display = 'flex'; }
@@ -61,9 +65,5 @@ export class ResultComponent implements OnInit {
         this.gService.getAllGardeners()
             .then(gardeners => this.gardeners = gardeners)
             .catch(err => console.error("Fehler"));
-    }
-
-    sendEmail() {
-        this.emailModal.send();
     }
 }

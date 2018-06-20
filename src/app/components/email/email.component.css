@@ -1,5 +1,12 @@
 .default-message{
     max-height: 12rem;
     overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-x: scroll;
+}
+
+
+.modal-dialog {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 85%;
 }
