@@ -15,6 +15,13 @@ const config = require('config');
 /** Express initialzer */
 const app = express();
 
+app.use(req, res, next)
+{
+// check if it is a secure (https) request
+// if not redirect to the equivalent https url
+    !req.secure ? res.redirect('https://' + req.hostname + req.url) : next();
+}
+
 /** Initizialize logger  */
 const winston = require('winston');
 winston.level = process.env.LOG_LEVEL || 'info';
@@ -27,12 +34,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 
-app.use(req, res, next)
-{
-// check if it is a secure (https) request
-// if not redirect to the equivalent https url
-    !req.secure ? res.redirect('https://' + req.hostname + req.url) : next();
-}
+
 
 
 if (process.env.NODE_ENV !== 'prod') {
