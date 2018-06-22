@@ -1,12 +1,12 @@
 /** Required packages  */
 const mongoose = require('mongoose'),
-  express = require('express'),
-  bodyParser = require('body-parser'),
-  fileUpload = require('express-fileupload'),
-  os = require('os'),
-  path = require('path'),
+    express = require('express'),
+    bodyParser = require('body-parser'),
+    fileUpload = require('express-fileupload'),
+    os = require('os'),
+    path = require('path'),
     webpush = require('web-push'),
-  compression = require('compression');
+    compression = require('compression');
 
 /** Get configuration */
 process.env.NODE_CONFIG_DIR = __dirname + "/config/";
@@ -23,30 +23,38 @@ winston.level = process.env.LOG_LEVEL || 'info';
 app.use(compression());
 
 /** Bodyparser */
-app.use(bodyParser.urlencoded( {extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 
-if(process.env.NODE_ENV !== 'prod'){
-  // Add headers
-  app.use(function (req, res, next) {
+app.use(req, res, next)
+{
+// check if it is a secure (https) request
+// if not redirect to the equivalent https url
+    !req.secure ? res.redirect('https://' + req.hostname + req.url) : next();
+}
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+if (process.env.NODE_ENV !== 'prod') {
+    // Add headers
+    app.use(function (req, res, next) {
 
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+        // Website you wish to allow to connect
+        res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
 
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
+        // Request methods you wish to allow
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
 
-    // Pass to next layer of middleware
-    next();
-  });
+        // Request headers you wish to allow
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
+
+        // Set to true if you need the website to include cookies in the requests sent
+        // to the API (e.g. in case you use sessions)
+        res.setHeader('Access-Control-Allow-Credentials', true);
+
+        // Pass to next layer of middleware
+        next();
+    });
 }
 
 /** file-Upload */
@@ -68,9 +76,10 @@ app.use('/uploads', express.static(path.join(__dirname, './assets')));
 
 /** Initialize routes */
 app.use('/api', require('./controller/routes'));
-app.use('*', function(req, res){
-  res.sendFile(path.join(__dirname, "../../dist/index.html"));
+app.use('*', function (req, res) {
+    res.sendFile(path.join(__dirname, "../../dist/index.html"));
 });
+
 
 /** configure web-push with vapid key **/
 const publicVapidKey = config.publicVapidKey;
@@ -81,12 +90,12 @@ const privateVapidKey = config.privateVapidKey;
 webpush.setVapidDetails('mailto:a_loic16@yahoo.fr', publicVapidKey, privateVapidKey);
 
 
-
 /** Start server */
 let port = process.env.PORT || config.port;
-app.listen(port, () => {
+app.listen(port, () = > {
     console.log(`Listening on Port: ${port}`);
-});
+})
+;
 
 /** Exports */
 module.exports = app;
