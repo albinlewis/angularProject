@@ -32,10 +32,11 @@
 
     </div>
 </form>
-<div class="col-md-12">
-    <div class="col-md-8 alert alert-danger mx-auto" style="display: none;" #error>
-        {{"ANALYSIS.NO_RESULT" | translate}}
+<div class="col-md-12 mt-4">
+    <div class="col-md-8 alert alert-danger mx-auto" *ngIf="errorMessage">
+        {{errorMessage | translate}}
     </div>
     <div class="col-md-8 alert alert-success mx-auto" [hidden]="!push">
-        <i class="fas fa-check mr-3"></i>{{"ANALYSIS.PUSH" | translate}}</div>
+        <i class="fas fa-check mr-3"></i>{{"ANALYSIS.PUSH" | translate}}
+    </div>
 </div>
