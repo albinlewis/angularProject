@@ -112,6 +112,13 @@
         "TIME": "minutes",
         "HERE": "You are here"
     },
+    "ERRORS": {
+        "DISEASES": "Sorry we could not get the diseases. Please check your internet connection.",
+        "PLANTS": "Sorry we could not get the plants. Please check your internet connection.",
+        "GARDENERS": "No gardeners available!",
+        "PLANT": "Could not get the plant. Please check your internet connection. To access this page in offline mode, please visit it once with online access.",
+        "DISEASE": "Could not get the disease. Please check your internet connection. To access this page in offline mode, please visit it once with online access."
+    },
     "YES": "Yes",
     "NO": "No",
     "CONTROLS": {

@@ -1,4 +1,4 @@
-<div class="list-group">
+<div class="list-group" *ngIf="mapservice.data.length">
     <a class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let g of mapservice.data">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">{{g.name}}</h5>
@@ -24,3 +24,4 @@
         </p>
     </a>
 </div>
+<div class="list-group" *ngIf="!mapservice.data.length">{{"ERRORS.GARDENERS" | translate}}</div>

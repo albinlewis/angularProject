@@ -1,12 +1,17 @@
-<div class="container">
+<div class="loader mx-auto my-5" *ngIf="!plant" appTimeout [timeout]="1000"></div>
+<div class="col-md-12" *ngIf="!plant && error">
+    <div class="col-md-12 alert alert-warning mx-auto">
+        {{"ERRORS.PLANTS" | translate}}
+    </div>
+</div>
+<div class="container" *ngIf="plant">
     <!-- As a heading -->
     <nav class="navbar navbar-light bg-light mt-2">
         <h2 class="mb-0 h1">{{plant?.name}}</h2>
         <button type="button" class="btn btn-success ml-auto" (click)="onShowAnalyse()">Analyse</button>
     </nav>
     <div class="row two mt-md-2">
-        <img [src]="plant?.image_url || './assets/img/' + plant?.name +'.jpg'"
-            class="img-fluid col-md-6" alt="Responsive image">
+        <img [src]="plant?.image_url || './assets/img/' + plant?.name +'.jpg'" class="img-fluid col-md-6" alt="Plantimage">
         <div class="col-md-6">
             <h3 class="mt-5 mt-md-0">{{"PLANT.INFORMATION" | translate}}</h3>
             <table class="table">
@@ -38,7 +43,5 @@
                 </div>
             </section>
         </div>
-
     </div>
-
 </div>

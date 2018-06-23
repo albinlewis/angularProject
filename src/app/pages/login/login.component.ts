@@ -46,11 +46,8 @@ export class LoginComponent implements OnInit {
                 });
                 this.router.navigate(['/profile']);
             }).catch(err => {
-                this.snackBar.open('Login', 'failed', {
-                    duration: 3000,
-                });
                 this.error = true;
-                this.errorResponse  = err.error.error.message;
+                this.errorResponse  = err.error.error.message || "Sorry could not login";
             });
     }
 

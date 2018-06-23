@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../services/auth.service';
-import {MatSnackBar} from '@angular/material';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-register',
@@ -31,14 +31,11 @@ export class RegisterComponent implements OnInit {
         this.authservice.register(this.registerForm.value)
             .then(message => {
                 this.registerForm.reset();
-                this.route.navigate(['/login'], {queryParams: {reason: 'registered'}});
+                this.route.navigate(['/login'], { queryParams: { reason: 'registered' } });
             }).catch(err => {
-                this.snackBar.open('Registration', 'failed', {
-                    duration: 3000,
-                });
-            this.error = true;
-            this.errorResponse  = err.error.error.message;
-                console.log(err);
+                this.error = true;
+                this.errorResponse = err.error.error.message || "Could not be registered";
+                console.error(err);
             });
     }
 

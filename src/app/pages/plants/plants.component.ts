@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Route, Router} from '@angular/router';
 import { IPlant } from '../../model/IPlant';
 import { PlantService } from '../../services/plant.service';
 
@@ -13,7 +12,7 @@ export class PlantsComponent implements OnInit {
 
     filterValue = '';
     plants: IPlant[] = [];
-
+    errorMessage: string;
     constructor(private plantService: PlantService) {}
 
     ngOnInit() {
@@ -21,7 +20,12 @@ export class PlantsComponent implements OnInit {
     }
 
     getPlants(){
+        this.errorMessage = null;
         this.plantService.getAllPlants()
-            .then(plants => this.plants = plants);
+            .then(plants => this.plants = plants)
+            .catch(err => {
+                console.error(err);
+                this.errorMessage = "ERRORS.PLANTS";
+              });
     }
 }

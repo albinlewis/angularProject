@@ -17,7 +17,12 @@
 </div>
 
 <div>
-    <div class="col-md-12">
+    <div class="col-md-12 mt-4" *ngIf="errorMessage">
+        <div class="col-md-12 alert alert-danger mx-auto">
+            {{errorMessage | translate}}
+        </div>
+    </div>
+    <div class="col-md-12" *ngIf="diseases.length">
         <ul class="list-group">
             <li style="cursor:pointer;" class="list-group-item list-group-item-action" *ngFor="let disease of diseases | sort | filter: filterValue"
                 [routerLink]="['/disease', disease._id]">

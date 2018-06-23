@@ -11,7 +11,7 @@
                     "/assets/i18n/*.json",
                     "/*.css",
                     "/*.js",
-                    "/*.js"
+                    "/*.js",
                 ],
                 "urls":[
                     "https://use.fontawesome.com/releases/v5.0.13/css/*"
@@ -24,6 +24,7 @@
             "updateMode": "lazy",
             "resources": {
                 "files": [
+                    "/*.jpg",
                     "/assets/img/*.jpg",
                     "/assets/img/*.webp",
                     "/assets/icons/*.png"

@@ -13,6 +13,7 @@ export class DiseaseListComponent implements OnInit {
 
   filterValue = '';
   diseases: IDisease[] = [];
+  errorMessage: string;
 
   constructor(private route: Router, private diseaseService: DiseaseService) {
       
@@ -24,7 +25,11 @@ export class DiseaseListComponent implements OnInit {
 
   getDiseases(){
       this.diseaseService.getAllDiseases()
-          .then(diseases => this.diseases = diseases);
+          .then(diseases => this.diseases = diseases)
+          .catch(err => {
+            console.error(err);
+            this.errorMessage = "ERRORS.DISEASES";
+          });
   }
 
   onShowDetails(disease: IDisease) {

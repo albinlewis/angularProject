@@ -47,6 +47,8 @@ import {GardenerService} from './services/gardener.service';
 import {StringifyPipe} from './pipes/stringify.pipe';
 import {LanguageSwitchComponent} from './components/language-switch/language-switch.component';
 import {NotificationService} from "./services/notification.service";
+import { UserDataService } from './services/user-data.service';
+import { TimeoutDirective } from './directives/timeout.directive';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -76,7 +78,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         MapComponent,
         ListmapComponent,
         StringifyPipe,
-        LanguageSwitchComponent
+        LanguageSwitchComponent,
+        TimeoutDirective
     ],
     imports: [
 
@@ -107,7 +110,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     providers: [AnalysisService, ApiService, AuthService,
                 AuthguardService, UserService, GardenerService,
-                MapService, NotificationService],
+                MapService, NotificationService, UserDataService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -13,6 +13,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class DiseaseComponent implements OnInit, OnDestroy {
   disease: IDisease;
   sub: Subscription;
+  error: boolean;
 
   constructor(private dService: DiseaseService, private route: ActivatedRoute) {}
 
@@ -30,6 +31,7 @@ export class DiseaseComponent implements OnInit, OnDestroy {
   getPlant(id) {
       this.dService.getSingleDisease(id)
           .then(disease => this.disease = disease)
-          .catch(err => console.log(err));
+          .catch(err => console.log(err))
+          .catch(() => this.error = true);
   }
 }

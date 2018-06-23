@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 export class PlantdetailsComponent implements OnInit, OnDestroy {
     plant: IPlant;
     sub: Subscription;
+    error: boolean = false;
 
     constructor(private router: Router,
         private route: ActivatedRoute,
@@ -33,7 +34,10 @@ export class PlantdetailsComponent implements OnInit, OnDestroy {
     getPlant(id){
         this.plantService.getSinglePlant(id)
             .then(plant => this.plant = plant)
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.error(err);
+                this.error = true;
+              });
     }
 
     onShowAnalyse() {

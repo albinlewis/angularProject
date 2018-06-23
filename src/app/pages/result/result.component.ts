@@ -20,8 +20,6 @@ export class ResultComponent implements OnInit {
     apiHost: string = environment.API_HOST;
     gardeners: IGardener[] = [];
 
-
-    @ViewChild('loader') loader;
     @ViewChild('email') email: EmailComponent;
 
     constructor(private router: Router,
@@ -30,7 +28,6 @@ export class ResultComponent implements OnInit {
         private gService: GardenerService) { }
 
     ngOnInit() {
-        this.stopAnalysis();
         this.sub = this.route.params.subscribe((params: Params) => {
             let id = params['id'];
             this.getResult(id);
@@ -42,19 +39,13 @@ export class ResultComponent implements OnInit {
         this.email.open();
     }
 
-    startAnalysis() { this.loader.nativeElement.style.display = 'flex'; }
-    stopAnalysis() { this.loader.nativeElement.style.display = 'none'; }
-
     getResult(id: string) {
         let interval = setInterval(() => {
             this.aService.getResult(id)
                 .then(res => {
                     if(res.success){
                         this.job = res.data;
-                        this.stopAnalysis();
                         clearInterval(interval);
-                    }else{
-                        this.startAnalysis();
                     }
                 })
                 .catch(err => console.error(err));
@@ -64,6 +55,6 @@ export class ResultComponent implements OnInit {
     getGardeners() {
         this.gService.getAllGardeners()
             .then(gardeners => this.gardeners = gardeners)
-            .catch(err => console.error("Fehler"));
+            .catch(err => console.error(err));
     }
 }

@@ -9,16 +9,7 @@ export class NotificationService {
     readonly VAPID_PUBLIC_KEY = 'BNaGf2POUom9qpnI45OSE8gmzjeqdvk-4HoV7Is-3RjPeCWMtgcukwEVPp0K2xMdfmSrGCS2be5rFIYX2qRwoEc';
     subscription: PushSubscription;
 
-    constructor(private swPush: SwPush, private router: Router) {
-        addEventListener('notificationclick', (event: any) => {
-            console.log("cllicked on Notification");
-            if(event.notification.data.jobId){
-                router.navigate(['/result', event.notification.data.jobId]);
-            }else{
-                console.log("Test");
-            }
-        });
-     }
+    constructor(private swPush: SwPush, private router: Router) { }
 
     subscribeToNotifications(){
         this.swPush.requestSubscription({

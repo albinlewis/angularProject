@@ -1,56 +1,58 @@
-<div class="container">
+<div class="loader mx-auto my-5" *ngIf="!disease" appTimeout [timeout]="1000"></div>
+<div class="col-md-12" *ngIf="!disease && error">
+    <div class="col-md-12 alert alert-warning mx-auto">
+        {{"ERRORS.DISEASE" | translate}}
+    </div>
+</div>
+<div class="container" *ngIf="disease">
     <h1>{{disease?.name}}</h1>
     <div class="row align-items-start mt-5">
-        <img
-            [src]="disease?.example_url || './assets/img/' + disease?.crop_id.name +'.jpg'"
-            class="img-fluid col-md-6"
-            alt="Responsive image">
+        <img [src]="disease?.example_url || './assets/img/' + disease?.crop_id.name +'.jpg'" class="img-fluid col-md-6" alt="Disease image">
         <div class="col-md-6 my-5 my-md-0">
-                <h3>{{"DISEASE.INFORMATION" | translate}}</h3>
-                <table class="table">
-                    <tbody>
-                        <tr>
-                            <th scope="row">{{"DISEASE.NAME" | translate}}</th>
-                            <td>{{disease?.name}}</td>
-                        </tr>
-                        <tr *ngIf="disease?.eppo_code">
-                            <th scope="row">{{"DISEASE.EPPO_CODE" | translate}}</th>
-                            <td>{{disease.eppo_code}}</td>
-                        </tr>
-                        <tr *ngIf="disease?.symptoms">
-                            <th scope="row">{{"DISEASE.SYMPTOMS" | translate}}</th>
-                            <td>{{disease.symptoms}}</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">{{"DISEASE.CROP" | translate}}</th>
-                            <td>{{disease?.crop_id?.name}}</td>
-                        </tr>
-                        <tr *ngIf="disease?.leaf_wetness">
-                            <th scope="row">{{"DISEASE.LEAF_WETNESS" | translate}}</th>
-                            <td>{{disease.leaf_wetness}}</td>
-                        </tr>
-                        <tr *ngIf="disease?.bbch_from">
-                            <th scope="row">{{"DISEASE.BBCH" | translate}}</th>
-                            <td>{{disease.bbch_from}} - {{disease.bbch_to}}</td>
-                        </tr>
-                        <tr *ngIf="disease?.celsius_low">
-                            <th scope="row">{{"DISEASE.TEMPERATURE" | translate}}</th>
-                            <td>{{disease.celsius_low}} - {{disease.celsius_high}}°C</td>
-                        </tr>
-                        <tr *ngIf="disease?.humidity_from">
-                            <th scope="row">{{"DISEASE.HUMIDITY" | translate}}</th>
-                            <td>{{disease.humidity_from}} - {{disease.humidity_to}}%</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">{{"DISEASE.DETECTION_SUPPORTED" | translate}}</th>
-                            <td>{{(disease?.detection_supported ? "YES": "NO") | translate}}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <h3>{{"DISEASE.INFORMATION" | translate}}</h3>
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th scope="row">{{"DISEASE.NAME" | translate}}</th>
+                        <td>{{disease?.name}}</td>
+                    </tr>
+                    <tr *ngIf="disease?.eppo_code">
+                        <th scope="row">{{"DISEASE.EPPO_CODE" | translate}}</th>
+                        <td>{{disease.eppo_code}}</td>
+                    </tr>
+                    <tr *ngIf="disease?.symptoms">
+                        <th scope="row">{{"DISEASE.SYMPTOMS" | translate}}</th>
+                        <td>{{disease.symptoms}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{"DISEASE.CROP" | translate}}</th>
+                        <td>{{disease?.crop_id?.name}}</td>
+                    </tr>
+                    <tr *ngIf="disease?.leaf_wetness">
+                        <th scope="row">{{"DISEASE.LEAF_WETNESS" | translate}}</th>
+                        <td>{{disease.leaf_wetness}}</td>
+                    </tr>
+                    <tr *ngIf="disease?.bbch_from">
+                        <th scope="row">{{"DISEASE.BBCH" | translate}}</th>
+                        <td>{{disease.bbch_from}} - {{disease.bbch_to}}</td>
+                    </tr>
+                    <tr *ngIf="disease?.celsius_low">
+                        <th scope="row">{{"DISEASE.TEMPERATURE" | translate}}</th>
+                        <td>{{disease.celsius_low}} - {{disease.celsius_high}}°C</td>
+                    </tr>
+                    <tr *ngIf="disease?.humidity_from">
+                        <th scope="row">{{"DISEASE.HUMIDITY" | translate}}</th>
+                        <td>{{disease.humidity_from}} - {{disease.humidity_to}}%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">{{"DISEASE.DETECTION_SUPPORTED" | translate}}</th>
+                        <td>{{(disease?.detection_supported ? "YES": "NO") | translate}}</td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
 
     </div>
 
 </div>
-

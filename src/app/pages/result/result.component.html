@@ -1,5 +1,10 @@
-<div class="container">
+<div class="cover" tabindex="-1" *ngIf="!job">
+    <div class="loader"></div>
+    <h3 class="m-4 text-center">{{"ANALYSIS.PROGRESS" | translate}}</h3>
+</div>
+<div class="container" *ngIf="job">
     <h2>{{"RESULT.FOR" | translate}} {{job?.plant.name}}</h2>
+    <hr />
     <div class="row align-items-start mt-4">
         <img [src]="apiHost + job?.image_url || './assets/img/' + job?.plant.name +'.jpg'" class="img-fluid col-md-6" [alt]="'Job-' + job?._id">
         <div class="col-md-6">
@@ -10,16 +15,12 @@
             <h3>{{"RESULT.DISEASES" | translate}}</h3>
             <div class="list-group">
                 <li *ngFor="let result of job?.result" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
-                    [routerLink]="['/disease', result?.disease_id?._id]">{{result?.disease_id?.name || ("RESULT.NONE" | translate)}}
+                    [routerLink]="result?.disease_id?._id ? ['/disease', result.disease_id._id] : []">{{result?.disease_id?.name || ("RESULT.NONE" | translate)}}
                     <span class="badge badge-primary badge-pill">{{result?.confidence * 100 | number: '1.2'}}%</span>
                 </li>
             </div>
         </div>
     </div>
-</div>
-<div class="cover" tabindex="1" #loader>
-    <div class="loader"></div>
-    <h3 class="mx-4 text-center">{{"ANALYSIS.PROGRESS" | translate}}</h3>
 </div>
 
 <app-email [receivers]="gardeners" [message]="job?.result | stringify" #email></app-email>
