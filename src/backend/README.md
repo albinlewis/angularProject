@@ -56,3 +56,42 @@ Header fields:
 Key | Value | Description
 --- | --- | ---
 Authorization | *string*| The bearer token of logged in user ("Bearer " + token)
+
+--> Success response:
+
+```json
+{
+    "success": true,
+    "data": [histories]
+}
+```
+
+## Analysis
+
+To access the history view a user must be logged in. So you have to provide an the bearer token for the backend.
+
+GET `/api/analysis`
+
+Header fields:
+
+Key | Value | Description
+--- | --- | ---
+Authorization | *string*| The bearer token of logged in user ("Bearer " + token) (optional)
+
+FormData fields:
+Key | Value | Description
+--- | --- | ---
+crop_id | *number*| id of plant
+image_file | *blob* | Image file of plant
+email | *string* | Email to which result shall be sent
+subscription | *NotificationSubscription* | Subscription if user allowed notifications (optional)
+
+--> Success response:
+
+```json
+{
+    "success": true,
+    "method": "pull/push",
+    "data": "jobId"
+}
+```

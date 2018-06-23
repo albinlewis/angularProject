@@ -1,5 +1,4 @@
-const router = require('express').Router(),
-    Job = require('../model/job'),
+const Job = require('../model/job'),
     User = require('../model/user'),
     rp = require('request-promise'),
     errors = require('../lib/errors'),
@@ -13,7 +12,7 @@ const router = require('express').Router(),
 async function analysis(req, res) {
     let cropId = req.body.crop_id;
     const subscription = req.body.subscription;
-    console.log(subscription);
+
     let jobImage = req.files.image_file;
     let extension = req.files.image_file.name.split('.')[1];
     let filename = `${randomstring.generate()}.${extension}`;
