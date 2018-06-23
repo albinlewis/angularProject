@@ -81,7 +81,7 @@
         "SELECT_IMAGE": "Choose / Make a photo",
         "TO_EMAIL": "Send the result to my email",
         "ANALYSE": "Analyse",
-        "NO_RESULT": "Sorry we couldnt get a result for your image in time. Please try again later.",
+        "NO_RESULT": "Unfortunatly the analysis could not be started.",
         "PROGRESS": "Waiting for analysis result.",
         "PUSH": "Successfully startet the analysis. You will be notified when the result is ready."
     },
@@ -117,7 +117,10 @@
         "PLANTS": "Sorry we could not get the plants. Please check your internet connection.",
         "GARDENERS": "No gardeners available!",
         "PLANT": "Could not get the plant. Please check your internet connection. To access this page in offline mode, please visit it once with online access.",
-        "DISEASE": "Could not get the disease. Please check your internet connection. To access this page in offline mode, please visit it once with online access."
+        "DISEASE": "Could not get the disease. Please check your internet connection. To access this page in offline mode, please visit it once with online access.",
+        "LOGIN": "Login failed.",
+        "REGISTER": "Register failed",
+        "NO_CONNECTION": "No internet connection. Please check your network settings."
     },
     "YES": "Yes",
     "NO": "No",

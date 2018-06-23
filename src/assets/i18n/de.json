@@ -82,8 +82,8 @@
         "TO_EMAIL": "Sende Ergbnis an meine Email",
         "ANALYSE": "Analysieren",
         "PUSH": "Analyse erfolgreich gestartet. Sie werden benachrichtigt sobald das Ergebnis fertig ist.",
-        "PROGRESS": "Ihr Foto wird analysiert. Bitte warten.",
-        "NO_RESULT": "Tut uns leid, aber wir konnten kein Ergebnis für ihre Analyse erhalten. Bitte versuchen sie es später noch einmal"
+        "PROGRESS": "Warten auf das Ergebnis.",
+        "NO_RESULT": "Tut uns leid, aber wir die Analyse konnte nicht gestartet werden."
     },
     "PROFILE": {
         "INFORMATION": "Information",
@@ -116,7 +116,10 @@
         "PLANTS": "Tut uns leid, aber wirk konnten leider keine Krankheiten laden. Bitte überprüfen Sie ihre Internetverbindung.",
         "GARDENERS": "Keine Gärtnereien verfügbar",
         "PLANT": "Pflanze konnte nicht geladen werden. Bitte überprüfen Sie ihre Internetverbindung. Die können die Seite auch offline benutzen sobald Sie sie einmal geladen haben",
-        "DISEASE": "Krankheit konnte nicht geladen werden. Bitte überprüfen Sie ihre Internetverbindung. Die können die Seite auch offline benutzen sobald Sie sie einmal geladen haben"
+        "DISEASE": "Krankheit konnte nicht geladen werden. Bitte überprüfen Sie ihre Internetverbindung. Die können die Seite auch offline benutzen sobald Sie sie einmal geladen haben",
+        "LOGIN": "Login fehlgeschlagen.",
+        "REGISTER": "Registrierung fehlgeschlagen",
+        "NO_CONNECTION": "Keine Internetverbindung. Bitte überprüfen sie ihre Einstellungen."
     },
     "YES": "Ja",
     "NO": "Nein",

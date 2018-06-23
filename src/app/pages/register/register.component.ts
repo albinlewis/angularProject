@@ -34,7 +34,13 @@ export class RegisterComponent implements OnInit {
                 this.route.navigate(['/login'], { queryParams: { reason: 'registered' } });
             }).catch(err => {
                 this.error = true;
-                this.errorResponse = err.error.error.message || "Could not be registered";
+                if(err.status === 504 || !err.status){
+                    this.errorResponse = "ERRORS.NO_CONNECTION";
+                }else if(err.error){
+                    this.errorResponse  = err.error.error.message;
+                }else{
+                    this.errorResponse = "ERRORS.REGISTER";
+                }
                 console.error(err);
             });
     }

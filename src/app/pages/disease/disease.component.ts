@@ -31,7 +31,9 @@ export class DiseaseComponent implements OnInit, OnDestroy {
   getPlant(id) {
       this.dService.getSingleDisease(id)
           .then(disease => this.disease = disease)
-          .catch(err => console.log(err))
-          .catch(() => this.error = true);
+          .catch(err => {
+              console.log(err);
+              this.error = true;
+          })
   }
 }

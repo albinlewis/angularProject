@@ -10,8 +10,7 @@
                     "/index.html",
                     "/assets/i18n/*.json",
                     "/*.css",
-                    "/*.js",
-                    "/*.js",
+                    "/*.js"
                 ],
                 "urls":[
                     "https://use.fontawesome.com/releases/v5.0.13/css/*"

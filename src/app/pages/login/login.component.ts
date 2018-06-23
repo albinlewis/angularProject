@@ -3,6 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {AuthService} from '../../services/auth.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-login',
@@ -45,9 +46,15 @@ export class LoginComponent implements OnInit {
                     duration: 3000,
                 });
                 this.router.navigate(['/profile']);
-            }).catch(err => {
+            }).catch((err:HttpErrorResponse) => {
                 this.error = true;
-                this.errorResponse  = err.error.error.message || "Sorry could not login";
+                if(err.status === 504 || !err.status){
+                    this.errorResponse = "ERRORS.NO_CONNECTION";
+                }else if(err.error){
+                    this.errorResponse  = err.error.error.message;
+                }else{
+                    this.errorResponse = "ERRORS.LOGIN";
+                }
             });
     }
 

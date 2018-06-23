@@ -1,7 +1,7 @@
 <div class="loader mx-auto my-5" *ngIf="!plant" appTimeout [timeout]="1000"></div>
 <div class="col-md-12" *ngIf="!plant && error">
     <div class="col-md-12 alert alert-warning mx-auto">
-        {{"ERRORS.PLANTS" | translate}}
+        {{"ERRORS.PLANT" | translate}}
     </div>
 </div>
 <div class="container" *ngIf="plant">
