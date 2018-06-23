@@ -1,10 +1,5 @@
 import {Injectable} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
-import {} from '@types/googlemaps';
-
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
-import { ApiService } from './api.service';
 import { IGardener } from '../model/IGardener';
 import { GardenerService } from './gardener.service';
 
@@ -20,10 +15,6 @@ export class MapService {
     constructor(
             private  mapsapi: MapsAPILoader, 
             private gardenerService: GardenerService) {
-    }
-
-    setCurrentLocation(){
-
     }
 
     calculateDistance() {

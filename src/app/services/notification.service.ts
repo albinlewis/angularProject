@@ -17,8 +17,6 @@ export class NotificationService {
             serverPublicKey: this.VAPID_PUBLIC_KEY
         }).then(sub => {
             this.subscription = sub;
-            console.log(this.subscription);
-            console.log(JSON.stringify(sub));
         })
         .catch(err => console.error(err));
     }
