@@ -3,7 +3,6 @@ const mongoose = require('mongoose'),
     express = require('express'),
     bodyParser = require('body-parser'),
     fileUpload = require('express-fileupload'),
-    os = require('os'),
     path = require('path'),
     webpush = require('web-push'),
     compression = require('compression');
@@ -14,13 +13,6 @@ const config = require('config');
 
 /** Express initialzer */
 const app = express();
-
-app.use(req, res, next)
-{
-// check if it is a secure (https) request
-// if not redirect to the equivalent https url
-    !req.secure ? res.redirect('https://' + req.hostname + req.url) : next();
-}
 
 /** Initizialize logger  */
 const winston = require('winston');
@@ -35,9 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.text());
 
 
-
-
-if (process.env.NODE_ENV !== 'prod') {
+if (process.env.NODE_ENV !== 'production') {
     // Add headers
     app.use(function (req, res, next) {
 
@@ -94,10 +84,9 @@ webpush.setVapidDetails('mailto:a_loic16@yahoo.fr', publicVapidKey, privateVapid
 
 /** Start server */
 let port = process.env.PORT || config.port;
-app.listen(port, () = > {
-    console.log(`Listening on Port: ${port}`);
-})
-;
+app.listen(port, () => {
+    winston.info(`Listening on Port: ${port}`);
+});
 
 /** Exports */
 module.exports = app;
