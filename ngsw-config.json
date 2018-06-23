@@ -37,7 +37,7 @@
         "cacheConfig": {
             "strategy": "freshness",
             "maxAge": "7d",
-            "timeout": "3s"
+            "timeout": "1s"
         }
     },{
         "name": "history-api",
@@ -53,7 +53,7 @@
         "cacheConfig": {
             "strategy": "freshness",
             "maxAge": "7d",
-            "timeout": "2s"
+            "timeout": "1s"
         }
     }]
 }

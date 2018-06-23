@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import { SwPush } from '@angular/service-worker';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
 
 @Injectable()
 export class NotificationService {
 
-    readonly VAPID_PUBLIC_KEY = 'BNaGf2POUom9qpnI45OSE8gmzjeqdvk-4HoV7Is-3RjPeCWMtgcukwEVPp0K2xMdfmSrGCS2be5rFIYX2qRwoEc';
+    readonly VAPID_PUBLIC_KEY = environment.PUBLIC_VAPID_KEY;
     subscription: PushSubscription;
 
     constructor(private swPush: SwPush, private router: Router) { }
@@ -21,6 +22,4 @@ export class NotificationService {
         })
         .catch(err => console.error(err));
     }
-
-    
 }

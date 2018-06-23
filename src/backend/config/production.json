@@ -1,11 +1,6 @@
 {
-    "db": "mongodb://pseMember:hdaPseFbi@ds062807.mlab.com:62807/pse",
-    "port": 8080,
+    "port": 80,
     "base_url": "https://psehda.herokuapp.com",
-    "api": {
-        "url": "https://spacenus-api.azurewebsites.net",
-        "api_key": "Tp5KoPMzRQcXsnx"
-    },
     "timer": {
         "plants": 86400000,
         "diseases": 86400000
@@ -13,7 +8,7 @@
     "auth": {
         "maxAge": 360000,
         "stayLoggedIn": 3600000,
-        "secret": "4f9fd85e-489d-11e8-842f-0ed5f89f718b"
+        "secret": "4f9fd85e-489d-11e8-842f-0ed4f8927186"
     },
     "publicVapidKey": "BNaGf2POUom9qpnI45OSE8gmzjeqdvk-4HoV7Is-3RjPeCWMtgcukwEVPp0K2xMdfmSrGCS2be5rFIYX2qRwoEc",
     "privateVapidKey": "X_n9QwtF8HHcoFpeL8ZYw3WD0FOErvowKUFKb8q1dGw"

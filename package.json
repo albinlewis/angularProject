@@ -15,7 +15,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "backend": "set NODE_ENV=prod&& node ./src/backend/server.js",
+    "backend": "set NODE_ENV=production&& node ./src/backend/server.js",
     "backend_dev": "set NODE_ENV=dev&& nodemon ./src/backend/server.js",
     "backend_test": "set NODE_ENV=test&& mocha ./src/backend/test/ --timeout 15000 --exit",
     "postinstall": "ng build --aot --prod && node ./src/service-worker/rollup.js"
