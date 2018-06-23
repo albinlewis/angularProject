@@ -49,6 +49,7 @@ import {LanguageSwitchComponent} from './components/language-switch/language-swi
 import {NotificationService} from "./services/notification.service";
 import { UserDataService } from './services/user-data.service';
 import { TimeoutDirective } from './directives/timeout.directive';
+import { PlantService } from './services/plant.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -110,7 +111,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ],
     providers: [AnalysisService, ApiService, AuthService,
                 AuthguardService, UserService, GardenerService,
-                MapService, NotificationService, UserDataService],
+                MapService, NotificationService, UserDataService, 
+                PlantService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

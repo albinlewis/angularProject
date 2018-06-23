@@ -7,8 +7,7 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'app-plantdetails',
     templateUrl: './plantdetails.component.html',
-    styleUrls: ['./plantdetails.component.css'],
-    providers: [PlantService]
+    styleUrls: ['./plantdetails.component.css']
 })
 export class PlantdetailsComponent implements OnInit, OnDestroy {
     plant: IPlant;

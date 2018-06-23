@@ -21,7 +21,7 @@ export class PlantService extends DataService{
       let plant = await this.readSingleItem<IPlant>(id);
       return plant;
     }catch(err){
-      let plant = this.plants.find(plant => plant._id === id);
+      let plant = this.plants.find(plant => plant._id == id);
       if(!plant) throw err;
       else return plant;
     }
