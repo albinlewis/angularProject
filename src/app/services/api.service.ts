@@ -8,6 +8,11 @@ import { environment } from '../../environments/environment';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
+/**
+ * Base Communication service to backend
+ * --> set bearer token
+ * --> Handles logout after 401 Error
+ */
 
 @Injectable()
 export class ApiService {

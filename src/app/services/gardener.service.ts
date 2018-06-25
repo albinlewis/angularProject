@@ -3,6 +3,10 @@ import { DataService } from './data.service';
 import { ApiService } from './api.service';
 import { IGardener } from '../model/IGardener';
 
+/**
+ * Get gardeners
+ */
+
 @Injectable()
 export class GardenerService extends DataService {
 

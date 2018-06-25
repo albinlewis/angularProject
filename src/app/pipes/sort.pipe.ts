@@ -1,5 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * Sort elements by their name attribute
+ */
+
 @Pipe({
   name: 'sort'
 })

@@ -1,5 +1,9 @@
 const winston = require('winston');
 
+/**
+ * Custom error hierarchy to identify the single Errors, thorwn by the program
+ */
+
 /** Base Error Class */
 class PseError {
     constructor(message, name="PseError", status=400, options={}){

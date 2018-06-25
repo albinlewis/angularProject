@@ -1,5 +1,9 @@
 import { Directive, Input, ElementRef, AfterViewInit } from '@angular/core';
 
+/**
+ * Display an element after x milliseconds --> e.g. loader screens
+ */
+
 @Directive({
   selector: '[appTimeout]'
 })

@@ -68,7 +68,8 @@
         "MESSAGE": "Message",
         "ATTACHMENT": "Attachment",
         "SUCCESS": "Successfully sent your email!",
-        "FAILED": "Failed to send your email!"
+        "FAILED": "Failed to send your email!",
+        "SEND": "Send"
     },
     "RESULT": {
         "FOR": "Result for",
@@ -128,6 +129,7 @@
         "ADD": "Add",
         "EDIT": "Edit",
         "SAVE": "Save",
-        "CANCEL": "Cancel"
+        "CANCEL": "Cancel",
+        "CLOSE": "Close"
     }
 }

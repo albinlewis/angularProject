@@ -1,5 +1,9 @@
 import { ApiService } from "./api.service";
 
+/**
+ * BAse communication service to only fetch simple crud operation data
+ * Converts specified properties to date if marked
+ */
 export abstract class DataService {
 
     static changeStringToDate(item: any, prop: string) {

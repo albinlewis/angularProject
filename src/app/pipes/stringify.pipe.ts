@@ -1,5 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+/**
+ * Generate string output for analysis results
+ */
 @Pipe({
   name: 'stringify'
 })
@@ -10,7 +13,7 @@ export class StringifyPipe implements PipeTransform {
 
     let content = "Analysis Result\n";
     value.forEach(val => {
-      let name = val.disease_id ? val.disease_id.name : "Unknown";
+      let name = val.disease_id ? val.disease_id.name : "No disease";
       content += `${name} => ${val.confidence * 100}%\n`;
     });
     return content;

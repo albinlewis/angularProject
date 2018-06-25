@@ -3,6 +3,9 @@ import { IDisease } from '../model/IDisease';
 import { ApiService } from './api.service';
 import { DataService } from './data.service';
 
+/**
+ * Get diseases
+ */
 @Injectable()
 export class DiseaseService extends DataService{
 

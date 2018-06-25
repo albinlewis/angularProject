@@ -18,6 +18,7 @@ export class EmailComponent implements OnInit {
   emailForm: FormGroup;
   sent: boolean = false;
   error: boolean = false;
+  load: boolean = false;
 
   @ViewChild('open') openButton: ElementRef;
 
@@ -35,6 +36,7 @@ export class EmailComponent implements OnInit {
     );
   }
 
+  // Send email
   send(){
 
     if(this.emailForm.valid){
@@ -45,15 +47,21 @@ export class EmailComponent implements OnInit {
         message: this.emailForm.get('email_message').value + "\n\n",
         content: this.content
       };
+      this.load = true;
       this.emailService.sendEmail(email)
-        .then(x => this.sent = true)
+        .then(x => {
+          this.sent = true
+          this.load = false;
+        })
         .catch(err => {
           console.error(err);
           this.error = true;
+          this.load = false;
         });
     }
   }
 
+  // Opens modal dialog
   open(){
     this.openButton.nativeElement.click();
   }

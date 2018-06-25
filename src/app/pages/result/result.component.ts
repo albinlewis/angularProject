@@ -39,6 +39,10 @@ export class ResultComponent implements OnInit {
         this.email.open();
     }
 
+    /**
+     * Tries to load result every 1s
+     * @param id 
+     */
     getResult(id: string) {
         let interval = setInterval(() => {
             this.aService.getResult(id)

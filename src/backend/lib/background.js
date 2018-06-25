@@ -4,16 +4,18 @@ const Disease = require("../model/disease");
 const logger = require('winston');
 const config = require('config');
 
-if(process.env.NODE_ENV === 'prod'){
+// If start in production mode insert all plants and diseases
+if(process.env.NODE_ENV === 'production'){
     getData("/crops.json", updateDatabasePlants);
     getData("/diseases.json", updateDatabaseDiseases);
 }
 
-
+// Refresh plants every x seconds
 setInterval(() => {
     getData("/crops.json", updateDatabasePlants, true);
 }, config.timer.plants);
 
+// Refresh diseases every x seconds
 setInterval(() => {
     getData("/diseases.json", updateDatabaseDiseases, true);
 }, config.timer.diseases);

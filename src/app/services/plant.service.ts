@@ -3,6 +3,10 @@ import { DataService } from './data.service';
 import { ApiService } from './api.service';
 import { IPlant } from '../model/IPlant';
 
+/**
+ * Get plants
+ * --> Store all plants in array for when user goes offline
+ */
 @Injectable()
 export class PlantService extends DataService{
 

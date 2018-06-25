@@ -8,6 +8,7 @@ export class AuthguardService implements CanActivate {
     constructor(private authservice: AuthService) {
     }
 
+    // Blocks access to websites only a logged in user can see
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
       return this.authservice.isAuthentificated();
     }

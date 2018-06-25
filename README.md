@@ -1,32 +1,47 @@
 # Plantrecognition
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+This project was programmed by Albin Geraud Kouatcho Nkuigwa, Arthur Loic Fotso Keumogne and Janik Muenzenberger.
 
-## Development server
+This is our Angular & NodeJS project for the subject Projekt Systementwicklung. The goal is to write a progressive Webapp which shows all plants and diseases from an provided api. You can start a analysis with an pictore of a plant and the api will calculate a result disease which will be shown. This project implements a user management, so that a user can register and see their analysis history. Furthermore it provides a simulated connection to Shaufel-Online (Their are some fixed gardeners which you can see on a map and send emails to).
 
-Run `ng serve` / 'npm live' for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Start the project
 
-## Code scaffolding
+- Checkout the project from gitlab and go into project folder:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+``` bash
+git pull https://code.fbi.h-da.de/istankoua/PSE_Projekt.git
+cd PSE_Projekt
+```
 
-## Build
+- Install the node modules (Postinstall script automatically builds the project):
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+``` bash
+npm install
+```
 
-## Running unit tests
+- Before starting the server check the [Backend API Documentation](./src/backend/README.md) for environment variables and other config paramters and set them for your configuration.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Start the server:
 
-## Running end-to-end tests
+``` bash
+npm start
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Angular frontend
 
-## Further help
+### Angular Development server
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run `npm run live` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. Only works if outcomment the SWPush, because those PWA features only work in production mode.
+
+### Build
+
+Run `npm run build` to build the project in production. The build artifacts will be stored in the `dist/` directory.
 
 ## Backend
+
+The backend for the angular project is in `/src/backend`. It implements different routes which are used by the project.
+
+You can find the documentation with all routes an environment variables [under this page](./src/backend/README.md).
 
 ### Run Backend Production Server
 

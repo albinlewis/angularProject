@@ -4,7 +4,6 @@ const logger = require('winston');
 
 
 /** get all Gardener from the db */
-
 function getGardeners(req, res) {
     Gardener.find({}, ["name", "adress", "email", "phone", "latitude", "longitude"])
         .then(gardeners => {
@@ -21,7 +20,6 @@ function getGardeners(req, res) {
 }
 
 /** get Gardener by Id */
-
 function getGardener(req, res) {
     Gardener.findById(req.params.id).select("-__v")
         .then(gardener => {

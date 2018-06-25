@@ -21,12 +21,14 @@ export class AuthService {
         }
     }
 
+    // Returns http headers with token if logged in
     authHeader() {
         let headers = new HttpHeaders();
         if (this.token) headers = headers.append('Authorization', 'Bearer ' + this.token);
         return headers;
     }
 
+    // Register a new User
     register(data: any): Promise<any> {
         return new Promise((resolve, reject) => {
             this.httpClient.post(AuthService.API_URL + 'register', data)
@@ -40,6 +42,7 @@ export class AuthService {
         });
     }
 
+    // Log a user in
     login(data: any): Promise<any> {
         return new Promise((resolve, reject) => {
             this.httpClient.post(AuthService.API_URL + 'login', data)
@@ -72,6 +75,7 @@ export class AuthService {
         return false;
     }
 
+    // Logout the user (delte token and user from storage)
     logout() {
         this.userService.unsetUser();
         this.token = null;

@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { IEmail } from '../model/IEmail';
 
+/**
+ * Send an email
+ */
+
 @Injectable({
   providedIn: 'root'
 })

@@ -53,6 +53,11 @@ export class AnalyseComponent implements OnInit {
         });
     }
 
+    /**
+     * Start analysis if every value is provided
+     * if notifications are allowed --> stay on the page and show success message
+     * else navigate to result once started and wait for result
+     */
     onSubmit() {
         let element = this.image.nativeElement;
         if (this.selected && element.files && element.files[0]) {
@@ -89,6 +94,10 @@ export class AnalyseComponent implements OnInit {
         }
     }
 
+    /**
+     * Select a file --> Sets image in html
+     * @param event 
+     */
     onSelectFile(event) {
 
         this.showImage = true;

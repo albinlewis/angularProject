@@ -8,7 +8,19 @@ const Job = require('../model/job'),
     winston = require('winston'),
     randomstring = require('randomstring');
 
-// Request from the User to our Server
+/**
+ * Function to start the analysis
+ * 
+ * 1. Save diseased image file under "../assets/analysis" with a random name
+ * 2. Request the analisis from api --> Return request id
+ * 3. Save job in database (If user is defined also store reference in user)
+ * 4. If subsciption is in body --> "Push" Mode --> Return instantly (Result comes with push notification)
+ * 5. Else try to get the result and return success=true if no 204 status code --> Then complete job
+ * 
+ * 
+ * @param {*} req Request
+ * @param {*} res Response
+ */
 async function analysis(req, res) {
     let cropId = req.body.crop_id;
     const subscription = req.body.subscription;
@@ -109,6 +121,7 @@ function getResults(request_id) {
     return rp(options);
 }
 
+// Adds job to database
 function addJob(imageName, plantJob, resultIdJob, user = null, subscription = null) {
     // new Job
     let job = new Job({
@@ -129,6 +142,7 @@ function addJob(imageName, plantJob, resultIdJob, user = null, subscription = nu
         });
 }
 
+// Finished job --> Update finish and result fields
 function completeJob(id, result) {
     Job.findByIdAndUpdate(id, {
         $set: {
@@ -143,6 +157,7 @@ function completeJob(id, result) {
     });
 }
 
+// Update user if user is defined
 function addToUser(userId, jobId) {
     User.findByIdAndUpdate(userId, {
             $push: {
@@ -159,6 +174,7 @@ function addToUser(userId, jobId) {
             winston.warn("addToUser: " + err);
         });
 }
+
 /**
  * Get the job by params id
  * 

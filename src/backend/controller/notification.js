@@ -44,6 +44,12 @@ function sendPushNotification(job){
         .catch(err => winston.error(err));
 }
 
+/**
+ * Receive the result from spacenus api
+ * if job has a subscriptio, send push notification
+ * else only update db entry
+ * 
+ */
 async function receiveFromApi(req, res){
     try{
         res.end();

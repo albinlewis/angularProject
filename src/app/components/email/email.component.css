@@ -10,3 +10,13 @@
     width: 100%;
     max-width: 85%;
 }
+
+.loader {
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 2px solid #333;
+    width: 20px;
+    height: 20px;
+    -webkit-animation: 2s linear infinite spin;
+    animation: 2s linear infinite spin;
+}

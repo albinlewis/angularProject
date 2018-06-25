@@ -7,6 +7,11 @@ const fs = require('fs');
 var transport;
 createTransport();
 
+/**
+ * Creates a nodemailer transport
+ * if environment variables EMAIL_USER & EMAIL_PASSWORD are set --> use gmail account
+ * else use nodemailer test account
+ */
 async function createTransport() {
     try {
         const user = process.env.EMAIL_USER;
@@ -23,7 +28,7 @@ async function createTransport() {
         } else {
             winston.warn('No user gmail user defined in environment variables. User ethereal mail test account');
             let account = await nodemailer.createTestAccount();
-            return nodemailer.createTransport({
+            transport = nodemailer.createTransport({
                 host: 'smtp.ethereal.email',
                 port: 587,
                 secure: false, // true for 465, false for other ports
@@ -37,7 +42,17 @@ async function createTransport() {
         winston.error(err);
     }
 }
-
+/**
+ * Send email method
+ * 
+ * Set the mailOptions contents
+ * if post request contains content(job)
+ *  Generate disease result outputs
+ *  Add image as attachement if existent
+ * 
+ * @param {*} req 
+ * @param {*} res 
+ */
 function email(req, res) {
 
     let sender = req.body.sender;

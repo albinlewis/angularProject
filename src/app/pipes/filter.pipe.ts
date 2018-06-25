@@ -1,5 +1,8 @@
 import {Pipe, PipeTransform} from '@angular/core';
 
+/**
+ * Filter elements by their name attributes
+ */
 @Pipe({
     name: 'filter'
 })

@@ -17,6 +17,9 @@ export class MapService {
             private gardenerService: GardenerService) {
     }
 
+    /**
+     * Calculates distance from current point to every gardener via google distance matrix api
+     */
     calculateDistance() {
 
         this.mapsapi.load().then(() => {
@@ -36,18 +39,25 @@ export class MapService {
                         i++;
                     }
                     this.sortarray();
+                }else {
+                    console.error("Cant load distance matrix");
                 }
             });
         });
 
     }
 
+    // Sort by distance
     sortarray() {
         this.data.sort(function (a, b) {
             return a.mapsdata.distance.value - b.mapsdata.distance.value;
         });
     }
 
+    /**
+     * Get all gardeners & 
+     * Get user location from navigator --> then calcuate distances
+     */
     getUserLocation() {
 
         return this.gardenerService.getAllGardeners()

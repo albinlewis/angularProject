@@ -68,7 +68,8 @@
         "MESSAGE": "Nachricht",
         "ATTACHMENT": "Anhang",
         "SUCCESS": "Email wurde erfolgreich versendet!",
-        "FAILED": "Email konnte nicht versendet werden!"
+        "FAILED": "Email konnte nicht versendet werden!",
+        "SEND": "Senden"
     },
     "RESULT": {
         "FOR": "Ergebnis für",
@@ -127,6 +128,7 @@
         "ADD": "Hinzufügen",
         "EDIT": "Bearbeiten",
         "SAVE": "Speichern",
-        "CANCEL": "Abbrechen"
+        "CANCEL": "Abbrechen",
+        "CLOSE": "Schließen"
     }
 }

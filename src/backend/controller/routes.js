@@ -14,31 +14,37 @@ const router = require('express').Router({
 
 module.exports = router;
 
+//Plants routes
 router.get('/plants/:id', plantController.getPlant);
 router.get('/plants', plantController.getPlants);
 
+// Disease routes
 router.get('/diseases/:id', diseaseController.getDisease);
 router.get('/diseases', diseaseController.getDiseases);
 
+// Gardeners routes
 router.get('/gardeners', gardenerController.getGardeners);
 router.get('/gardeners/:id', gardenerController.getGardener);
 router.post('/gardeners', gardenerController.postGardener);
 
+// Receive post from api
 router.post('/notifications/result', notificationController.receiveFromApi);
-router.post('/notifications/result/:id', notificationController.receiveFromApi);
-router.post('/notifications', notificationController.postNotification);
 
+// Send an email 
 router.post('/email', middleware.checkBody(["sender", "receiver", "subject", "message"]), emailController.email);
 
+// start the analysis
 router.post('/analysis',
     middleware.checkBody(["crop_id"]),
     middleware.checkFiles(["image_file"]),
     middleware.verifyJWT_MW(false),
     analysisController.analysis);
 
+// REquest the result by its id
 router.get('/result/:id',
     analysisController.getJob);
 
+// Get user history
 router.get('/history', middleware.verifyJWT_MW(), historyController.history);
 
 // Authentification function: registration, login

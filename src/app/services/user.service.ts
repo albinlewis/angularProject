@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../model/IUser';
 
+/**
+ * Stores and manages the local user instance
+ */
 @Injectable()
 export class UserService {
 

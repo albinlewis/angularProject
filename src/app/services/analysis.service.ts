@@ -9,14 +9,17 @@ export class AnalysisService{
 
   constructor(private apiService: ApiService) { }
 
+  // Start the analysis
   startAnalysis(data: FormData): Promise<any> {
     return this.apiService.post('analysis', data).toPromise();
   }
 
+  // Get a result
   getResult(id: string): Promise<any>{
     return this.apiService.get('result/' + id).toPromise();
   }
 
+  // Get history of user
   getHistory(){
     return new Promise<IJob[]>((resolve, reject) => {
       this.apiService.get('history')

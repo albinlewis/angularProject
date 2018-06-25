@@ -13,7 +13,9 @@ export class UserDataService extends DataService{
       private userService: UserService){
       super("users", apiService, ["created_at", "modified_at"]);
   }
-
+  /**
+   * Get all user informations
+   */
   getUser(): Promise<IUser> {
     return this.readSingleItem<IUser>("")
       .then(user => {
@@ -22,10 +24,18 @@ export class UserDataService extends DataService{
       });
   }
 
+  /**
+   * Updates the user
+   * @param update 
+   */
   updateUser(update: any): Promise<IUser> {
     return this.updateItem<IUser>("", update);
   }
 
+  /**
+   * Remove a user
+   * @param user 
+   */
   removeUser(user: IUser){
     return this.apiService.post(this.serviceUrl + "/delete", user).toPromise();
   }

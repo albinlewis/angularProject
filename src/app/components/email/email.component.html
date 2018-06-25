@@ -49,8 +49,11 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="send()" [hidden]="sent">Send</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{"CONTROLS.CLOSE" | translate}}</button>
+                <button type="button" class="btn btn-primary" (click)="send()" [disabled]="load || !emailForm.valid" [hidden]="sent">
+                    <div *ngIf="load" class="loader"></div>
+                    {{load ? "" : ("EMAIL.SEND" | translate)}}
+                </button>
             </div>
         </div>
     </div>
