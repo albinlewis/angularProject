@@ -13,7 +13,7 @@ import { UserService } from '../../services/user.service';
 export class EmailComponent implements OnInit {
 
   @Input() receivers: {email: string, name: string}[];
-  @Input() message: string = "";
+  @Input() content: any;
 
   emailForm: FormGroup;
   sent: boolean = false;
@@ -42,12 +42,13 @@ export class EmailComponent implements OnInit {
         sender: this.emailForm.get('email_sender').value,
         receiver: this.emailForm.get('email_receiver').value,
         subject: "Krankheitsanalyse von " + this.emailForm.get('email_sender').value,
-        message: this.emailForm.get('email_message').value + "\n\n" + this.message
+        message: this.emailForm.get('email_message').value + "\n\n",
+        content: this.content
       };
       this.emailService.sendEmail(email)
         .then(x => this.sent = true)
         .catch(err => {
-          console.log(err);
+          console.error(err);
           this.error = true;
         });
     }

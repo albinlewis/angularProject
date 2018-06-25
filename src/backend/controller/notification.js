@@ -30,7 +30,7 @@ function sendPushNotification(job){
     const notificationPayload = {
         notification: {
             title: "You`re result is there!",
-            body: `We received the results for your analysed plant! Follow ${url}`,
+            body: `We received the results for your analysed plant! You con find the result at ${config.base_url + url}`,
             icon: '/uploads/icon.png',
             vibrate: [100, 50, 100],
             data: {

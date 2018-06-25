@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 const winston = require('winston');
 const errors = require('../lib/errors');
+const path = require('path');
+const fs = require('fs');
 
 var transport;
 createTransport();
@@ -42,7 +44,7 @@ function email(req, res) {
     let receiver = req.body.receiver;
     let subject = req.body.subject;
     let msg = req.body.message;
-
+    let content = req.body.content;
 
     // create a setup message option
     let mailOptions = {
@@ -52,6 +54,24 @@ function email(req, res) {
         text: msg
     };
 
+    if(content){
+        if(content.result){
+            mailOptions.text += `This email was requested by ${sender}\n\n`;
+            mailOptions.text += `Analysis results for ${content.plant.name} from https://psehda.herokuapp.com/:\n`;
+            for(let r of content.result) {
+                mailOptions.text += `${r.disease_id ? r.disease_id.name : 'No disease'} => ${r.confidence}\n`;
+            }
+        }
+        if(content.image_url){
+            const image_path = path.join(__dirname, '../assets/analysis', path.basename(content.image_url));
+            if(fs.existsSync(image_path)){
+                mailOptions.attachments = [{
+                    filename: 'diseased_plant.jpg',
+                    path: image_path
+                }];
+            }
+        }
+    }
     
     // send the E-mail with sendMail using the defined transporter
     transport.sendMail(mailOptions)
@@ -68,4 +88,4 @@ function email(req, res) {
 
 module.exports = {
     email
-}
+};
