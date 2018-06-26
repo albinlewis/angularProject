@@ -15,7 +15,7 @@ This is our Angular & NodeJS project for the subject Projekt Systementwicklung. 
 - Checkout the project from gitlab and go into project folder:
 
 ``` bash
-git pull https://code.fbi.h-da.de/istankoua/PSE_Projekt.git
+git clone https://code.fbi.h-da.de/istankoua/PSE_Projekt.git
 cd PSE_Projekt
 ```
 
