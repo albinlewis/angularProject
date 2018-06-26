@@ -34,7 +34,7 @@
                     </tr>
                 </tbody>
             </table>
-            <section class="my-5 mt-my-0">
+            <section class="my-5 mt-my-0" *ngIf="plant?.diseases">
                 <h3>{{"PLANT.DISEASES" | translate}}</h3>
                 <div class="list-group">
                     <li style="cursor:pointer;" class="list-group-item list-group-item-action" *ngFor="let d of plant?.diseases | sort" [routerLink]="['/disease', d._id]">

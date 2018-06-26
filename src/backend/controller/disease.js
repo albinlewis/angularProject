@@ -3,7 +3,7 @@ const logger = require('winston');
 
 /** Get all diseases with name and id */
 function getDiseases(req, res){
-    Disease.find({}, ["id", "name", "symptoms"])
+    Disease.find({}).populate('crop_id', ['name'])
         .then(diseases => {
             res.status(200);
             res.send({
