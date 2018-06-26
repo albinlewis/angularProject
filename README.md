@@ -4,6 +4,12 @@ This project was programmed by Albin Geraud Kouatcho Nkuigwa, Arthur Loic Fotso 
 
 This is our Angular & NodeJS project for the subject Projekt Systementwicklung. The goal is to write a progressive Webapp which shows all plants and diseases from an provided api. You can start a analysis with an pictore of a plant and the api will calculate a result disease which will be shown. This project implements a user management, so that a user can register and see their analysis history. Furthermore it provides a simulated connection to Shaufel-Online (Their are some fixed gardeners which you can see on a map and send emails to).
 
+## Requirements
+
+- Current version of [nodeJs](https://nodejs.org/en/) - min 8.x.x
+- Current version of [npm package installer](https://www.npmjs.com/)
+- Running instance of current version of [MongoDB](https://www.mongodb.com/) - on server or local machine
+
 ## Start the project
 
 - Checkout the project from gitlab and go into project folder:
