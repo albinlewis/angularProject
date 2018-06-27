@@ -30,7 +30,7 @@ export class EmailComponent implements OnInit {
     this.emailForm = new FormGroup(
       {
         'email_receiver': new FormControl(null, [Validators.email, Validators.required]),
-        'email_sender': new FormControl(user.email, [Validators.required, Validators.email, Validators.minLength(8)]),
+        'email_sender': new FormControl(user ? user.email : null, [Validators.required, Validators.email, Validators.minLength(8)]),
         'email_message': new FormControl(null, [Validators.required])
       }
     );
