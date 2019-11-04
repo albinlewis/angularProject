@@ -1,5 +1,5 @@
 # Plantrecognition
-(Demo unter https://plantanalyser.herokuapp.com/)
+(Demo der App unter https://plantanalyser.herokuapp.com/)
 
 This project was programmed by Albin Geraud Kouatcho Nkuigwa, Arthur Loic Fotso Keumogne and Janik Muenzenberger.
 
